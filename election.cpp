@@ -77,6 +77,7 @@ State::State (string line) {
 
 void State::print () {
   if (Dchance > 0.5) {
+    // TODO fix tab padding
     cout << name << "\t[" << 100*Dchance << "% chance of " << votes << " votes]\n";
   } else {
     cout << name << "\t[" << 100*(1-Dchance) << "% chance of " << votes << " votes]\n";
@@ -90,6 +91,7 @@ bool operator < (const State& lhs, const State& rhs) {
 
 int main(int argc, const char* argv[]) {
   /* Parse command-line args */
+  // TODO maybe fix this so single argument can go either way
   string fileName = "odds.csv";
   float riskAccepted = 0.05;
   if (argc >= 2) {
