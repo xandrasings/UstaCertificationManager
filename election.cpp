@@ -81,7 +81,6 @@ void State::print () {
     cout << name << "\t[" << 100*Dchance << "% chance of " << votes << " votes]\n";
   } else {
     cout << name << "\t[" << 100*(1-Dchance) << "% chance of " << votes << " votes]\n";
-
   }
 }
 
@@ -165,9 +164,8 @@ int main(int argc, const char* argv[]) {
   }
 
   float Dcount = 0;
-  float Rcount = 0;
-
   Event event(states.size());
+
   run = true;
   while (run) {
     int voteSum = DSum;
@@ -184,13 +182,10 @@ int main(int argc, const char* argv[]) {
 
     if (voteSum > 269) {
       Dcount = Dcount + prob;
-    } else {
-      Rcount = Rcount + prob;
     }
 
     run = event.increment();
   }
 
-  cout << Dcount << "\t" << Rcount << "\n";
   cout << "\nGiven this assumption, " << Dcount*100 << "% chance dems win.\n";
 }
