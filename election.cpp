@@ -91,14 +91,18 @@ void State::print2 () {
 }
 
 bool operator < (const State& lhs, const State& rhs) {
-  return (max(lhs.Dchance,1-lhs.Dchance) < max(rhs.Dchance,1-rhs.Dchance));
+  return (max(lhs.Dchance,1-lhs.Dchance) > max(rhs.Dchance,1-rhs.Dchance));
 }
 
 int main(int argc, const char* argv[]) {
   /* Parse command-line args */
   string fileName = "odds.csv";
-  if (argc == 2) {
+  float riskAccepted = 0.05;
+  if (argc >= 2) {
     fileName = argv[1];
+  }
+  if (argc >= 3) {
+    float riskAccepted = stof(argv[2]);
   }
   ifstream dataFile(fileName);
 
@@ -112,15 +116,11 @@ int main(int argc, const char* argv[]) {
     states.push_back(newState);
   }
 
-  sort(states.rbegin(),states.rend());
-  for (int i=0; i<states.size(); i++) {
-    states[i].print();
-  }
+  sort(states.begin(),states.end());
 
   int DSum = 0;
   int RSum = 0;
   vector<State> givenList;
-  float riskAccepted = 0.05;
   float riskProduct = 1;
   bool run = true;
 
