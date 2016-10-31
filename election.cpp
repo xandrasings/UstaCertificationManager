@@ -62,7 +62,6 @@ public:
   State(string, int, float);
   State(string);
   void print();
-  void print2();
 };
 
 State::State (string n, int v, float c) {
@@ -78,10 +77,6 @@ State::State (string line) {
 }
 
 void State::print () {
-  cout << name << ",\t" << votes << ",\t" << Dchance*100 << "%\n";
-}
-
-void State::print2 () {
   if (Dchance > 0.5) {
     cout << name << "\t[" << 100*Dchance << "% chance of " << votes << " votes]\n";
   } else {
@@ -157,14 +152,14 @@ int main(int argc, const char* argv[]) {
   cout << "Democrats win:\n";
   for (int i = 0; i < givenList.size(); i++) {
     if (givenList[i].Dchance > 0.5) {
-      givenList[i].print2();
+      givenList[i].print();
     }
   }
 
   cout << "\nRepublicans win:" << "\n";
   for (int i = 0; i < givenList.size(); i++) {
     if (givenList[i].Dchance < 0.5) {
-      givenList[i].print2();
+      givenList[i].print();
     }
   }
 
