@@ -11,9 +11,9 @@
 using namespace std;
 
 class Event {
+public:
   int size;
   bool* perm;
-public:
   Event (int);
   ~Event ();
   bool increment ();
@@ -62,6 +62,7 @@ public:
   State(string, int, float);
   State(string);
   void print();
+  void print2();
 };
 
 State::State (string n, int v, float c) {
@@ -78,6 +79,15 @@ State::State (string line) {
 
 void State::print () {
   cout << name << ",\t" << votes << ",\t" << Dchance*100 << "%\n";
+}
+
+void State::print2 () {
+  if (Dchance > 0.5) {
+    cout << name << "\t[" << 100*Dchance << "% chance of " << votes << " votes]\n";
+  } else {
+    cout << name << "\t[" << 100*(1-Dchance) << "% chance of " << votes << " votes]\n";
+
+  }
 }
 
 bool operator < (const State& lhs, const State& rhs) {
@@ -110,7 +120,7 @@ int main(int argc, const char* argv[]) {
   int DSum = 0;
   int RSum = 0;
   vector<State> givenList;
-  float riskAccepted = 0.50;
+  float riskAccepted = 0.05;
   float riskProduct = 1;
   bool run = true;
 
@@ -143,19 +153,48 @@ int main(int argc, const char* argv[]) {
   }
 
   cout << "Probability of at least " << riskAccepted*100 << 
-  "% that D will win " << DSum << " and R will win " << RSum << 
-  " from the following: " << "\n";
+  "% that D will win " << DSum << " and R will win " << RSum <<":\n";
+  cout << "Democrats win:\n";
   for (int i = 0; i < givenList.size(); i++) {
-    givenList[i].print();
-  }
-  cout << "\n" << "\n" << "\n" << "\n";
-  for (int i = 0; i < states.size(); i++) {
-    states[i].print();
+    if (givenList[i].Dchance > 0.5) {
+      givenList[i].print2();
+    }
   }
 
-
-  Event event(5);
-  while (event.increment()) {
+  cout << "\nRepublicans win:" << "\n";
+  for (int i = 0; i < givenList.size(); i++) {
+    if (givenList[i].Dchance < 0.5) {
+      givenList[i].print2();
+    }
   }
-  
+
+  float Dcount = 0;
+  float Rcount = 0;
+
+  Event event(states.size());
+  run = true;
+  while (run) {
+    int voteSum = DSum;
+    float prob = 1;
+
+    for (int i = 0; i < event.size; i++) {
+      if (event.perm[i]) {
+        voteSum = voteSum + states[i].votes;
+        prob = prob * states[i].Dchance;
+      } else {
+        prob = prob * (1 - states[i].Dchance);
+      }
+    }
+
+    if (voteSum > 269) {
+      Dcount = Dcount + prob;
+    } else {
+      Rcount = Rcount + prob;
+    }
+
+    run = event.increment();
+  }
+
+  cout << Dcount << "\t" << Rcount << "\n";
+  cout << "\nGiven this assumption, " << Dcount*100 << "% chance dems win.\n";
 }
