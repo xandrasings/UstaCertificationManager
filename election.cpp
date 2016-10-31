@@ -96,7 +96,7 @@ int main(int argc, const char* argv[]) {
     fileName = argv[1];
   }
   if (argc >= 3) {
-    float riskAccepted = stof(argv[2]);
+    riskAccepted = stof(argv[2]);
   }
   ifstream dataFile(fileName);
 
