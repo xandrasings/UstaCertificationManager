@@ -136,7 +136,6 @@ int main(int argc, const char* argv[]) {
       } else {
         RSum = RSum + states[0].votes;
       }
-      DSum = DSum + states[0].votes;
       states.erase(states.begin());
     } else {
       run = false;
@@ -156,9 +155,7 @@ int main(int argc, const char* argv[]) {
 
 
   Event event(5);
-  // event.print();
   while (event.increment()) {
-    // event.print();
   }
   
 }
