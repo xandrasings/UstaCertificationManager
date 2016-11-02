@@ -9,6 +9,14 @@
 
 using namespace std;
 
+string pad(string str) {
+  int len = 20 - str.size();
+  for (int i = 0; i < len; i++) {
+    str = str + " ";
+  }
+  return str;
+}
+
 class Event {
 public:
   int size;
@@ -78,9 +86,9 @@ State::State (string line) {
 void State::print () {
   if (Dchance > 0.5) {
     // TODO fix tab padding
-    cout << name << "\t[" << 100*Dchance << "% chance of " << votes << " votes]\n";
+    cout << pad(name) << "[" << 100*Dchance << "% chance of " << votes << " votes]\n";
   } else {
-    cout << name << "\t[" << 100*(1-Dchance) << "% chance of " << votes << " votes]\n";
+    cout << pad(name) << "[" << 100*(1-Dchance) << "% chance of " << votes << " votes]\n";
   }
 }
 
