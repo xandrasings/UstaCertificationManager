@@ -6,7 +6,6 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include "Discipline.h"
 
 using namespace std;
 

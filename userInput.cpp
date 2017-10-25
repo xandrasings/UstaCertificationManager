@@ -1,5 +1,5 @@
-#include "UserInput.h"
-#include "Print.h"
+#include "print.h"
+#include "userInput.h"
 
 string getUserInput(string prompt) {
 	printLine(prompt);

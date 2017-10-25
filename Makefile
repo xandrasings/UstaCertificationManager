@@ -1,14 +1,17 @@
 main: main.o
-	g++ -g -Wall Discipline.o Print.o UserInput.o main.o -o main
+	g++ -g -Wall print.o userInput.o discipline.o setUpHandler.o main.o -o main
 
-main.o: main.cpp Discipline.o Print.o UserInput.o
+main.o: main.cpp print.o userInput.o discipline.o setUpHandler.o
 	g++ -g -Wall -c main.cpp
 
-Discipline.o: Discipline.cpp Discipline.h Print.o
-	g++ -g -Wall -c Discipline.cpp
+print.o: print.cpp print.h
+	g++ -g -Wall -c print.cpp
 
-Print.o: Print.cpp Print.h
-	g++ -g -Wall -c Print.cpp
+userInput.o: userInput.cpp userInput.h print.o
+	g++ -g -Wall -c userInput.cpp
 
-UserInput.o: UserInput.cpp UserInput.h Print.o
-	g++ -g -Wall -c UserInput.cpp
+discipline.o: discipline.cpp discipline.h print.o
+	g++ -g -Wall -c discipline.cpp
+
+setUpHandler.o: setUpHandler.cpp setUpHandler.h print.o userInput.o
+	g++ -g -Wall -c setUpHandler.cpp

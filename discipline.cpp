@@ -1,5 +1,5 @@
-#include "Discipline.h"
-#include "Print.h"
+#include "discipline.h"
+#include "print.h"
 
 Discipline::Discipline (string fileLine, vector<string> requirementNames) {
 	istringstream fileLineStream( fileLine );
