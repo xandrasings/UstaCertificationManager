@@ -18,8 +18,14 @@ Discipline::Discipline (string fileLine, vector<string> requirementNames) {
 
 void Discipline::print () {
 	printLine("Discipline:");
-	cout << "===========================================" << endl;
-	cout << "===========================================" << endl;
+	printSplitLight();
+	printLine("Name:");
+	printLine(name);
+	printLine("Requirements:");
+	for (int i = 0; i < requirements.size(); i++) {
+		printLine(requirements[i]);
+	}
+	printSplitHeavy();
 }
 
 string Discipline::getName () {
