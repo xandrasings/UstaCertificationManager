@@ -15,6 +15,9 @@ class Discipline {
 	vector<string> requirements;
 public:
 	Discipline(string, vector<string>);
+  void print();
+	string getName();
+  vector<string> getRequirements();
 };
 
 #endif // _DISCIPLINE_

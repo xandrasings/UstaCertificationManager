@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void print(string text) {
+void print(string text) { 
 	cout << text << endl;
 }
 
@@ -68,4 +68,8 @@ vector<Discipline> getCertificationRequirements() {
 int main() {
 	presentIntroduction();
 	vector<Discipline> disciplines = getCertificationRequirements();
+
+	for (int i = 0; i < disciplines.size(); i++) {
+		disciplines[i].print();
+	}
 }
