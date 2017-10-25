@@ -3,24 +3,26 @@
 #include <string>
 #include <sstream>
 #include <vector>
+
 #include "Discipline.h"
+#include "Print.cpp" 
 
 using namespace std;
 
-void print(string text) { 
+void printLine (string text) {
 	cout << text << endl;
 }
 
 string getUserInput(string prompt) {
-	print(prompt);
+	printLine(prompt);
 	string userInput;
 	cin >> userInput;
 	return userInput;
 }
 
 string getUserInput(string prompt, string defaultInput) {
-	print(prompt);
-	print("enter \'y\' for " + defaultInput);
+	printLine(prompt);
+	printLine("enter \'y\' for " + defaultInput);
 	string userInput;
 	cin >> userInput;
 	if (userInput == "y") {
@@ -30,10 +32,10 @@ string getUserInput(string prompt, string defaultInput) {
 }
 
 void presentIntroduction() {
-	print("Welcome to Cert Manager.");
-	print("I will help you manage certification requirements for USTA officials.");
-	print("All source files must be in csv and should follow the expected format detailed in the readme.");
-	print("See the readme for further details on source file requirements.");
+	printLine("Welcome to Cert Manager.");
+	printLine("I will help you manage certification requirements for USTA officials.");
+	printLine("All source files must be in csv and should follow the expected format detailed in the readme.");
+	printLine("See the readme for further details on source file requirements.");
 }
 
 vector<Discipline> getCertificationRequirements() {
