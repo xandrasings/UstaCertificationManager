@@ -5,13 +5,9 @@
 #include <vector>
 
 #include "Discipline.h"
-#include "Print.cpp" 
+#include "Print.h" 
 
 using namespace std;
-
-void printLine (string text) {
-	cout << text << endl;
-}
 
 string getUserInput(string prompt) {
 	printLine(prompt);

@@ -1,5 +1,5 @@
 #include "Discipline.h"
-// #include "Print.cpp"
+#include "Print.h"
 
 Discipline::Discipline (string fileLine, vector<string> requirementNames) {
 	istringstream fileLineStream( fileLine );
@@ -17,9 +17,9 @@ Discipline::Discipline (string fileLine, vector<string> requirementNames) {
 }
 
 void Discipline::print () {
-	// printLine("Discipline:");
-	cout << "============================================" << endl;
-	cout << "============================================" << endl;
+	printLine("Discipline:");
+	cout << "===========================================" << endl;
+	cout << "===========================================" << endl;
 }
 
 string Discipline::getName () {

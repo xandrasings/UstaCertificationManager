@@ -20,4 +20,4 @@ public:
   vector<string> getRequirements();
 };
 
-#endif // _DISCIPLINE_
+#endif
