@@ -1,7 +1,7 @@
-main: Discipline.o Print.o main.o
-	g++ -g -Wall Discipline.o Print.o main.o -o main
+main: main.o
+	g++ -g -Wall Discipline.o Print.o UserInput.o main.o -o main
 
-main.o: main.cpp Discipline.o Print.o
+main.o: main.cpp Discipline.o Print.o UserInput.o
 	g++ -g -Wall -c main.cpp
 
 Discipline.o: Discipline.cpp Discipline.h Print.o
@@ -9,3 +9,6 @@ Discipline.o: Discipline.cpp Discipline.h Print.o
 
 Print.o: Print.cpp Print.h
 	g++ -g -Wall -c Print.cpp
+
+UserInput.o: UserInput.cpp UserInput.h Print.o
+	g++ -g -Wall -c UserInput.cpp
