@@ -19,15 +19,24 @@ def main():
 	processRequirements()
 	processOfficials()
 
+	options = {
+		"A" : processAchievements,
+		"D" : displayCertifications,
+		"R" : displayRequirements,
+		"O" : displayOfficial,
+		"E" : sendEmails,
+		"Q" : quit
+	}
+
 	displayOptions = True
 
 	while (displayOptions == True):
-		processAchievements()
-		displayCertifications()
-		displayRequirements()
-		displayOfficial()
-		sendEmails()
-		quit()
+		options["A"]()
+		options["D"]()
+		options["R"]()
+		options["O"]()
+		options["E"]()
+		options["Q"]()
 		displayOptions = False
 
 main()
