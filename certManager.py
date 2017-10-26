@@ -1,4 +1,4 @@
-from Objects.Requirement import requirementPrint
+from Objects.Requirement import *
 
 def main():
 	print("I’m a program!")
