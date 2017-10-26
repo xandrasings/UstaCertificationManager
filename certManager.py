@@ -9,15 +9,25 @@ from Modules.quit import *
 from Modules.sendEmails import *
 
 def main():
+	officials = []
+	disciplines = []
+	requirements = []
+	achievements = []
+	certifications = []
+
 	displayIntroduction()
 	processRequirements()
 	processOfficials()
 
-	processAchievements()
-	displayCertifications()
-	displayRequirements()
-	displayOfficial()
-	sendEmails()
-	quit()
+	displayOptions = True
+
+	while (displayOptions == True):
+		processAchievements()
+		displayCertifications()
+		displayRequirements()
+		displayOfficial()
+		sendEmails()
+		quit()
+		displayOptions = False
 
 main()
