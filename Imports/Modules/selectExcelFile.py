@@ -7,37 +7,13 @@ from os import listdir
 from xlrd import open_workbook
 
 def selectExcelFile(dataType, selectedFile = ''):
+	targetDirectory = 'Resources'
 
-	certificationDataFilePath = os.path.abspath(os.path.join('Resources','.'))
-	pathContent = listdir(certificationDataFilePath)
-	pathContentValid = []
-	for item in list(pathContent):
-		if (item.endswith('.xlsx') or item.endswith('.xls')) and not item.startswith('~'):
-			pathContentValid.append(item)
-
-
-	output('Seeking excel file holding ' + dataType + ' data in Resources directory.')
-	# TODO check if list is empty
-	printFileOptions(pathContentValid)
-
-	fileIndex = -1
-
-	while fileIndex < 0:
-		inputIndex = prompt('Which file would you like to use for ' + dataType + ' data?')
-		# TODO offer option to quit
-		try:
-			fileIndex = int(inputIndex) - 1
-			if fileIndex < 0 or fileIndex >= len(pathContentValid):
-				outputUserNotice('Selection should be between 1 and ' + str(len(pathContentValid) + 1))
-				fileIndex = -1
-		except:
-			if inputIndex == 'Q':
-				quit()
-			outputUserNotice(inputIndex + ' should be an integer')
-
-	certificationDataFilePath = os.path.join(certificationDataFilePath,pathContentValid[fileIndex])
-
-	certificationDataFile = open_workbook(certificationDataFilePath)
+	certificationDataFilePath = getAbsoluteFilePath(targetDirectory)
+	validOptions = getValidOptions(certificationDataFilePath)
+	optionIndex = solicitOptionIndex(dataType, targetDirectory, validOptions)
+	certificationDataFilePath = extendFilePath(certificationDataFilePath, validOptions[optionIndex])
+	certificationDataFile = openWorkbook(certificationDataFilePath)
 
 	return certificationDataFile
 
@@ -47,3 +23,56 @@ def printFileOptions(pathContent):
 		outputOption('- (' + str(i) + ') ' + item)
 		i = i + 1
 	outputOption('- (Q)uit')
+
+def getAbsoluteFilePath(filePath):
+	return os.path.abspath(filePath)
+
+def extendFilePath(filePath, extension):
+	return os.path.join(filePath, extension)
+
+def getValidOptions(filePath):
+	pathContent = listdir(filePath)
+	validOptions = filterExcelOptions(pathContent)
+
+	return validOptions
+
+def filterExcelOptions(pathContent):
+	validOptions = []
+
+	for item in list(pathContent):
+		if (item.endswith('.xlsx') or item.endswith('.xls')) and not item.startswith('~'):
+			validOptions.append(item)
+
+	return validOptions
+
+def solicitOptionIndex(dataType, targetDirectory, validOptions):
+	output('Seeking excel file holding ' + dataType + ' data in ' + targetDirectory +' directory.')
+	# TODO check if list is empty
+	printFileOptions(validOptions)
+	optionIndex = getFileIndex(dataType, validOptions)
+	return optionIndex
+
+def getFileIndex(dataType, validOptions):
+	fileIndex = -1
+
+	while fileIndex < 0:
+		inputIndex = prompt('Which file would you like to use for ' + dataType + ' data?')
+		try:
+			fileIndex = int(inputIndex) - 1
+			if fileIndex < 0 or fileIndex >= len(validOptions):
+				outputUserNotice('Selection should be between 1 and ' + str(len(validOptions) + 1))
+				fileIndex = -1
+		except:
+			if inputIndex == 'Q':
+				quit()
+			outputUserNotice('Selection should be an integer')
+
+	return fileIndex
+
+def openWorkbook(filePath):
+	try:
+		open_workbook(filePath)
+		outputUserNotice('Opening workbook from ' + filePath)
+	except:
+		outputUserNotice('Could not open workbook')
+		quit()
