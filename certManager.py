@@ -1,12 +1,15 @@
-from Modules.displayCertifications import *
-from Modules.displayIntroduction import *
-from Modules.displayOfficial import *
-from Modules.displayRequirements import *
-from Modules.processAchievements import *
-from Modules.processOfficials import *
-from Modules.processRequirements import *
-from Modules.quit import *
-from Modules.sendEmails import *
+from Imports.Modules.displayCertifications import *
+from Imports.Modules.displayIntroduction import *
+from Imports.Modules.displayOfficial import *
+from Imports.Modules.displayRequirements import *
+from Imports.Modules.processAchievements import *
+from Imports.Modules.processOfficials import *
+from Imports.Modules.processRequirements import *
+from Imports.Modules.quit import *
+from Imports.Modules.sendEmails import *
+from Imports.Modules.solicitAction import *
+from Imports.Utilities.input import *
+from Imports.Utilities.output import *
 
 def main():
 	officials = []
@@ -31,6 +34,7 @@ def main():
 	displayOptions = True
 
 	while (displayOptions == True):
+		solicitAction()
 		options["A"]()
 		options["D"]()
 		options["R"]()
