@@ -2,7 +2,7 @@ from .output import *
 
 def prompt(text = ''):
 	result = input(colorPromptImmediate(text + ' > '))
-	colorClose()
+	outputColorClose()
 	return result
 
 def promptContinue():

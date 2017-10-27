@@ -23,20 +23,7 @@ def main():
 	processRequirements()
 	processOfficials()
 
-	displayOptions = True
-
-	options = {
-		'E' : processAchievements,
-		'C' : displayCertifications,
-		'A' : displayAchievements,
-		'O' : displayOfficial,
-		'M' : sendEmails,
-		'Q' : quit
-	}
-
-	acted = {
-		'Q' : displayOptions
-	}
+	displayOptions = True;
 
 	while (displayOptions == True):
 		selection = solicitAction()
