@@ -3,7 +3,7 @@ from .output import *
 def prompt(text = '', default = ''):
 	result = ''
 	if default == '':
-		result = input(colorPromptImmediate(text + ' > '))
+		result = input(colorPromptImmediate(text + ' > ')).upper()
 	else:
 		outputPrompt(text)
 		result = input(colorPromptImmediate('enter \'Y\' for \'' + default + '\' > ')).upper()

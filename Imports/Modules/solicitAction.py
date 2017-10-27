@@ -9,4 +9,4 @@ def solicitAction():
 	outputOption(' - display (O)fficial details')
 	outputOption(' - send e(M)ails')
 	outputOption(' - (Q)uit')
-	return prompt().upper()
+	return prompt()

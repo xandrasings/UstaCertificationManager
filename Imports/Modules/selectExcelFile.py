@@ -31,7 +31,7 @@ def selectExcelFile(dataType, selectedFile = ''):
 				outputUserNotice('Selection should be between 1 and ' + str(len(pathContentValid) + 1))
 				fileIndex = -1
 		except:
-			if inputIndex.upper() == 'Q':
+			if inputIndex == 'Q':
 				quit()
 			outputUserNotice(inputIndex + ' should be an integer')
 
