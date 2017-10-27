@@ -22,21 +22,27 @@ def main():
 	processRequirements()
 	processOfficials()
 
+	displayOptions = True
+
 	options = {
-		"A" : processAchievements,
-		"D" : displayCertifications,
-		"R" : displayRequirements,
-		"O" : displayOfficial,
-		"E" : sendEmails,
-		"Q" : quit
+		'A' : processAchievements,
+		'D' : displayCertifications,
+		'R' : displayRequirements,
+		'O' : displayOfficial,
+		'E' : sendEmails,
+		'Q' : quit
 	}
 
-	displayOptions = True
+	acted = {
+		'Q' : displayOptions
+	}
 
 	while (displayOptions == True):
 		selection = solicitAction()
 		if selection in options:
-			options[selection]()
-		displayOptions = False
+			acted[selection] = options[selection]()
+		else:
+			outputUserNotice('\'' + selection + '\' is not a viable option.')
+			displayOptions = False
 
 main()

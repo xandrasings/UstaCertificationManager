@@ -9,4 +9,4 @@ def solicitAction():
 	output(" - display (O)fficial details")
 	output(" - send (E)mails")
 	output(" - (Q)uit")
-	return prompt().capitalize()
+	return prompt().upper()
