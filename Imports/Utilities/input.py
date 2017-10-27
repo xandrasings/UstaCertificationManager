@@ -7,4 +7,4 @@ def prompt(text = ''):
 
 def promptContinue():
 	input(colorPrompt('Press enter to continue. > '))
-	# TODO print line
+	outputLineHeavy()

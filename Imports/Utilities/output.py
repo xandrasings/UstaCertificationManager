@@ -12,6 +12,9 @@ def output(text, colorOption = 'none'):
 	else:
 		print(color(text, colorOption))
 
+def outputUserNotice(text):
+	output(colorUserNotice(text))
+
 def outputPrompt(text):
 	output(colorPrompt(text))
 
@@ -21,10 +24,10 @@ def outputOption(text):
 	output(text[0:leftIndex] + colorPrompt(text[leftIndex:rightIndex]) + text[rightIndex:])
 
 def outputLine():
-	output(colorUserNotice("----------------------------------------------------------------------"))
+	output("--------------------------------------------------------------------------------------------------------------------------------------------")
 
-def outputHeavyLine():
-	output(colorUserNotice("======================================================================"))
+def outputLineHeavy():
+	output("============================================================================================================================================")
 
 def color(text, color):
 	return colorOptions[color] + text + colorOptions['closer']
