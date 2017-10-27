@@ -34,13 +34,9 @@ def main():
 	displayOptions = True
 
 	while (displayOptions == True):
-		solicitAction()
-		options["A"]()
-		options["D"]()
-		options["R"]()
-		options["O"]()
-		options["E"]()
-		options["Q"]()
+		selection = solicitAction()
+		if selection in options:
+			options[selection]()
 		displayOptions = False
 
 main()

@@ -1,4 +1,6 @@
 from .output import *
 
 def prompt(text = ""):
-	return input(color(text + " > ", "blue"))
+	result = input(promptColor(text + " > "))
+	closeColor()
+	return result

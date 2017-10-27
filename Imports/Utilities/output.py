@@ -1,14 +1,18 @@
+colorOptions = {
+	"red" : '\033[95m',
+	"blue" : '\033[94m',
+	"green" : '\033[92m',
+	"closer" : '\033[0m'
+}
+
 def color(text, color):
+	return colorOptions[color] + text + colorOptions["closer"]
 
-	closer = '\033[0m'
+def promptColor(text):
+	return colorOptions["blue"] + text + colorOptions["closer"] + colorOptions["green"]
 
-	colorOptions = {
-		"red" : '\033[95m',
-		"blue" : '\033[94m',
-		"green" : '\033[92m',
-	}
-
-	return colorOptions[color] + text + closer
+def closeColor():
+	print(colorOptions["closer"])
 
 def output(text, colorOption = "none"):
 	if colorOption == "none":
