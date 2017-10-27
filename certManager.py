@@ -7,6 +7,7 @@ from Imports.Modules.processOfficials import *
 from Imports.Modules.processRequirements import *
 from Imports.Modules.quit import *
 from Imports.Modules.rejectOption import *
+from Imports.Modules.selectExcelFile import *
 from Imports.Modules.sendEmails import *
 from Imports.Modules.solicitAction import *
 from Imports.Utilities.input import *
@@ -20,7 +21,8 @@ def main():
 	certifications = []
 
 	displayIntroduction()
-	processRequirements()
+	requirementsFileName = selectExcelFile('requirements')
+	requirements = processRequirements(requirementsFileName)
 	processOfficials()
 
 	displayOptions = True;

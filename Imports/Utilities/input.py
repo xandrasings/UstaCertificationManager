@@ -1,7 +1,14 @@
 from .output import *
 
-def prompt(text = ''):
-	result = input(colorPromptImmediate(text + ' > '))
+def prompt(text = '', default = ''):
+	result = ''
+	if default == '':
+		result = input(colorPromptImmediate(text + ' > '))
+	else:
+		outputPrompt(text)
+		result = input(colorPromptImmediate('enter \'Y\' for \'' + default + '\' > ')).upper()
+		if result == 'Y':
+			result = default
 	outputColorClose()
 	return result
 

@@ -1,5 +1,5 @@
 from ..Utilities.input import *
 from ..Utilities.output import *
 
-def processRequirements():
+def processRequirements(requirementsFileName):
 	output('processRequirements')
