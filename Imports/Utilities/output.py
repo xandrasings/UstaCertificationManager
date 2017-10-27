@@ -1,4 +1,5 @@
 from .color import *
+from .logo import *
 
 def output(text, colorOption = 'none'):
 	if colorOption == 'none':
@@ -25,3 +26,12 @@ def outputLine():
 
 def outputLineHeavy():
 	output('============================================================================================================================================')
+
+def outputLogo(logo, reps = 1, colorOption = 'black'):
+	logo = processLogo(logo, reps)
+	output(color(logo,colorOption))
+
+
+
+
+

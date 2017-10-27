@@ -4,7 +4,10 @@ colorOptions = {
 	'red' : '\033[95m',
 	'blue' : '\033[94m',
 	'green' : '\033[92m',
+	'cyan' : '\033[96m',
+	'yellow' : '\033[93m',
 	'magenta' : '\033[95m',
+	'black' : '\033[90m',
 	'closer' : '\033[0m'
 }
 
