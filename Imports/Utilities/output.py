@@ -20,8 +20,11 @@ def outputOption(text):
 	rightIndex = text.index(')') + 1
 	output(text[0:leftIndex] + colorPrompt(text[leftIndex:rightIndex]) + text[rightIndex:])
 
-def outputUserNotice(text):
-	output(colorUserNotice(text))
+def outputLine():
+	output(colorUserNotice("----------------------------------------------------------------------"))
+
+def outputHeavyLine():
+	output(colorUserNotice("======================================================================"))
 
 def color(text, color):
 	return colorOptions[color] + text + colorOptions['closer']

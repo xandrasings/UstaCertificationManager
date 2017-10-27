@@ -3,3 +3,5 @@ from ..Utilities.output import *
 
 def displayAchievements(achievements):
 	output('displayAchievements')
+
+	promptContinue()
