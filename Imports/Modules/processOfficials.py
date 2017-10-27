@@ -1,2 +1,5 @@
+from ..Utilities.input import *
+from ..Utilities.output import *
+
 def processOfficials():
-	print("processOfficials")
+	output('processOfficials')

@@ -2,11 +2,11 @@ from ..Utilities.input import *
 from ..Utilities.output import *
 
 def solicitAction():
-	output("What would you like to do?", "blue")
-	output(" - Enter new (A)chievements")
-	output(" - display (C)ertification table")
-	output(" - display (R)equirements table")
-	output(" - display (O)fficial details")
-	output(" - send (E)mails")
-	output(" - (Q)uit")
+	outputPrompt('What would you like to do?')
+	outputOption(' - (E)nter new Achievements')
+	outputOption(' - display (C)ertification table')
+	outputOption(' - display (A)chievement table')
+	outputOption(' - display (O)fficial details')
+	outputOption(' - send e(M)ails')
+	outputOption(' - (Q)uit')
 	return prompt().upper()

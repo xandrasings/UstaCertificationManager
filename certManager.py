@@ -1,11 +1,11 @@
+from Imports.Modules.displayAchievements import *
 from Imports.Modules.displayCertifications import *
 from Imports.Modules.displayIntroduction import *
 from Imports.Modules.displayOfficial import *
-from Imports.Modules.displayRequirements import *
 from Imports.Modules.processAchievements import *
 from Imports.Modules.processOfficials import *
 from Imports.Modules.processRequirements import *
-from Imports.Modules.quit import *
+from Imports.Modules.rejectOption import *
 from Imports.Modules.sendEmails import *
 from Imports.Modules.solicitAction import *
 from Imports.Utilities.input import *
@@ -25,11 +25,11 @@ def main():
 	displayOptions = True
 
 	options = {
-		'A' : processAchievements,
-		'D' : displayCertifications,
-		'R' : displayRequirements,
+		'E' : processAchievements,
+		'C' : displayCertifications,
+		'A' : displayAchievements,
 		'O' : displayOfficial,
-		'E' : sendEmails,
+		'M' : sendEmails,
 		'Q' : quit
 	}
 
@@ -39,10 +39,19 @@ def main():
 
 	while (displayOptions == True):
 		selection = solicitAction()
-		if selection in options:
-			acted[selection] = options[selection]()
+		if (selection == 'E'):
+			achievements = processAchievements(achievements);
+		elif (selection == 'C'):
+			displayCertifications(certifications);
+		elif (selection == 'A'):
+			displayAchievements(achievements);
+		elif (selection == 'O'):
+			displayOfficial(officials, disciplines, requirements, achievements, certifications);
+		elif (selection == 'M'):
+			sendEmails(officials, disciplines, requirements, achievements, certifications)
+		elif (selection == 'Q'):
+			displayOptions = quit()
 		else:
-			outputUserNotice('\'' + selection + '\' is not a viable option.')
-			displayOptions = False
+			rejectOption(selection)
 
 main()

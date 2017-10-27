@@ -1,2 +1,5 @@
+from ..Utilities.input import *
+from ..Utilities.output import *
+
 def processRequirements():
-	print("processRequirements")
+	output('processRequirements')

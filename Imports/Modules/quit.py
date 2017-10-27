@@ -1,3 +1,5 @@
+from ..Utilities.output import *
+
 def quit():
-	print("quit")
-	return False
+	# TODO printline
+	return false;

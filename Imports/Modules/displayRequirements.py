@@ -1,2 +1,0 @@
-def displayRequirements():
-	print("displayRequirements")
