@@ -64,13 +64,13 @@ class Data:
 		return colHeaders
 
 
-	# def getMainColHeaders(self):
-	# 	colHeaders = []
+	def getMainColHeaders(self):
+		colHeaders = []
 
-	# 	for col in range(len(expectedLeadingCols[self.dataType]), self.colMax):
-	# 		colHeaders.append(self.get(0,col))
+		for col in range(len(expectedLeadingCols[self.dataType]), self.colMax):
+			colHeaders.append(self.get(0,col))
 
-	# 	return colHeaders
+		return colHeaders
 
 
 	def getFullRowHeaders(self):

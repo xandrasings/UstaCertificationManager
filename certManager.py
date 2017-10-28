@@ -12,7 +12,7 @@ from Imports.Modules.solicitAction import *
 def main():
 	displayIntroduction()
 	disciplines = processDisciplineRequirements()
-	officials = processOfficials()
+	officials = processOfficials(disciplines)
 	requirements = []
 	achievements = []
 	certifications = []
