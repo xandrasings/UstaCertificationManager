@@ -9,21 +9,21 @@ from os import listdir
 from xlrd import *
 
 def selectDataSource(dataType):
-	dataFile = selectDataFile(dataType)
-	dataSheetIndex = selectDataSheetIndex(dataFile)
-	data = Data(dataFile.sheet_by_index(dataSheetIndex), dataType)
+	dataFilePaths = selectDataFiles(dataType) # I'm a list now
+	data = getDataFiles(dataType, dataFilePaths)
+	
 	return data
 
 
-def selectDataFile(dataType):
+def selectDataFiles(dataType):
 	targetDirectory = 'Resources'
 	dataFilePath = getAbsoluteFilePath(targetDirectory)
 	validOptions = getValidFileOptions(dataType, dataFilePath)
 	optionIndex = solicitFileOptionIndex(dataType, targetDirectory, validOptions)
-	dataFilePath = extendFilePath(dataFilePath, validOptions[optionIndex])
-	dataFile = openWorkbook(dataFilePath)
+	optionPath = extendPath(dataFilePath, validOptions[optionIndex])
+	dataFilePaths = getFilePaths(optionPath)
 
-	return dataFile
+	return dataFilePaths
 
 
 def getAbsoluteFilePath(filePath):
@@ -87,7 +87,7 @@ def solicitFileOptionIndex(dataType, targetDirectory, validOptions):
 
 
 def printFileOptions(dataType, pathContent):
-	outputPrompt('Which file would you like to use for ' + dataType + ' data?')
+	outputPrompt('Which file or directory would you like to use for ' + dataType + ' data?')
 	i = 1
 	for item in list(pathContent):
 		outputOption('- (' + str(i) + ') ' + item)
@@ -113,8 +113,35 @@ def getFileIndex(validOptions):
 
 	return fileIndex
 
-def extendFilePath(filePath, extension):
+def extendPath(filePath, extension):
 	return os.path.join(filePath, extension)
+
+
+def getFilePaths(optionPath):
+	filePaths = []
+
+	if (
+		optionPath.endswith('.xlsx') or
+		optionPath.endswith('.xls')
+		):
+		filePaths.append(optionPath)
+	else:
+		validFileOptions = getValidFileOptions('excel', optionPath)
+		for validFile in validFileOptions:
+			filePaths.append(extendPath(optionPath, validFile))
+
+	return filePaths
+
+
+def getDataFiles(dataType, dataFilePaths):
+	data = []
+	for dataFilePath in dataFilePaths:
+		dataFile = openWorkbook(dataFilePath)
+		dataSheetIndex = selectDataSheetIndex(dataFile)
+		data.append(Data(dataFile.sheet_by_index(dataSheetIndex), dataType))
+
+	return data
+
 
 def openWorkbook(filePath):
 	dataFile = ''

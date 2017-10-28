@@ -4,7 +4,7 @@ from ..Utilities.input import *
 from ..Utilities.output import *
 
 def processOfficials(disciplines):
-	data = selectDataSource('officials')
+	data = selectDataSource('officials')[0]
 	data.setUp()
 
 	disciplines = checkMainColHeaders(disciplines, data.getMainColHeaders())

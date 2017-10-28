@@ -3,9 +3,10 @@ from ..Objects.Discipline import *
 from ..Objects.Official import *
 
 acceptsDirectory = {
-	'requirements' : False,
-	'officials' : False,
 	'achievements' : True,
+	'excel' : False,
+	'officials' : False,
+	'requirements' : True
 }
 
 
