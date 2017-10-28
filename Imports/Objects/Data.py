@@ -19,7 +19,10 @@ class Data:
 
 
 	def get(self, row, col):
-		return self.data.cell(row, col).value.strip().upper()
+		val = self.data.cell(row, col).value
+		if type(val) is str:
+			val = val.strip().upper()
+		return val
 
 
 	def getColMax(self):
@@ -119,6 +122,34 @@ class Data:
 	def validateData(self):
 		result = True
 		if doValidateData[self.dataType]:
-			output('validateData against ' + self.dataType)
+			# options other than Binary
+			result = self.validateBinaryData()
+
+		return result
+
+
+	def validateBinaryData(self):
+		result = True
+		rowStart = len(expectedLeadingRows[self.dataType])
+		rowMax = self.rowMax
+		colStart = len(expectedLeadingCols[self.dataType])
+		colMax = self.colMax
+
+		rowIndex = rowStart
+		colIndex = colStart
+
+		while rowIndex < rowMax:
+			while colIndex < colMax:
+				if not isBinary(self.get(rowIndex, colIndex)):
+					result = False
+					break
+				colIndex = colIndex + 1
+			if not result:
+				break
+			rowIndex = rowIndex + 1
+			colIndex = colStart
+
+		if not result:
+			result = userCheck(result, 'Found non-binary result: ' + str(self.get(rowIndex, colIndex)))
 
 		return result

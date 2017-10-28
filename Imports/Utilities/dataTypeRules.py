@@ -34,12 +34,12 @@ expectedLeadingCols = {
 }
 
 doValidateExpectedLeadingCols = {
-	'requirements' : False,
+	'requirements' : True,
 	'officials' : True
 }
 
 doValidateColHeaderFormat = {
-	'requirements' : False,
+	'requirements' : True,
 	'officials' : True
 }
 
@@ -54,12 +54,12 @@ expectedLeadingRows = {
 }
 
 doValidateExpectedLeadingRows = {
-	'requirements' : False,
+	'requirements' : True,
 	'officials' : True
 }
 
 doValidateRowHeaderFormat = {
-	'requirements' : False,
+	'requirements' : True,
 	'officials' : True
 }
 

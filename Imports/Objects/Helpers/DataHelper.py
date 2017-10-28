@@ -80,7 +80,17 @@ def validateHeaderFormat(actual, index):
 
 
 def isStringy(text):
-	return any(c.isalpha() for c in text)
+	return any(c.isalpha() for c in str(text))
+
+
+def isBinary(text):
+	result = text in [0, 1]
+	result = userCheck(result, 'Found non-binary result: ' + str(text) + ' in data.')
+
+	return result
+
+
+
 
 
 
