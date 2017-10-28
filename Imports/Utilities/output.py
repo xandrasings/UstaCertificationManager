@@ -21,8 +21,8 @@ def outputOption(text):
 	rightIndex = text.index(')') + 1
 	output(text[0:leftIndex] + colorPrompt(text[leftIndex:rightIndex]) + text[rightIndex:])
 
-def outputCloseModule(message):
-	output(message)
+def outputCloseProcessingModule(dataType):
+	output('finished processing ' + dataType +' data')
 	outputLine()
 
 def outputCloseApplication():

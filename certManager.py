@@ -11,7 +11,9 @@ from Imports.Modules.solicitAction import *
 
 def main():
 	displayIntroduction()
-	disciplines = processDisciplineRequirements()
+	pdr = processDisciplineRequirements()
+	disciplines = pdr[0]
+	requirements = pdr[1]
 	officials = processOfficials(disciplines)
 	requirements = []
 	achievements = []
@@ -24,7 +26,7 @@ def main():
 	while (displayOptions == True):
 		selection = solicitCertManagerAction()
 		if (selection == 'E'):
-			achievements = achievements.append(processAchievements());
+			achievements = achievements.append(processAchievements(requirements));
 		elif (selection == 'C'):
 			displayCertifications(certifications);
 		elif (selection == 'A'):

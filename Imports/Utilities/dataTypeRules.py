@@ -92,3 +92,15 @@ doValidateData = {
 	'requirements' : True,
 	'officials' : True
 }
+
+doValidateBinaryData = {
+	'achievements' : False,
+	'requirements' : True,
+	'officials' : True
+}
+
+doValidateAchievementData = {
+	'achievements' : True,
+	'requirements' : False,
+	'officials' : False
+}

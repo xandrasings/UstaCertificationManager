@@ -4,13 +4,14 @@ from ..Utilities.input import *
 from ..Utilities.output import *
 
 def processOfficials(disciplines):
-	data = selectDataSource('officials')[0]
+	dataType = 'officials'
+	data = selectDataSource(dataType)[0]
 	data.setUp()
 
 	disciplines = checkMainColHeaders(disciplines, data.getMainColHeaders())
 	officials = data.convertRows([disciplines])
 
-	outputCloseModule('finished processing officials data')
+	outputCloseProcessingModule(dataType)
 	return officials
 
 def checkMainColHeaders(disciplines, mainColHeaders):
@@ -29,5 +30,3 @@ def checkMainColHeaders(disciplines, mainColHeaders):
 			)
 
 	return orderedDisciplines
-
-

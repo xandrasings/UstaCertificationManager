@@ -131,8 +131,10 @@ class Data:
 	def validateData(self):
 		result = True
 		if doValidateData[self.dataType]:
-			# TODO options other than Binary
-			result = self.validateBinaryData()
+			result = (
+				self.validateBinaryData() if doValidateBinaryData[self.dataType] else True and
+				slef.validateAchievementData() if doValidateAchievementData[self.dataType] else True
+			)
 
 		return result
 
@@ -157,6 +159,13 @@ class Data:
 				break
 			rowIndex = rowIndex + 1
 			colIndex = colStart
+
+		return result
+
+
+	def validateAchievementData(self):
+		result = True
+		# TODO write meeee
 
 		return result
 
