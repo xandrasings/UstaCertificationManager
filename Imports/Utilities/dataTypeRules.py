@@ -1,3 +1,17 @@
+from ..Objects.Requirement import *
+from ..Objects.Discipline import *
+from ..Objects.Official import *
+
+colHeaderType = {
+	'requirements' : Requirement,
+	'officials' : Discipline
+}
+
+rowHeaderType = {
+	'requirements' : Discipline,
+	'officials' : Official
+}
+
 doPareColMax = {
 	'requirements' : True,
 	'officials' : True

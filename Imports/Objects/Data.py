@@ -55,7 +55,7 @@ class Data:
 		self.rowMax = rowMax
 
 
-	def getColHeaders(self):
+	def getFullColHeaders(self):
 		colHeaders = []
 
 		for col in range(self.colMax):
@@ -64,13 +64,31 @@ class Data:
 		return colHeaders
 
 
-	def getRowHeaders(self):
+	# def getMainColHeaders(self):
+	# 	colHeaders = []
+
+	# 	for col in range(len(expectedLeadingCols[self.dataType]), self.colMax):
+	# 		colHeaders.append(self.get(0,col))
+
+	# 	return colHeaders
+
+
+	def getFullRowHeaders(self):
 		rowHeaders = []
 
 		for row in range(self.rowMax):
 			rowHeaders.append(self.get(row,0))
 
 		return rowHeaders
+
+
+	# def getMainRowHeaders(self):
+	# 	rowHeaders = []
+
+	# 	for row in range(len(expectedLeadingRows[self.dataType]), self.rowMax):
+	# 		rowHeaders.append(self.get(row,0))
+
+	# 	return rowHeaders
 
 
 	def validate(self):
@@ -97,7 +115,7 @@ class Data:
 		result = True
 		if doValidateColHeaders[self.dataType]:
 			expected = expectedLeadingCols[self.dataType]
-			actual = self.getColHeaders()
+			actual = self.getFullColHeaders()
 			result = (
 				validateExpectedLeadingCols(expected, actual) if doValidateExpectedLeadingCols[self.dataType] else True and
 				validateHeaderFormat(actual, len(expected)) if doValidateColHeaderFormat[self.dataType] else True
@@ -110,7 +128,7 @@ class Data:
 		result = True
 		if doValidateRowHeaders[self.dataType]:
 			expected = expectedLeadingRows[self.dataType]
-			actual = self.getRowHeaders()
+			actual = self.getFullRowHeaders()
 			result = (
 				validateExpectedLeadingRows(expected, actual) if doValidateExpectedLeadingRows[self.dataType] else True and
 				validateHeaderFormat(actual, len(expected)) if doValidateRowHeaderFormat[self.dataType] else True
@@ -150,3 +168,33 @@ class Data:
 			colIndex = colStart
 
 		return result
+
+
+	def convertCols(self, givenArgs = []):
+		colObjects = []
+
+		startCol = len(expectedLeadingCols[self.dataType])
+
+		for col in range(startCol, self.colMax):
+			dataArgs = []
+			for dataArgIndex in range(startCol):
+				dataArgs.append(self.get(dataArgIndex,col))
+				
+			colObjects.append(colHeaderType[self.dataType](dataArgs, givenArgs))
+
+		return colObjects
+
+
+	def convertRows(self, givenArgs = []):
+		rowObjects = []
+
+		startRow = len(expectedLeadingRows[self.dataType])
+
+		for row in range(startRow, self.rowMax):
+			dataArgs = []
+			for dataArgIndex in range(self.colMax):
+				dataArgs.append(self.get(row,dataArgIndex))
+				
+			rowObjects.append(rowHeaderType[self.dataType](dataArgs, givenArgs))
+
+		return rowObjects

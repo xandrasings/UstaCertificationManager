@@ -5,15 +5,15 @@ from Imports.Modules.displayOfficial import *
 from Imports.Modules.manageEmails import *
 from Imports.Modules.processAchievements import *
 from Imports.Modules.processOfficials import *
-from Imports.Modules.processRequirements import *
+from Imports.Modules.processDisciplineRequirements import *
 from Imports.Modules.quit import *
 from Imports.Modules.solicitAction import *
 
 def main():
 	displayIntroduction()
-	requirements = processRequirements()
+	disciplines = processDisciplineRequirements()
 	officials = processOfficials()
-	disciplines = []
+	requirements = []
 	achievements = []
 	certifications = []
 
