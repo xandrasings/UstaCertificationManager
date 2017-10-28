@@ -1,3 +1,4 @@
+from .Helpers.DataHelper import *
 from ..Utilities.dataTypeRules import *
 from ..Utilities.output import *
 
@@ -52,14 +53,21 @@ class Data:
 
 
 	def validate(self):
-		return self.validateRanges() and self.validateColHeaders() and self.validateRowHeaders() and self.validateData()
-
+		return (
+			self.validateRanges() and
+			self.validateColHeaders() and
+			self.validateRowHeaders() and
+			self.validateData()
+		)
 
 
 	def validateRanges(self):
 		result = True
-		if doValidateDateRanges[self.dataType]:
-			output('validateRanges against ' + self.dataType)
+		if doValidateRanges[self.dataType]:
+			result = (
+				validateRowRange(expectedHeaderRows[self.dataType], self.rowMax) and
+				validateColRange(expectedHeaderCols[self.dataType], self.colMax)
+			)
 
 		return result
 

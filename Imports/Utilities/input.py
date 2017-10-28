@@ -12,9 +12,24 @@ def prompt(text = '', default = ''):
 	outputColorClose()
 	return result
 
+
+def promptYN(text = ''):
+	selection = ''
+	while selection == '':
+		selection = prompt(text + ' (Y/N)')
+		if selection == 'Y':
+			return True
+		elif selection == 'N':
+			return False
+		else:
+			selection = ''
+
+
+
 def promptContinue():
 	input(colorPrompt('Press enter to continue. > '))
 	outputLineHeavy()
+
 
 def rejectOption(selection):
 	outputUserNotice('\'' + selection + '\' is not a viable option.')

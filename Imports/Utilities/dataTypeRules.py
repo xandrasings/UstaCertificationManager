@@ -3,15 +3,23 @@ doPareColMax = {
 }
 
 doPareRowMax = {
-	'requirements' : False
+	'requirements' : True
 }
 
-doValidateDateRanges = {
+expectedHeaderRows = {
+	'requirements' : 6
+}
+
+expectedHeaderCols = {
+	'requirements' : 8
+}
+
+doValidateRanges = {
 	'requirements' : True
 }
 
 doValidateColHeaders = {
-	'requirements' : False
+	'requirements' : True
 }
 
 doValidateRowHeaders = {
