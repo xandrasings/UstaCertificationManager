@@ -112,18 +112,18 @@ def openWorkbook(filePath):
 
 
 def selectDataSheetIndex(dataFile):
-	sheetIndex = dataFile.nsheets - 1
-	if sheetIndex != 0:
-		sheetOptions = dataFile.sheet_names()
+	sheetIndex = 0
+	sheetOptions = dataFile.sheet_names()
+	if len(sheetOptions) != 1:
 		sheetIndex = solicitSheetOptionIndex(sheetOptions)
 
+	output('Using data from sheet \'' + sheetOptions[sheetIndex] + '\'.')
 	return sheetIndex
 
 
 def solicitSheetOptionIndex(validOptions):
 	printSheetOptions(validOptions)
 	optionIndex = getSheetIndex(validOptions)
-	output('Using data from sheet \'' + validOptions[optionIndex] + '\'.')
 	return optionIndex
 
 
