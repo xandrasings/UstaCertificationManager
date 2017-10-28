@@ -6,7 +6,6 @@ from Imports.Modules.processAchievements import *
 from Imports.Modules.processOfficials import *
 from Imports.Modules.processRequirements import *
 from Imports.Modules.quit import *
-from Imports.Modules.rejectOption import *
 from Imports.Modules.selectExcelFile import *
 from Imports.Modules.sendEmails import *
 from Imports.Modules.solicitAction import *

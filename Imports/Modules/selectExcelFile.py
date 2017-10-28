@@ -16,6 +16,7 @@ def selectExcelFile(dataType, selectedFile = ''):
 
 	return certificationDataFile
 
+
 def printFileOptions(pathContent):
 	i = 1
 	for item in list(pathContent):
@@ -23,11 +24,14 @@ def printFileOptions(pathContent):
 		i = i + 1
 	outputOption('- (Q)uit')
 
+
 def getAbsoluteFilePath(filePath):
 	return os.path.abspath(filePath)
 
+
 def extendFilePath(filePath, extension):
 	return os.path.join(filePath, extension)
+
 
 def getValidOptions(dataType, filePath):
 	output('Seeking excel file holding ' + dataType + ' data in ' + filePath)
@@ -40,6 +44,7 @@ def getValidOptions(dataType, filePath):
 
 	return validOptions
 
+
 def getEmptyValidOptionAction(filePath):
 	outputUserNotice('No viable options were found in ' + filePath + '.')
 	selection = ''
@@ -51,6 +56,9 @@ def getEmptyValidOptionAction(filePath):
 		selection = prompt()
 		if selection == 'Q':
 			quit()
+		elif selection != 'T':
+			rejectOption(selection)
+
 
 def filterExcelOptions(pathContent):
 	validOptions = []
@@ -61,10 +69,12 @@ def filterExcelOptions(pathContent):
 
 	return validOptions
 
+
 def solicitOptionIndex(dataType, targetDirectory, validOptions):
 	printFileOptions(validOptions)
 	optionIndex = getFileIndex(dataType, validOptions)
 	return optionIndex
+
 
 def getFileIndex(dataType, validOptions):
 	fileIndex = -1
@@ -82,6 +92,7 @@ def getFileIndex(dataType, validOptions):
 			outputUserNotice('Selection should be an integer')
 
 	return fileIndex
+
 
 def openWorkbook(filePath):
 	try:

@@ -15,3 +15,7 @@ def prompt(text = '', default = ''):
 def promptContinue():
 	input(colorPrompt('Press enter to continue. > '))
 	outputLineHeavy()
+
+def rejectOption(selection):
+	outputUserNotice('\'' + selection + '\' is not a viable option.')
+	outputLine()
