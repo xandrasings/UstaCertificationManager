@@ -4,9 +4,7 @@ from ..Utilities.input import *
 from ..Utilities.output import *
 
 def quit():
-	outputUserNotice('Exiting certification manager.')
-	outputLineHeavy()
-	outputLogo('tennisBall', 8, 'yellow')
+	outputCloseApplication()
 	sys.exit()
 
 

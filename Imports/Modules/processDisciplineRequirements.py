@@ -9,4 +9,5 @@ def processDisciplineRequirements():
 	requirements = data.convertCols()
 	disciplines = data.convertRows([requirements])
 
+	outputCloseModule('finished processing requirements data')
 	return disciplines

@@ -6,11 +6,14 @@ from ..Utilities.output import *
 def processOfficials(disciplines):
 	data = selectDataSource('officials')
 	data.setUp()
+
 	disciplines = checkMainColHeaders(disciplines, data.getMainColHeaders())
-	
+	officials = data.convertRows([disciplines])
+
+	outputCloseModule('finished processing officials data')
+	return officials
 
 def checkMainColHeaders(disciplines, mainColHeaders):
-	print(mainColHeaders)
 	orderedDisciplines = []
 
 	for header in mainColHeaders:

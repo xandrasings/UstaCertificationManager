@@ -106,7 +106,7 @@ def openWorkbook(filePath):
 	dataFile = ''
 	try:
 		dataFile = open_workbook(filePath, on_demand = True)
-		output('Opening workbook from ' + filePath + '.')
+		output('Selected workbook: ' + filePath + '.')
 	except:
 		fatalQuit('Could not open workbook')
 
@@ -119,7 +119,7 @@ def selectDataSheetIndex(dataFile):
 	if len(sheetOptions) != 1:
 		sheetIndex = solicitSheetOptionIndex(sheetOptions)
 
-	output('Using data from sheet \'' + sheetOptions[sheetIndex] + '\'.')
+	output('Selected sheet: \'' + sheetOptions[sheetIndex] + '\'.')
 	return sheetIndex
 
 

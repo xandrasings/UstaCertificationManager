@@ -21,6 +21,15 @@ def outputOption(text):
 	rightIndex = text.index(')') + 1
 	output(text[0:leftIndex] + colorPrompt(text[leftIndex:rightIndex]) + text[rightIndex:])
 
+def outputCloseModule(message):
+	output(message)
+	outputLine()
+
+def outputCloseApplication():
+	outputUserNotice('Exiting certification manager.')
+	outputLineHeavy()
+	outputLogo('tennisBall', 8, 'yellow')
+
 def outputFatal(message):
 	output(colorFatal(message))
 
