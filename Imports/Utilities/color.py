@@ -23,5 +23,8 @@ def colorPrompt(text):
 def colorPromptImmediate(text):
 	return colorOptions['blue'] + text + colorOptions['closer'] + colorOptions['magenta']
 
+def colorFatal(text):
+	return colorOptions['red'] + text + colorOptions['closer']
+
 def colorClose():
 	return colorOptions['closer']

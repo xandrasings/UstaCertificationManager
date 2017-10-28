@@ -6,26 +6,18 @@ from Imports.Modules.processAchievements import *
 from Imports.Modules.processOfficials import *
 from Imports.Modules.processRequirements import *
 from Imports.Modules.quit import *
-from Imports.Modules.selectExcelFile import *
 from Imports.Modules.sendEmails import *
 from Imports.Modules.solicitAction import *
-from Imports.Utilities.input import *
-from Imports.Utilities.output import *
 
 def main():
-	officials = []
-	disciplines = []
+	displayIntroduction()
+	requirements = processRequirements()
+	officials = processOfficials()
 	requirements = []
 	achievements = []
 	certifications = []
 
-	displayIntroduction()
-	requirementsFileName = selectExcelFile('requirements')
-	requirements = processRequirements(requirementsFileName)
-	processOfficials()
-
 	displayOptions = True;
-
 	while (displayOptions == True):
 		selection = solicitCertManagerAction()
 		if (selection == 'E'):

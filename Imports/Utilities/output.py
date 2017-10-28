@@ -21,6 +21,9 @@ def outputOption(text):
 	rightIndex = text.index(')') + 1
 	output(text[0:leftIndex] + colorPrompt(text[leftIndex:rightIndex]) + text[rightIndex:])
 
+def outputFatal(message):
+	output(colorFatal(message))
+
 def outputLine():
 	output('--------------------------------------------------------------------------------------------------------------------------------------------')
 

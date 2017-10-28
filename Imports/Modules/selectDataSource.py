@@ -6,15 +6,19 @@ import os
 from os import listdir
 from xlrd import open_workbook
 
-def selectExcelFile(dataType, selectedFile = ''):
-	targetDirectory = 'Resources'
-	certificationDataFilePath = getAbsoluteFilePath(targetDirectory)
-	validOptions = getValidOptions(dataType, certificationDataFilePath)
-	optionIndex = solicitOptionIndex(dataType, targetDirectory, validOptions)
-	certificationDataFilePath = extendFilePath(certificationDataFilePath, validOptions[optionIndex])
-	certificationDataFile = openWorkbook(certificationDataFilePath)
+def selectDataSource(dataType):
+	dataFile = selectExcelFile(dataType)
 
-	return certificationDataFile
+
+def selectExcelFile(dataType):
+	targetDirectory = 'Resources'
+	dataFilePath = getAbsoluteFilePath(targetDirectory)
+	validOptions = getValidOptions(dataType, dataFilePath)
+	optionIndex = solicitOptionIndex(dataType, targetDirectory, validOptions)
+	dataFilePath = extendFilePath(dataFilePath, validOptions[optionIndex])
+	dataFile = openWorkbook(dataFilePath)
+
+	return dataFile
 
 
 def printFileOptions(pathContent):
@@ -99,5 +103,4 @@ def openWorkbook(filePath):
 		open_workbook(filePath)
 		outputUserNotice('Opening workbook from ' + filePath)
 	except:
-		outputUserNotice('Could not open workbook')
-		quit()
+		fatalQuit('Could not open workbook')

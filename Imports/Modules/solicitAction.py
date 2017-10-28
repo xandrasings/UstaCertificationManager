@@ -1,7 +1,7 @@
 from ..Utilities.input import *
 from ..Utilities.output import *
 
-def solicitAction():
+def solicitCertManagerAction():
 	outputPrompt('What would you like to do?')
 	outputOption(' - (E)nter new Achievements')
 	outputOption(' - display (C)ertification table')
