@@ -1,3 +1,4 @@
+from ..Utilities.dataRules import *
 from ..Utilities.output import *
 
 class Data:
@@ -6,6 +7,14 @@ class Data:
 		self.dataType = dataType
 		self.colMax = self.data.ncols
 		self.rowMax = self.data.nrows
+
+
+	def startUp(self):
+		if doPareColMax[self.dataType]:
+			self.pareColMax()
+		if doPareRowMax[self.dataType]:
+			self.pareRowMax()
+		self.validate()
 
 
 	def get(self, row, col):
