@@ -27,7 +27,7 @@ def main():
 	displayOptions = True;
 
 	while (displayOptions == True):
-		selection = solicitAction()
+		selection = solicitCertManagerAction()
 		if (selection == 'E'):
 			achievements = processAchievements(achievements);
 		elif (selection == 'C'):
