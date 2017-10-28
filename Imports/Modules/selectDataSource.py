@@ -14,7 +14,7 @@ def selectDataSource(dataType):
 def selectExcelFile(dataType):
 	targetDirectory = 'Resources'
 	dataFilePath = getAbsoluteFilePath(targetDirectory)
-	validOptions = getValidOptions(dataType, dataFilePath)
+	validOptions = getValidFileOptions(dataType, dataFilePath)
 	optionIndex = solicitFileOptionIndex(dataType, targetDirectory, validOptions)
 	dataFilePath = extendFilePath(dataFilePath, validOptions[optionIndex])
 	dataFile = openWorkbook(dataFilePath)
@@ -22,36 +22,33 @@ def selectExcelFile(dataType):
 	return dataFile
 
 
-def printFileOptions(dataType, pathContent):
-	outputPrompt('Which file would you like to use for ' + dataType + ' data?')
-	i = 1
-	for item in list(pathContent):
-		outputOption('- (' + str(i) + ') ' + item)
-		i = i + 1
-	outputOption('- (Q)uit')
-
-
 def getAbsoluteFilePath(filePath):
 	return os.path.abspath(filePath)
 
 
-def extendFilePath(filePath, extension):
-	return os.path.join(filePath, extension)
-
-
-def getValidOptions(dataType, filePath):
+def getValidFileOptions(dataType, filePath):
 	output('Seeking excel file holding ' + dataType + ' data in ' + filePath)
 	pathContent = listdir(filePath)
-	validOptions = filterExcelOptions(pathContent)
+	validOptions = filterFileOptions(pathContent)
 
 	if len(validOptions) == 0:
-		emptyValidOptionAction = getEmptyValidOptionAction(filePath)
-		return getValidOptions(dataType, filePath)
+		emptyValidOptionAction = showEmptyValidOptionActions(filePath)
+		validOptions = getValidFileOptions(dataType, filePath)
 
 	return validOptions
 
 
-def getEmptyValidOptionAction(filePath):
+def filterFileOptions(pathContent):
+	validOptions = []
+
+	for item in list(pathContent):
+		if (item.endswith('.xlsx') or item.endswith('.xls')) and not item.startswith('~'):
+			validOptions.append(item)
+
+	return validOptions
+
+
+def showEmptyValidOptionActions(filePath):
 	outputUserNotice('No viable options were found in ' + filePath + '.')
 	selection = ''
 
@@ -66,20 +63,19 @@ def getEmptyValidOptionAction(filePath):
 			rejectOption(selection)
 
 
-def filterExcelOptions(pathContent):
-	validOptions = []
-
-	for item in list(pathContent):
-		if (item.endswith('.xlsx') or item.endswith('.xls')) and not item.startswith('~'):
-			validOptions.append(item)
-
-	return validOptions
-
-
 def solicitFileOptionIndex(dataType, targetDirectory, validOptions):
 	printFileOptions(dataType, validOptions)
 	optionIndex = getFileIndex(validOptions)
 	return optionIndex
+
+
+def printFileOptions(dataType, pathContent):
+	outputPrompt('Which file would you like to use for ' + dataType + ' data?')
+	i = 1
+	for item in list(pathContent):
+		outputOption('- (' + str(i) + ') ' + item)
+		i = i + 1
+	outputOption('- (Q)uit')
 
 
 def getFileIndex(validOptions):
@@ -100,6 +96,8 @@ def getFileIndex(validOptions):
 
 	return fileIndex
 
+def extendFilePath(filePath, extension):
+	return os.path.join(filePath, extension)
 
 def openWorkbook(filePath):
 	dataFile = ''
