@@ -9,12 +9,4 @@ def processDisciplineRequirements():
 	requirements = data.convertCols()
 	disciplines = data.convertRows([requirements])
 
-	print('requirements: ')
-	for requirement in requirements:
-		print(requirement.getName())
-
-	print('disciplines: ')
-	for discipline in disciplines:
-		print(discipline.getName())
-		for requirement in discipline.getRequirements():
-			print(requirement.getName())
+	return disciplines
