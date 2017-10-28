@@ -7,16 +7,16 @@ logos = {
 def processLogo(logo, reps):
 	logo = logos[logo] # decode into logo
 	logo = splitLogo(logo) # split into array of strings
-	newLogo = ''
+	repeatedLogo = ''
 	for logoIndex in range(len(logo)):
 		count = 0
 		while count < reps:
-			newLogo = newLogo + logo[logoIndex] + '   '
+			repeatedLogo = repeatedLogo + logo[logoIndex] + '   '
 			count = count + 1
-		newLogo = newLogo + '\n'
+		repeatedLogo = repeatedLogo + '\n'
 		logoIndex = logoIndex + 1
 
-	return newLogo
+	return repeatedLogo
 
 
 def splitLogo(logo):
