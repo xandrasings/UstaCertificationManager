@@ -8,9 +8,8 @@ from xlrd import open_workbook
 
 def selectExcelFile(dataType, selectedFile = ''):
 	targetDirectory = 'Resources'
-
 	certificationDataFilePath = getAbsoluteFilePath(targetDirectory)
-	validOptions = getValidOptions(certificationDataFilePath)
+	validOptions = getValidOptions(dataType, certificationDataFilePath)
 	optionIndex = solicitOptionIndex(dataType, targetDirectory, validOptions)
 	certificationDataFilePath = extendFilePath(certificationDataFilePath, validOptions[optionIndex])
 	certificationDataFile = openWorkbook(certificationDataFilePath)
@@ -30,11 +29,28 @@ def getAbsoluteFilePath(filePath):
 def extendFilePath(filePath, extension):
 	return os.path.join(filePath, extension)
 
-def getValidOptions(filePath):
+def getValidOptions(dataType, filePath):
+	output('Seeking excel file holding ' + dataType + ' data in ' + filePath)
 	pathContent = listdir(filePath)
 	validOptions = filterExcelOptions(pathContent)
 
+	if len(validOptions) == 0:
+		emptyValidOptionAction = getEmptyValidOptionAction(filePath)
+		return getValidOptions(dataType, filePath)
+
 	return validOptions
+
+def getEmptyValidOptionAction(filePath):
+	outputUserNotice('No viable options were found in ' + filePath + '.')
+	selection = ''
+
+	while selection != 'T':
+		outputPrompt('What would you like to do?')
+		outputOption(' - (T)ry this directory again')
+		outputOption(' - (Q)uit')
+		selection = prompt()
+		if selection == 'Q':
+			quit()
 
 def filterExcelOptions(pathContent):
 	validOptions = []
@@ -46,8 +62,6 @@ def filterExcelOptions(pathContent):
 	return validOptions
 
 def solicitOptionIndex(dataType, targetDirectory, validOptions):
-	output('Seeking excel file holding ' + dataType + ' data in ' + targetDirectory +' directory.')
-	# TODO check if list is empty
 	printFileOptions(validOptions)
 	optionIndex = getFileIndex(dataType, validOptions)
 	return optionIndex
