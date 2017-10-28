@@ -2,23 +2,21 @@ from .selectDataSource import *
 from ..Objects.Data import *
 from ..Utilities.input import *
 from ..Utilities.output import *
-from ..Utilities.xlrdHelper import *
 
 #todo warn user if lines will be ignored
 
 def processRequirements():
 	data = selectDataSource('requirements')
-	print(data.getArea())
-	# colMax = getColMax(data)
-	# rowMax = getRowMax(data)
-	# output(validateFormat(data, colMax, rowMax))
+	data.pareColMax()
+	data.pareRowMax()
+	data.validate()
 
 
-def validateFormat(data, colMax, rowMax):
-	output(validateFormat_ranges(colMax, rowMax))
-	output(validateFormat_columnHeaders(data, colMax))
-	output(validateFormat_rowHeaders(data, rowMax))
-	output(validateFormat_data(data, colMax, rowMax))
+def validateFormat(data):
+	output(validateFormat_ranges(data))
+	output(validateFormat_columnHeaders(data))
+	output(validateFormat_rowHeaders(data))
+	output(validateFormat_data(data))
 	return True
 
 

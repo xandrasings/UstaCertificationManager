@@ -10,7 +10,7 @@ from xlrd import *
 def selectDataSource(dataType):
 	dataFile = selectDataFile(dataType)
 	dataSheetIndex = selectDataSheetIndex(dataFile)
-	data = Data(dataFile.sheet_by_index(dataSheetIndex))
+	data = Data(dataFile.sheet_by_index(dataSheetIndex), dataType)
 	return data
 
 
