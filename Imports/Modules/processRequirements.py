@@ -3,6 +3,8 @@ from ..Utilities.input import *
 from ..Utilities.output import *
 from ..Utilities.xlrdHelper import *
 
+#todo warn user if lines will be ignored
+
 def processRequirements():
 	data = selectDataSource('requirements')
 	colMax = getColMax(data)
@@ -19,13 +21,20 @@ def validateFormat(data, colMax, rowMax):
 
 
 def validateFormat_ranges(colMax, rowMax):
-	return True
+	return colMax > 1 and rowMax > 1
 
 
 def validateFormat_columnHeaders(data, colMax):
+	if data.cell(0,0).value.strip().upper() != 'DISCIPLINE':
+		return False
+	for col in range(1, colMax):
+		try:
+			float(data.cell(0,0).value.strip())
+			return False
+		except:
+			continue
 	return True
 	
-
 
 def validateFormat_rowHeaders(data, rowMax):
 	return True
