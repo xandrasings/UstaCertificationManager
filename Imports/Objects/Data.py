@@ -1,4 +1,4 @@
-from ..Utilities.dataRules import *
+from ..Utilities.dataTypeRules import *
 from ..Utilities.output import *
 
 class Data:
@@ -52,20 +52,37 @@ class Data:
 
 
 	def validate(self):
-		output('validating against ' + self.dataType)
+		return self.validateRanges() and self.validateColHeaders() and self.validateRowHeaders() and self.validateData()
+
 
 
 	def validateRanges(self):
-		output('validating against ' + self.dataType)
+		result = True
+		if doValidateDateRanges[self.dataType]:
+			output('validateRanges against ' + self.dataType)
+
+		return result
 
 
 	def validateColHeaders(self):
-		output('validating against ' + self.dataType)
+		result = True
+		if doValidateColHeaders[self.dataType]:
+			output('validateColHeaders against ' + self.dataType)
+
+		return result
 
 
 	def validateRowHeaders(self):
-		output('validating against ' + self.dataType)
+		result = True
+		if doValidateRowHeaders[self.dataType]:
+			output('validateRowHeaders against ' + self.dataType)
+
+		return result
 
 
 	def validateData(self):
-		output('validating against ' + self.dataType)
+		result = True
+		if doValidateData[self.dataType]:
+			output('validateData against ' + self.dataType)
+
+		return result
