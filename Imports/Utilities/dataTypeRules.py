@@ -8,6 +8,11 @@ doPareRowMax = {
 	'officials' : True
 }
 
+doValidateRanges = {
+	'requirements' : True,
+	'officials' : True
+}
+
 expectedHeaderRows = {
 	'requirements' : 1,
 	'officials' : 1
@@ -18,19 +23,24 @@ expectedHeaderCols = {
 	'officials' : 1
 }
 
-doValidateRanges = {
-	'requirements' : True,
-	'officials' : True
-}
-
 doValidateColHeaders = {
 	'requirements' : True,
 	'officials' : True
 }
 
+expectedLeadingCols = {
+	'requirements' : ['Discipline'],
+	'officials' : ['First Name', 'Last Name', 'Email']
+}
+
 doValidateRowHeaders = {
 	'requirements' : True,
 	'officials' : True
+}
+
+expectedLeadingRows = {
+	'requirements' : ['Discipline'],
+	'officials' : ['First Name']
 }
 
 doValidateData = {

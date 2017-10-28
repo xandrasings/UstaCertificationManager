@@ -52,6 +52,24 @@ class Data:
 		self.rowMax = rowMax
 
 
+	def getColHeaders(self):
+		colHeaders = []
+
+		for col in range(self.colMax):
+			colHeaders.append(self.get(0,col))
+
+		return colHeaders
+
+
+	def getRowHeaders(self):
+		rowHeaders = []
+
+		for row in range(self.rowMax):
+			rowHeaders.append(self.get(row,0))
+
+		return rowHeaders
+
+
 	def validate(self):
 		return (
 			self.validateRanges() and
@@ -75,7 +93,12 @@ class Data:
 	def validateColHeaders(self):
 		result = True
 		if doValidateColHeaders[self.dataType]:
-			output('validateColHeaders against ' + self.dataType)
+			expected = expectedLeadingCols[self.dataType]
+			actual = self.getColHeaders()
+			result = (
+				validateExpectedLeadingCols(expected, actual) and
+				True
+			)
 
 		return result
 
@@ -83,7 +106,12 @@ class Data:
 	def validateRowHeaders(self):
 		result = True
 		if doValidateRowHeaders[self.dataType]:
-			output('validateRowHeaders against ' + self.dataType)
+			expected = expectedLeadingRows[self.dataType]
+			actual = self.getRowHeaders()
+			result = (
+				validateExpectedLeadingRows(expected, actual) and
+				True
+			)
 
 		return result
 

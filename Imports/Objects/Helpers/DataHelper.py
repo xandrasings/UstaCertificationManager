@@ -2,6 +2,7 @@ from ...Modules.quit import *
 from ...Utilities.output import *
 from ...Utilities.output import *
 
+
 def userCheck(result, explanation):
 	if not result:
 		outputUserNotice(explanation)
@@ -23,3 +24,44 @@ def validateColRange(expectedHeaderCols, colMax):
 	result = colMax > expectedHeaderCols
 	result = userCheck(result, 'Number of columns (' + str(colMax) + ') should be above ' + str(expectedHeaderCols))
 	return result
+
+
+def compareString(expected, actual):
+	return expected.strip().upper() == actual.strip().upper()
+
+
+def validateExpectedLeadingCols(expected, actual):
+	result = True
+	index = 0
+	indexLimit = len(expected)
+
+	while index < indexLimit:
+		if not compareString(expected[index], actual[index]):
+			result = False
+			break
+		index = index + 1
+
+	if not result:
+		result = userCheck(result, 'Column ' + str(index + 1) + ' is expected to be \'' + expected[index].strip().upper() + '\' but is actually \'' + actual[index] + '\'')
+	return result
+
+
+def validateExpectedLeadingRows(expected, actual):
+	result = True
+	index = 0
+	indexLimit = len(expected)
+
+	while index < indexLimit:
+		if not compareString(expected[index], actual[index]):
+			result = False
+			break
+		index = index + 1
+
+	if not result:
+		result = userCheck(result, 'Row ' + str(index + 1) + ' is expected to be \'' + expected[index].strip().upper() + '\' but is actually \'' + actual[index] + '\'')
+	return result
+
+
+
+
+
