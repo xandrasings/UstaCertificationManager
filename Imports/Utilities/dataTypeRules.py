@@ -2,6 +2,13 @@ from ..Objects.Requirement import *
 from ..Objects.Discipline import *
 from ..Objects.Official import *
 
+acceptsDirectory = {
+	'requirements' : False,
+	'officials' : False,
+	'achievements' : True,
+}
+
+
 colHeaderType = {
 	'requirements' : Requirement,
 	'officials' : Discipline

@@ -26,7 +26,7 @@ def outputCloseModule(message):
 	outputLine()
 
 def outputCloseApplication():
-	outputUserNotice('Exiting certification manager.')
+	outputUserNotice('Exiting Certification Manager.')
 	outputLineHeavy()
 	outputLogo('tennisBall', 8, 'yellow')
 

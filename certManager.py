@@ -21,7 +21,7 @@ def main():
 	while (displayOptions == True):
 		selection = solicitCertManagerAction()
 		if (selection == 'E'):
-			achievements = processAchievements(achievements);
+			achievements = achievements.append(processAchievements());
 		elif (selection == 'C'):
 			displayCertifications(certifications);
 		elif (selection == 'A'):

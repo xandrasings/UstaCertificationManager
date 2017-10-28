@@ -2,6 +2,7 @@ from .quit import *
 from ..Objects.Data import *
 from ..Utilities.input import *
 from ..Utilities.output import *
+from ..Utilities.dataTypeRules import *
 
 import os
 from os import listdir
@@ -32,7 +33,7 @@ def getAbsoluteFilePath(filePath):
 def getValidFileOptions(dataType, filePath):
 	output('Seeking excel file holding ' + dataType + ' data in ' + filePath)
 	pathContent = listdir(filePath)
-	validOptions = filterFileOptions(pathContent)
+	validOptions = filterFileOptions(dataType, pathContent)
 
 	if len(validOptions) == 0:
 		emptyValidOptionAction = showEmptyValidOptionActions(filePath)
@@ -41,11 +42,24 @@ def getValidFileOptions(dataType, filePath):
 	return validOptions
 
 
-def filterFileOptions(pathContent):
+def filterFileOptions(dataType, pathContent):
 	validOptions = []
 
 	for item in list(pathContent):
-		if (item.endswith('.xlsx') or item.endswith('.xls')) and not item.startswith('~'):
+		if (
+			(
+				(
+					item.endswith('.xlsx') or
+					item.endswith('.xls')
+				) and
+				(	
+					not item.startswith('~')
+				)
+			) or
+			(
+				('.' not in item) if acceptsDirectory[dataType] else False
+			)
+		):
 			validOptions.append(item)
 
 	return validOptions
