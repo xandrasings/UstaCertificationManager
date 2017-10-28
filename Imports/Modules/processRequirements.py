@@ -5,6 +5,5 @@ from ..Utilities.output import *
 
 def processRequirements():
 	data = selectDataSource('requirements')
-
 	data.startUp()
 

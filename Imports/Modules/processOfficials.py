@@ -5,4 +5,5 @@ from ..Utilities.output import *
 from xlrd import open_workbook
 
 def processOfficials():
-	requirementsFileName = selectDataSource('officials')
+	data = selectDataSource('officials')
+	data.startUp()

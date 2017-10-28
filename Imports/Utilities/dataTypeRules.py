@@ -1,31 +1,39 @@
 doPareColMax = {
-	'requirements' : True
+	'requirements' : True,
+	'officials' : True
 }
 
 doPareRowMax = {
-	'requirements' : True
+	'requirements' : True,
+	'officials' : True
 }
 
 expectedHeaderRows = {
-	'requirements' : 6
+	'requirements' : 1,
+	'officials' : 1
 }
 
 expectedHeaderCols = {
-	'requirements' : 8
+	'requirements' : 1,
+	'officials' : 1
 }
 
 doValidateRanges = {
-	'requirements' : True
+	'requirements' : True,
+	'officials' : True
 }
 
 doValidateColHeaders = {
-	'requirements' : True
+	'requirements' : True,
+	'officials' : True
 }
 
 doValidateRowHeaders = {
-	'requirements' : True
+	'requirements' : True,
+	'officials' : True
 }
 
 doValidateData = {
-	'requirements' : True
+	'requirements' : True,
+	'officials' : True
 }
