@@ -15,12 +15,8 @@ def main():
 	disciplines = pdr[0]
 	requirements = pdr[1]
 	officials = processOfficials(disciplines)
-	requirements = []
 	achievements = []
 	certifications = []
-
-	for official in officials:
-		official.print()
 
 	displayOptions = True;
 	while (displayOptions == True):

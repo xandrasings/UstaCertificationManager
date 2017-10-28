@@ -133,7 +133,7 @@ class Data:
 		if doValidateData[self.dataType]:
 			result = (
 				self.validateBinaryData() if doValidateBinaryData[self.dataType] else True and
-				slef.validateAchievementData() if doValidateAchievementData[self.dataType] else True
+				self.validateAchievementData() if doValidateAchievementData[self.dataType] else True
 			)
 
 		return result

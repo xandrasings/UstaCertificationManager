@@ -7,6 +7,9 @@ def processAchievements(requirements):
 	data = selectDataSource(dataType)[0]
 	data.setUp()
 
+	for requirement in requirements:
+		print(requirement.getName())
+
 	achievements = []
 
 	outputCloseProcessingModule(dataType)
