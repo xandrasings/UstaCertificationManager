@@ -1,6 +1,7 @@
+from .quit import *
+from ..Objects.Data import *
 from ..Utilities.input import *
 from ..Utilities.output import *
-from .quit import *
 
 import os
 from os import listdir
@@ -9,7 +10,8 @@ from xlrd import *
 def selectDataSource(dataType):
 	dataFile = selectDataFile(dataType)
 	dataSheetIndex = selectDataSheetIndex(dataFile)
-	return dataFile.sheet_by_index(dataSheetIndex)
+	data = Data(dataFile.sheet_by_index(dataSheetIndex))
+	return data
 
 
 def selectDataFile(dataType):

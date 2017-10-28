@@ -1,4 +1,5 @@
 from .selectDataSource import *
+from ..Objects.Data import *
 from ..Utilities.input import *
 from ..Utilities.output import *
 from ..Utilities.xlrdHelper import *
@@ -7,9 +8,10 @@ from ..Utilities.xlrdHelper import *
 
 def processRequirements():
 	data = selectDataSource('requirements')
-	colMax = getColMax(data)
-	rowMax = getRowMax(data)
-	output(validateFormat(data, colMax, rowMax))
+	print(data.getArea())
+	# colMax = getColMax(data)
+	# rowMax = getRowMax(data)
+	# output(validateFormat(data, colMax, rowMax))
 
 
 def validateFormat(data, colMax, rowMax):
@@ -25,14 +27,14 @@ def validateFormat_ranges(colMax, rowMax):
 
 
 def validateFormat_columnHeaders(data, colMax):
-	if data.cell(0,0).value.strip().upper() != 'DISCIPLINE':
-		return False
-	for col in range(1, colMax):
-		try:
-			float(data.cell(0,0).value.strip())
-			return False
-		except:
-			continue
+	# if data.cell(0,0).value.strip().upper() != 'DISCIPLINE':
+	# 	return False
+	# for col in range(1, colMax):
+	# 	try:
+	# 		float(data.cell(0,0).value.strip())
+	# 		return False
+	# 	except:
+	# 		continue
 	return True
 	
 
