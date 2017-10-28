@@ -10,7 +10,7 @@ class Data:
 		self.rowMax = self.data.nrows
 
 
-	def startUp(self):
+	def setUp(self):
 		if doPareColMax[self.dataType]:
 			self.pareColMax()
 		if doPareRowMax[self.dataType]:
