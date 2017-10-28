@@ -122,7 +122,7 @@ class Data:
 	def validateData(self):
 		result = True
 		if doValidateData[self.dataType]:
-			# options other than Binary
+			# TODO options other than Binary
 			result = self.validateBinaryData()
 
 		return result
@@ -148,8 +148,5 @@ class Data:
 				break
 			rowIndex = rowIndex + 1
 			colIndex = colStart
-
-		if not result:
-			result = userCheck(result, 'Found non-binary result: ' + str(self.get(rowIndex, colIndex)))
 
 		return result

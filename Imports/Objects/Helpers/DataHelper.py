@@ -63,7 +63,6 @@ def compareString(expected, actual):
 
 
 def validateHeaderFormat(actual, index):
-	print("VALIDATE!!!")
 	result = True
 	indexLimit = len(actual)
 
@@ -88,11 +87,3 @@ def isBinary(text):
 	result = userCheck(result, 'Found non-binary result: ' + str(text) + ' in data.')
 
 	return result
-
-
-
-
-
-
-
-
