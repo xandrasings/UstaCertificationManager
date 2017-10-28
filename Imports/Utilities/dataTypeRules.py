@@ -33,6 +33,16 @@ expectedLeadingCols = {
 	'officials' : ['First Name', 'Last Name', 'Email']
 }
 
+doValidateExpectedLeadingCols = {
+	'requirements' : False,
+	'officials' : True
+}
+
+doValidateColHeaderFormat = {
+	'requirements' : False,
+	'officials' : True
+}
+
 doValidateRowHeaders = {
 	'requirements' : True,
 	'officials' : True
@@ -41,6 +51,16 @@ doValidateRowHeaders = {
 expectedLeadingRows = {
 	'requirements' : ['Discipline'],
 	'officials' : ['First Name']
+}
+
+doValidateExpectedLeadingRows = {
+	'requirements' : False,
+	'officials' : True
+}
+
+doValidateRowHeaderFormat = {
+	'requirements' : False,
+	'officials' : True
 }
 
 doValidateData = {

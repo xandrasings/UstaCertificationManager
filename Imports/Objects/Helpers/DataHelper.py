@@ -26,10 +26,6 @@ def validateColRange(expectedHeaderCols, colMax):
 	return result
 
 
-def compareString(expected, actual):
-	return expected.strip().upper() == actual.strip().upper()
-
-
 def validateExpectedLeadingCols(expected, actual):
 	result = True
 	index = 0
@@ -60,6 +56,31 @@ def validateExpectedLeadingRows(expected, actual):
 	if not result:
 		result = userCheck(result, 'Row ' + str(index + 1) + ' is expected to be \'' + expected[index].strip().upper() + '\' but is actually \'' + actual[index] + '\'')
 	return result
+
+
+def compareString(expected, actual):
+	return expected.strip().upper() == actual.strip().upper()
+
+
+def validateHeaderFormat(actual, index):
+	print("VALIDATE!!!")
+	result = True
+	indexLimit = len(actual)
+
+
+	while index < indexLimit:
+		if not isStringy(actual[index]):
+			result = False
+			break
+		index = index + 1
+
+	if not result:
+		result = userCheck(result, 'Header \'' + actual[index] + '\' is expected to be a non-numeric text.')
+	return result
+
+
+def isStringy(text):
+	return any(c.isalpha() for c in text)
 
 
 

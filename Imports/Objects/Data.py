@@ -96,8 +96,8 @@ class Data:
 			expected = expectedLeadingCols[self.dataType]
 			actual = self.getColHeaders()
 			result = (
-				validateExpectedLeadingCols(expected, actual) and
-				True
+				validateExpectedLeadingCols(expected, actual) if doValidateExpectedLeadingCols[self.dataType] else True and
+				validateHeaderFormat(actual, len(expected)) if doValidateColHeaderFormat[self.dataType] else True
 			)
 
 		return result
@@ -109,8 +109,8 @@ class Data:
 			expected = expectedLeadingRows[self.dataType]
 			actual = self.getRowHeaders()
 			result = (
-				validateExpectedLeadingRows(expected, actual) and
-				True
+				validateExpectedLeadingRows(expected, actual) if doValidateExpectedLeadingRows[self.dataType] else True and
+				validateHeaderFormat(actual, len(expected)) if doValidateRowHeaderFormat[self.dataType] else True
 			)
 
 		return result
