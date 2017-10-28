@@ -82,15 +82,6 @@ class Data:
 		return rowHeaders
 
 
-	# def getMainRowHeaders(self):
-	# 	rowHeaders = []
-
-	# 	for row in range(len(expectedLeadingRows[self.dataType]), self.rowMax):
-	# 		rowHeaders.append(self.get(row,0))
-
-	# 	return rowHeaders
-
-
 	def validate(self):
 		return (
 			self.validateRanges() and
@@ -104,8 +95,8 @@ class Data:
 		result = True
 		if doValidateRanges[self.dataType]:
 			result = (
-				validateRowRange(expectedHeaderRows[self.dataType], self.rowMax) and
-				validateColRange(expectedHeaderCols[self.dataType], self.colMax)
+				validateRowRange(len(expectedLeadingRows[self.dataType]), self.rowMax) and
+				validateColRange(len(expectedLeadingCols[self.dataType]), self.colMax)
 			)
 
 		return result

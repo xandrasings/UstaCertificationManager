@@ -15,13 +15,13 @@ def userCheck(result, explanation):
 
 
 def validateRowRange(expectedHeaderRows, rowMax):
-	result = rowMax > expectedHeaderRows
+	result = rowMax >= expectedHeaderRows
 	result = userCheck(result, 'Number of rows (' + str(rowMax) + ') should be above ' + str(expectedHeaderRows))
 	return result
 
 
 def validateColRange(expectedHeaderCols, colMax):
-	result = colMax > expectedHeaderCols
+	result = colMax >= expectedHeaderCols
 	result = userCheck(result, 'Number of columns (' + str(colMax) + ') should be above ' + str(expectedHeaderCols))
 	return result
 

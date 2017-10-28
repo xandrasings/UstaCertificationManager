@@ -19,7 +19,7 @@ def promptYN(text = ''):
 		selection = prompt(text + ' (Y/N)')
 		if selection == 'Y':
 			return True
-		elif selection == 'N':
+		elif selection in ['N', 'Q']:
 			return False
 		else:
 			selection = ''
