@@ -7,11 +7,12 @@ from os import listdir
 from xlrd import *
 
 def selectDataSource(dataType):
-	dataFile = selectExcelFile(dataType)
-	dataSheet = selectExcelSheet(dataFile)
+	dataFile = selectDataFile(dataType)
+	dataSheetIndex = selectDataSheetIndex(dataFile)
+	return dataFile.sheet_by_index(dataSheetIndex)
 
 
-def selectExcelFile(dataType):
+def selectDataFile(dataType):
 	targetDirectory = 'Resources'
 	dataFilePath = getAbsoluteFilePath(targetDirectory)
 	validOptions = getValidFileOptions(dataType, dataFilePath)
@@ -102,7 +103,7 @@ def extendFilePath(filePath, extension):
 def openWorkbook(filePath):
 	dataFile = ''
 	try:
-		dataFile = open_workbook(filePath)
+		dataFile = open_workbook(filePath, on_demand = True)
 		output('Opening workbook from ' + filePath + '.')
 	except:
 		fatalQuit('Could not open workbook')
@@ -110,7 +111,7 @@ def openWorkbook(filePath):
 	return dataFile
 
 
-def selectExcelSheet(dataFile):
+def selectDataSheetIndex(dataFile):
 	sheetIndex = dataFile.nsheets - 1
 	if sheetIndex != 0:
 		sheetOptions = dataFile.sheet_names()
