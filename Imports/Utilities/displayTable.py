@@ -37,21 +37,22 @@ def getBlankInitialColumnHeader(initialColWidth):
 
 
 def getColumnContent(colWidth, colHeaders):
-	result = ''
+	result = []
 	for colHeader in colHeaders:
-		result = result + getColumnHeader(colWidth, colHeader)
+		result.append(getColumnFormattedContent(colWidth, colHeader))
 
 	return result
 
 
-def getColumnHeader(colWidth, colHeader):
+def getColumnFormattedContent(colWidth, colHeader): # var name change
+	lines = []
+
 	if len(colHeader) > colWidth:
 		colHeader = colHeader[0:colWidth]
 
 	buffer = getBuffer(colWidth, colHeader)
-	print(buffer)
 	colHeader = '|' + colHeader + buffen(buffer)
-	return colHeader
+	return [colHeader]
 
 
 def getBuffer(colWidth, colHeader):
@@ -67,5 +68,8 @@ def buffen(buffer):
 
 
 def displayRow(columnContent, initialColumn = ''):
-	output(initialColumn + columnContent)
+	result = initialColumn
+	for column in columnContent:
+		result = result + column[0]
+	output(result)
 	outputLine()
