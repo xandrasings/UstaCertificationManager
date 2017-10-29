@@ -1,5 +1,5 @@
 from .quit import *
-from ..Objects.Data import *
+from ..Classes.Data import *
 from ..Utilities.input import *
 from ..Utilities.output import *
 from ..Utilities.dataTypeRules import *

@@ -9,8 +9,5 @@ def processAchievements(officials, requirements):
 
 	achievements = data.convertRows([officials, requirements])
 
-	for achievement in achievements:
-		achievement.print()
-
 	outputCloseProcessingModule(dataType)
 	return achievements

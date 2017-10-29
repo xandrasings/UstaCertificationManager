@@ -20,12 +20,14 @@ def main():
 
 	# for official in officials:
 	# 	official.print()
+	for achievement in achievements:
+		achievement.print()
 
 	displayOptions = True;
 	while (displayOptions == True):
 		selection = solicitCertManagerAction()
 		if (selection == 'E'):
-			achievements.append(processAchievements(officials, requirements));
+			achievements.extend(processAchievements(officials, requirements));
 		elif (selection == 'C'):
 			displayCertifications(certifications);
 		elif (selection == 'A'):

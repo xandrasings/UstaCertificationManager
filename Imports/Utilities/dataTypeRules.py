@@ -1,7 +1,7 @@
-from ..Objects.Achievement import *
-from ..Objects.Requirement import *
-from ..Objects.Discipline import *
-from ..Objects.Official import *
+from ..Classes.Achievement import *
+from ..Classes.Requirement import *
+from ..Classes.Discipline import *
+from ..Classes.Official import *
 
 acceptsDirectory = {
 	'achievements' : True,
