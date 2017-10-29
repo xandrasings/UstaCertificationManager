@@ -39,10 +39,10 @@ class Official:
 		return firstName == self.firstName and lastName == self.lastName
 
 
-	def print(self):
-		print(self.getFullName())
-		print(self.emailAddress)
-		print('disciplines:')
+	def output(self):
+		output(self.getFullName())
+		output(self.emailAddress)
+		output('disciplines:')
 
 		for discipline in self.disciplines:
-			discipline.print()
+			discipline.output()

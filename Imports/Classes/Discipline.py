@@ -25,8 +25,8 @@ class Discipline:
 		return self.valid
 
 
-	def print(self):
-		print('\t' + self.name)
-		print('\trequirements:')
+	def output(self):
+		output('\t' + self.name)
+		output('\trequirements:')
 		for requirement in self.requirements:
-			requirement.print()
+			requirement.output()

@@ -18,11 +18,6 @@ def main():
 	achievements = []
 	certifications = []
 
-	# for official in officials:
-	# 	official.print()
-	for achievement in achievements:
-		achievement.print()
-
 	displayOptions = True;
 	while (displayOptions == True):
 		selection = solicitCertManagerAction()

@@ -27,6 +27,6 @@ class Achievement:
 		return self.valid
 
 
-	def print(self):
-		self.official.print()
-		self.requirement.print()
+	def output(self):
+		self.official.output()
+		self.requirement.output()
