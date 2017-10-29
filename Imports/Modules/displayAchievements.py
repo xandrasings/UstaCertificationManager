@@ -11,8 +11,8 @@ def displayAchievements(requirements, officials, achievements):
 	for achievement in achievements:
 		achievement.output()
 
-	colHeaders = getItemNames(requirements)
-	rowHeaders = getItemNames(officials)
+	rowHeaders = getItemNames(requirements)
+	colHeaders = getItemNames(officials)
 
 	for rowHeader in rowHeaders:
 		newRow = []
@@ -35,7 +35,7 @@ def getItemNames(items):
 def getTableValue(achievements, rowHeader, colHeader):
 	tableValue = 'N'
 	for achievement in achievements:
-		if achievement.getOfficial().matches(rowHeader) and achievement.getRequirement().matches(colHeader):
+		if achievement.getOfficial().matches(colHeader) and achievement.getRequirement().matches(rowHeader):
 			tableValue = 'C'
 			break
 	return tableValue

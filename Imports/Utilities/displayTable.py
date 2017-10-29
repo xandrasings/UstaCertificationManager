@@ -2,17 +2,23 @@ from .color import *
 from .logo import *
 
 def displayTable(colHeaders, rowHeaders, data):
-	colWidth = establishColWidth(colHeaders, rowHeaders)
+	initialColWidth = establishInitialColWidth(rowHeaders)
+	print('col width 1:')
+	print(initialColWidth)
+	colWidth = establishColWidth(initialColWidth, rowHeaders)
+	print('col width others:')
+	print(colWidth)
+	print(data)
 
 
-def establishColWidth(colHeaders, rowHeaders):
-	rowHeaderMax = establishRowHeaderMax(rowHeaders)
-
-
-def establishRowHeaderMax(rowHeaders):
+def establishInitialColWidth(rowHeaders):
 	rowHeaderMax = 0
 
 	for rowHeader in rowHeaders:
-		rowHeaderMax = max(rowHeaderMax, len(rowHeader))
+		rowHeaderMax = max(rowHeaderMax, 20)
 
-	rowHeaderMax = min(rowHeaderMax, 20)	
+	return rowHeaderMax
+
+
+def establishColWidth(initialColWidth, colHeaders):
+	return ((180 - initialColWidth) // len(colHeaders)) - 1

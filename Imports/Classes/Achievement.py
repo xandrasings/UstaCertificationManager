@@ -9,10 +9,7 @@ class Achievement:
 		self.requirement = None
 
 		for official in givenArgs[0]:
-			print('official name: ' + official.getName())
-			print('match name: ' + getFullName(dataArgs[1], dataArgs[0]))
 			if official.matches(getFullName(dataArgs[1], dataArgs[0])):
-				print('MATCH!')
 				self.official = official
 				break
 

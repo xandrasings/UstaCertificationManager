@@ -1,5 +1,3 @@
-from .output import *
-
 colorOptions = {
 	'red' : '\033[95m',
 	'blue' : '\033[94m',
