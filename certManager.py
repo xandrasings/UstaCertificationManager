@@ -26,7 +26,7 @@ def main():
 		elif (selection == 'C'):
 			displayCertifications(certifications);
 		elif (selection == 'A'):
-			displayAchievements(achievements);
+			displayAchievements(requirements, officials, achievements);
 		elif (selection == 'O'):
 			displayOfficial(officials, disciplines, requirements, achievements, certifications);
 		elif (selection == 'M'):
@@ -35,5 +35,5 @@ def main():
 			displayOptions = quit()
 		else:
 			rejectOption(selection)
-
+			
 main()

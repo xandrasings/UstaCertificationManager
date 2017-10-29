@@ -9,7 +9,10 @@ class Achievement:
 		self.requirement = None
 
 		for official in givenArgs[0]:
-			if official.matches(dataArgs[1], dataArgs[0]):
+			print('official name: ' + official.getName())
+			print('match name: ' + getFullName(dataArgs[1], dataArgs[0]))
+			if official.matches(getFullName(dataArgs[1], dataArgs[0])):
+				print('MATCH!')
 				self.official = official
 				break
 
@@ -22,6 +25,13 @@ class Achievement:
 		self.valid = isinstance(self.official, Official) and isinstance(self.requirement, Requirement)
 
 
+	def getOfficial(self):
+		return self.official
+
+
+	def getRequirement(self):
+		return self.requirement
+
 
 	def getValidity(self):
 		return self.valid
@@ -30,3 +40,6 @@ class Achievement:
 	def output(self):
 		self.official.output()
 		self.requirement.output()
+
+def getFullName(firstName, lastName):
+	return firstName + ' ' + lastName;

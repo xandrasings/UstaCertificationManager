@@ -19,5 +19,5 @@ class Requirement:
 		return name == self.name
 
 
-	def print(self):
-		print('\t\t' + self.name)
+	def output(self):
+		output('\t\t' + self.name)

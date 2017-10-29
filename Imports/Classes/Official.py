@@ -23,7 +23,7 @@ class Official:
 		return self.lastName
 
 
-	def getFullName(self):
+	def getName(self):
 		return self.firstName + ' ' + self.lastName
 
 
@@ -35,12 +35,12 @@ class Official:
 		return self.valid
 
 
-	def matches(self, firstName, lastName):
-		return firstName == self.firstName and lastName == self.lastName
+	def matches(self, name):
+		return name == self.getName()
 
 
 	def output(self):
-		output(self.getFullName())
+		output(self.getName())
 		output(self.emailAddress)
 		output('disciplines:')
 
