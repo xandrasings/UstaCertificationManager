@@ -2,15 +2,15 @@ from .selectDataSource import *
 from ..Utilities.input import *
 from ..Utilities.output import *
 
-def processAchievements(requirements):
+def processAchievements(officials, requirements):
 	dataType = 'achievements'
 	data = selectDataSource(dataType)[0]
 	data.setUp()
 
-	for requirement in requirements:
-		print(requirement.getName())
+	achievements = data.convertRows([officials, requirements])
 
-	achievements = []
+	for achievement in achievements:
+		achievement.print()
 
 	outputCloseProcessingModule(dataType)
 	return achievements

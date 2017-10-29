@@ -3,12 +3,11 @@ from ..Utilities.output import *
 
 class Official:
 	def __init__(self, dataArgs, givenArgs = []):
+		self.valid = True
 		self.firstName = dataArgs[0]
 		self.lastName = dataArgs[1]
 		self.emailAddress = dataArgs[2]
-		del dataArgs[0]
-		del dataArgs[0]
-		del dataArgs[0]
+		dataArgs = dataArgs[3:]
 		self.disciplines = []
 
 		for index in range(len(dataArgs)):
@@ -19,14 +18,31 @@ class Official:
 	def getFirstName(self):
 		return self.firstName
 
+
+	def getLastName(self):
+		return self.lastName
+
+
+	def getFullName(self):
+		return self.firstName + ' ' + self.lastName
+
+
+	def getDisciplines(self):
+		return self.disciplines
+
+
+	def getValidity(self):
+		return self.valid
+
+
+	def matches(self, firstName, lastName):
+		return firstName == self.firstName and lastName == self.lastName
+
+
 	def print(self):
-		print('official:')
-		print(self.firstName + ' ' + self.lastName)
+		print(self.getFullName())
 		print(self.emailAddress)
-		print('\tdisciplines:')
+		print('disciplines:')
 
 		for discipline in self.disciplines:
-			print('\t\t' + discipline.getName())
-			print('\t\trequirements:')
-			for requirement in discipline.getRequirements():
-				print('\t\t\t' + requirement.getName())
+			discipline.print()

@@ -194,7 +194,9 @@ class Data:
 			dataArgs = []
 			for dataArgIndex in range(self.colMax):
 				dataArgs.append(self.get(row,dataArgIndex))
-				
-			rowObjects.append(rowHeaderType[self.dataType](dataArgs, givenArgs))
+
+			rowObject = rowHeaderType[self.dataType](dataArgs, givenArgs)
+			if rowObject.getValidity():
+				rowObjects.append(rowObject)
 
 		return rowObjects
