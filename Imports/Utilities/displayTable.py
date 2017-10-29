@@ -1,14 +1,10 @@
-from .color import *
-from .logo import *
+from .output import *
 
 def displayTable(colHeaders, rowHeaders, data):
 	initialColWidth = establishInitialColWidth(rowHeaders)
-	print('col width 1:')
-	print(initialColWidth)
-	colWidth = establishColWidth(initialColWidth, rowHeaders)
-	print('col width others:')
-	print(colWidth)
-	print(data)
+	colWidth = establishColWidth(initialColWidth, colHeaders)
+
+	displayHeader(initialColWidth, colWidth, colHeaders)
 
 
 def establishInitialColWidth(rowHeaders):
@@ -22,3 +18,54 @@ def establishInitialColWidth(rowHeaders):
 
 def establishColWidth(initialColWidth, colHeaders):
 	return ((180 - initialColWidth) // len(colHeaders)) - 1
+
+
+def displayHeader(initialColWidth, colWidth, colHeaders):
+	initialColumnHeader = getBlankInitialColumnHeader(initialColWidth)
+	columnContent = getColumnContent(colWidth, colHeaders)
+
+	displayRow(columnContent, initialColumnHeader)
+	outputLineHeavy()
+
+
+def getBlankInitialColumnHeader(initialColWidth):
+	result = ''
+	for i in range(initialColWidth):
+		result = result + '-'
+
+	return result
+
+
+def getColumnContent(colWidth, colHeaders):
+	result = ''
+	for colHeader in colHeaders:
+		result = result + getColumnHeader(colWidth, colHeader)
+
+	return result
+
+
+def getColumnHeader(colWidth, colHeader):
+	if len(colHeader) > colWidth:
+		colHeader = colHeader[0:colWidth]
+
+	buffer = getBuffer(colWidth, colHeader)
+	print(buffer)
+	colHeader = '|' + colHeader + buffen(buffer)
+	return colHeader
+
+
+def getBuffer(colWidth, colHeader):
+	return colWidth - len(colHeader)
+
+
+def buffen(buffer):
+	result = ''
+	for i in range(buffer):
+		result = result + ' '
+
+	return result
+
+
+def displayRow(columnContent, initialColumn = ''):
+	output(initialColumn + columnContent)
+	outputLine()
