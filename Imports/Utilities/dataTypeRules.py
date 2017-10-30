@@ -24,7 +24,7 @@ rowHeaderType = {
 expectedLeadingCols = {
 	'achievements' : ['Last Name', 'First Name', 'Item Name', 'Item Started Date', 'Item Completed Date'],
 	'requirements' : ['Discipline'],
-	'officials' : ['First Name', 'Last Name', 'Email']
+	'officials' : ['First Name', 'Preferred Name', 'Last Name', 'Email']
 }
 
 expectedLeadingRows = {

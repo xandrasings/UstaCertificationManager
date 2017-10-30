@@ -5,10 +5,12 @@ class Official:
 	def __init__(self, dataArgs, givenArgs = []):
 		self.valid = True
 		self.firstName = dataArgs[0]
-		self.lastName = dataArgs[1]
-		self.emailAddress = dataArgs[2]
-		dataArgs = dataArgs[3:]
+		self.preferredName = dataArgs[1]
+		self.lastName = dataArgs[2]
+		self.emailAddress = dataArgs[3]
+		dataArgs = dataArgs[4:]
 		self.disciplines = []
+		self.achievements = []
 
 		for index in range(len(dataArgs)):
 			if dataArgs[index] == 1:
@@ -21,6 +23,10 @@ class Official:
 
 	def getLastName(self):
 		return self.lastName
+
+
+	def getPreferredName(self):
+		return (self.firstName if len(self.preferredName) == 0 else self.preferredName) + ' ' + self.lastName
 
 
 	def getName(self):

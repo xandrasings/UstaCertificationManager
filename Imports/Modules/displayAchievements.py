@@ -3,16 +3,9 @@ from ..Utilities.input import *
 from ..Utilities.output import *
 
 def displayAchievements(requirements, officials, achievements):
-	outputLine()
-	colHeaders = []
-	rowHeaders = []
-	data = []
-
-	for achievement in achievements:
-		achievement.output()
-
 	colHeaders = getItemNames(requirements)
 	rowHeaders = getItemNames(officials)
+	data = []
 
 	for rowHeader in rowHeaders:
 		newRow = []
