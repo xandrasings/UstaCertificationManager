@@ -1,3 +1,4 @@
+
 from .Official import *
 from .Requirement import *
 from ..Utilities.dataTypeRules import *
@@ -14,7 +15,7 @@ class Achievement:
 				break
 
 		for requirement in givenArgs[1]:
-			if requirement.matches(dataArgs[2]):
+			if requirement.matches(pare(dataArgs[2], ' course')):
 				self.requirement = requirement
 				break
 

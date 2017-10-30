@@ -1,10 +1,11 @@
+from .Helpers.DataHelper import *
 from ..Utilities.dataTypeRules import *
 from ..Utilities.output import *
 
 class Requirement:
 	def __init__(self, dataArgs, givenArgs = []):
 		self.valid = True
-		self.name = dataArgs[0]
+		self.name = pare(dataArgs[0], ' course')
 
 
 	def getName(self):

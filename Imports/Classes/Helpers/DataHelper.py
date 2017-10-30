@@ -87,3 +87,8 @@ def isBinary(text):
 	result = userCheck(result, 'Found non-binary result: ' + str(text) + ' in data.')
 
 	return result
+
+def pare(name, suffix):
+	if name.endswith(suffix.upper()):
+		name = name[:-len(suffix)]
+	return name

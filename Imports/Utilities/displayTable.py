@@ -3,10 +3,9 @@ from .output import *
 def displayTable(colHeaders, rowHeaders, data):
 	initialColWidth = establishInitialColWidth(rowHeaders)
 	colWidth = establishColWidth(initialColWidth, colHeaders)
-	colHeaders = addPrecedingCell(colHeaders)
 
 	displayRow(initialColWidth, colWidth, colHeaders)
-	# displayRows!
+	displayRows(initialColWidth, colWidth, data, rowHeaders)
 
 
 def establishInitialColWidth(rowHeaders):
@@ -22,17 +21,23 @@ def establishColWidth(initialColWidth, colHeaders):
 	return ((180 - initialColWidth) // len(colHeaders)) - 1
 
 
-def addPrecedingCell(colHeaders):
+def combineRowContent(rowContent, firstRowContent):
 	# TODO change me
 	# colHeaders = [''].extend(colHeaders)
 
-	fullColHeaders = ['']
-	fullColHeaders.extend(colHeaders)
+	fullRowContent = [firstRowContent]
+	fullRowContent.extend(rowContent)
 
-	return fullColHeaders
+	return fullRowContent
 
 
-def displayRow(initialColWidth, colWidth, rowContent): # array of strings
+def displayRows(initialColWidth, colWidth, rowsContent, rowHeaders):
+	for i in range(min(len(rowsContent), len(rowHeaders))):
+		displayRow(initialColWidth, colWidth, rowsContent[i], rowHeaders[i])
+
+
+def displayRow(initialColWidth, colWidth, rowContent, firstRowContent = ''): # array of strings
+	rowContent = combineRowContent(rowContent, firstRowContent)
 	rowContent = formatRowContents(initialColWidth, colWidth, rowContent) # array of arrays
 
 	outputRow(rowContent)
@@ -60,8 +65,25 @@ def arrayenRowContent(initialColWidth, colWidth, rowContent): # array of strings
 
 
 def arrayenCellContent(colWidth, cellContent): #string
-	cellContent = cellContent.split() #array of strings
-	return cellContent #array of strings
+	arrayenedCellContent = []
+	wordArray = cellContent.split() #array of strings
+
+	row = ''
+	for word in wordArray:
+		if fits(row, colWidth, word):
+			row = (word if rowIsEmpty(row) else row + ' ' + word)
+		else:
+			arrayenedCellContent.append(row)
+			row = word
+	arrayenedCellContent.append(row)
+
+	return arrayenedCellContent #array of strings
+
+def fits(row, max, word):
+	return len(row) + len(word) + (0 if rowIsEmpty(row) else 1) <= max
+
+def rowIsEmpty(row):
+	return len(row) == 0
 
 
 def lengthenRowContent(rowContent): # array of array of strings
