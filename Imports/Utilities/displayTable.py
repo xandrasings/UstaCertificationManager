@@ -83,8 +83,8 @@ def getCellDepth(rowContent): # array of array of strings
 
 
 def lengthenCellContent(cellDepth, cellContent): # array of strings
-	buffer = cellDepth - len(cellContent)
-	for i in range(buffer):
+	fullBuffer = cellDepth - len(cellContent)
+	for i in range(fullBuffer):
 		cellContent.append('')
 	return cellContent
 
@@ -110,16 +110,16 @@ def buffenCellContent(colWidth, cellContent): # array of strings
 
 
 def buffenCellRow(colWidth, cellRow): # string
-	buffer = colWidth - len(cellRow)
-	frontBuffer = buffer // 2
-	backBuffer = buffer - frontBuffer
-	return generateBuff(frontBuffer) + cellRow + generateBuff(frontBuffer)
+	fullBuffer = colWidth - len(cellRow)
+	frontBuffer = fullBuffer // 2
+	backBuffer = fullBuffer - frontBuffer
+	return generateBuff(frontBuffer) + cellRow + generateBuff(backBuffer)
 
 
-def generateBuff(buffer):
+def generateBuff(fullBuffer):
 	buff = ''
 
-	for i in range(buffer):
+	for i in range(fullBuffer):
 		buff = buff + ' '
 
 	return buff
