@@ -1,4 +1,5 @@
 from .output import *
+from .color import *
 
 def displayTable(colHeaders, rowHeaders, data):
 	initialColWidth = establishInitialColWidth(rowHeaders)
@@ -22,9 +23,6 @@ def establishColWidth(initialColWidth, colHeaders):
 
 
 def combineRowContent(rowContent, firstRowContent):
-	# TODO change me
-	# colHeaders = [''].extend(colHeaders)
-
 	fullRowContent = [firstRowContent]
 	fullRowContent.extend(rowContent)
 
@@ -61,12 +59,12 @@ def arrayenRowContent(initialColWidth, colWidth, rowContent): # array of strings
 		rowContentArray.append(arrayenCellContent(chosenWidth, cellContent))
 		chosenWidth = colWidth
 
-	return rowContentArray # array of array of strings
+	return rowContentArray
 
 
-def arrayenCellContent(colWidth, cellContent): #string
+def arrayenCellContent(colWidth, cellContent):
 	arrayenedCellContent = []
-	wordArray = cellContent.split() #array of strings
+	wordArray = cellContent.split()
 
 	row = ''
 	for word in wordArray:
@@ -77,7 +75,7 @@ def arrayenCellContent(colWidth, cellContent): #string
 			row = word
 	arrayenedCellContent.append(row)
 
-	return arrayenedCellContent #array of strings
+	return arrayenedCellContent
 
 def fits(row, max, word):
 	return len(row) + len(word) + (0 if rowIsEmpty(row) else 1) <= max
@@ -86,52 +84,52 @@ def rowIsEmpty(row):
 	return len(row) == 0
 
 
-def lengthenRowContent(rowContent): # array of array of strings
+def lengthenRowContent(rowContent):
 	cellDepth = getCellDepth(rowContent)
 
-	rowContentArray = [] # array 
+	rowContentArray = []
 
-	for cellContent in rowContent: # array of strings
+	for cellContent in rowContent:
 		rowContentArray.append(lengthenCellContent(cellDepth, cellContent))
 
-	return rowContentArray # array of array of strings
+	return rowContentArray
 
 
-def getCellDepth(rowContent): # array of array of strings
+def getCellDepth(rowContent):
 	cellDepth = 0
 	for cellContent in rowContent:
 		cellDepth = max(cellDepth, len(cellContent))
 	return cellDepth
 
 
-def lengthenCellContent(cellDepth, cellContent): # array of strings
+def lengthenCellContent(cellDepth, cellContent):
 	fullBuffer = cellDepth - len(cellContent)
 	for i in range(fullBuffer):
 		cellContent.append('')
 	return cellContent
 
 
-def buffenRowContent(initialColWidth, colWidth, rowContent): # array of array of strings
-	rowContentArray = [] # array 
+def buffenRowContent(initialColWidth, colWidth, rowContent):
+	rowContentArray = []
 
 	chosenWidth = initialColWidth
 	for cellContent in rowContent:
 		rowContentArray.append(buffenCellContent(chosenWidth, cellContent))
 		chosenWidth = colWidth
 
-	return rowContentArray # array of array of strings
+	return rowContentArray
 
 
-def buffenCellContent(colWidth, cellContent): # array of strings
+def buffenCellContent(colWidth, cellContent):
 	newCellContent = []
 
-	for cellRow in cellContent: # string
+	for cellRow in cellContent:
 		newCellContent.append(buffenCellRow(colWidth, cellRow))
 
-	return newCellContent # array of strings
+	return newCellContent
 
 
-def buffenCellRow(colWidth, cellRow): # string
+def buffenCellRow(colWidth, cellRow):
 	fullBuffer = colWidth - len(cellRow)
 	frontBuffer = fullBuffer // 2
 	backBuffer = fullBuffer - frontBuffer
@@ -147,8 +145,8 @@ def generateBuff(fullBuffer):
 	return buff
 
 
-def stringenRowContent(rowContent): # array of array of strings
-	rowContentArray = [] # array 
+def stringenRowContent(rowContent):
+	rowContentArray = []
 
 	for i in range(getCellDepth(rowContent)):
 		subRow = ''
@@ -156,10 +154,10 @@ def stringenRowContent(rowContent): # array of array of strings
 			subRow = subRow + cellContent[i] + '|'
 		rowContentArray.append(subRow)
 
-	return rowContentArray # array of strings
+	return rowContentArray
 
 
-def outputRow(rowContent): # array of strings
+def outputRow(rowContent):
 	for subRow in rowContent:
 		output(subRow)
 
