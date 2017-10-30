@@ -9,18 +9,28 @@ class Achievement:
 		self.official = None
 		self.requirement = None
 
+		if getFullName(dataArgs[1], dataArgs[0]) == "RICHARD ARIANS":
+			print('Dick did:')
+			print(dataArgs[2])
+
 		for official in givenArgs[0]:
 			if official.matches(getFullName(dataArgs[1], dataArgs[0])):
 				self.official = official
 				break
 
 		for requirement in givenArgs[1]:
-			if requirement.matches(pare(dataArgs[2], ' course')):
+			if requirement.matches(pare(dataArgs[2], [' course', '.','_OLD'])):
+				if getFullName(dataArgs[1], dataArgs[0]) == "RICHARD ARIANS":
+					print('requirement match!')
 				self.requirement = requirement
 				break
 
 		self.completedDate = dataArgs[4]
-		self.valid = isinstance(self.official, Official) and isinstance(self.requirement, Requirement)
+		self.valid = (
+			isinstance(self.official, Official) and
+			isinstance(self.requirement, Requirement) and
+			len(self.completedDate) > 0
+		)
 
 
 	def getOfficial(self):

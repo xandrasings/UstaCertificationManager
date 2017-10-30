@@ -88,7 +88,13 @@ def isBinary(text):
 
 	return result
 
-def pare(name, suffix):
-	if name.endswith(suffix.upper()):
-		name = name[:-len(suffix)]
+def pare(name, suffixes):
+	for suffix in suffixes:
+		if name.endswith(suffix.upper()):
+			name = pare(name[:-len(suffix)], suffixes)
 	return name
+			
+
+
+
+

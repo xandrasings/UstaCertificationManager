@@ -5,7 +5,7 @@ from ..Utilities.output import *
 class Requirement:
 	def __init__(self, dataArgs, givenArgs = []):
 		self.valid = True
-		self.name = pare(dataArgs[0], ' course')
+		self.name = pare(dataArgs[0], [' course'])
 
 
 	def getName(self):
