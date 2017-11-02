@@ -4,11 +4,11 @@ from ..Utilities.output import *
 
 def processAchievements(targetDirectoryPath, officials, requirements):
 	dataType = 'achievements'
-	achievements = []
+	achievements = set()
 	for data in selectDataSource(dataType, targetDirectoryPath):
 		data.setUp()
 
-		achievements.extend(data.convertRows([officials, requirements]))
+		achievements = achievements | set(data.convertRows([officials, requirements]))
 
 	outputCloseProcessingModule(dataType)
 	return achievements

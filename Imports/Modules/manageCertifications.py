@@ -17,14 +17,14 @@ def manageCertifications():
 	disciplines = pdr[0]
 	requirements = pdr[1]
 	officials = processOfficials(targetDirectoryPath, disciplines)
-	achievements = []
+	achievements = set()
 	certifications = []
 
 	displayOptions = True;
 	while (displayOptions == True):
 		selection = solicitCertManagerAction()
 		if (selection == 'E'):
-			achievements.extend(processAchievements(targetDirectoryPath, officials, requirements));
+			achievements = achievements | processAchievements(targetDirectoryPath, officials, requirements);
 		elif (selection == 'C'):
 			displayCertifications(certifications);
 		elif (selection == 'A'):
@@ -35,8 +35,5 @@ def manageCertifications():
 			manageEmails(officials, disciplines, requirements, achievements, certifications)
 		elif (selection == 'Q'):
 			displayOptions = quit()
-		elif (selection == 'S'):
-			for achievement in achievements:
-				achievement.output()
 		else:
 			rejectOption(selection)
