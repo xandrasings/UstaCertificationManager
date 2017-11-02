@@ -6,6 +6,7 @@ from .manageEmails import *
 from .processAchievements import *
 from .processOfficials import *
 from .processDisciplineRequirements import *
+from .saveAchievements import *
 from .setTargetDirectoryPath import *
 from .quit import *
 from .solicitAction import *
@@ -33,6 +34,8 @@ def manageCertifications():
 			displayOfficial(officials, disciplines, requirements, achievements, certifications);
 		elif (selection == 'M'):
 			manageEmails(officials, disciplines, requirements, achievements, certifications)
+		elif (selection == 'S'):
+			saveAchievements(achievements)
 		elif (selection == 'Q'):
 			displayOptions = quit()
 		else:

@@ -3,10 +3,11 @@ from ..Utilities.output import *
 
 def solicitCertManagerAction():
 	outputPrompt('What would you like to do?')
-	outputOption(' - (E)nter new Achievements')
-	outputOption(' - display (C)ertification table')
-	outputOption(' - display (A)chievement table')
-	outputOption(' - display (O)fficial details')
-	outputOption(' - send e(M)ails')
+	outputOption(' - (E)nter new achievements')
+	outputOption(' - Display (C)ertification table')
+	outputOption(' - Display (A)chievement table')
+	outputOption(' - Display (O)fficial details')
+	outputOption(' - Send e(M)ails')
+	outputOption(' - (S)ave current achievements')
 	outputOption(' - (Q)uit')
 	return prompt()
