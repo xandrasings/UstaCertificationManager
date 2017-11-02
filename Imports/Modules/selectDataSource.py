@@ -4,9 +4,10 @@ from ..Utilities.input import *
 from ..Utilities.output import *
 from ..Utilities.dataTypeRules import *
 
-import os
 from os import listdir
 from xlrd import *
+
+import os
 
 def selectDataSource(dataType, targetDirectoryPath):
 	dataFilePaths = selectDataFiles(dataType, targetDirectoryPath)
@@ -123,6 +124,10 @@ def extendPath(filePath, extension):
 
 def getFileName(filePath):
 	return os.path.basename(filePath)
+
+
+def getAbsoluteFilePath(filePath):
+	return os.path.abspath(filePath)
 
 
 def getFilePaths(optionPath):

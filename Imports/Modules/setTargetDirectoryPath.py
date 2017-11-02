@@ -1,12 +1,9 @@
+from .selectDataSource import *
 from .quit import *
 from ..Classes.Data import *
-from ..Modules.selectDataSource import *
 from ..Utilities.input import *
 from ..Utilities.output import *
 from ..Utilities.dataTypeRules import *
-
-import os
-from os import listdir
 
 def setTargetDirectoryPath(targetDirectoryPath, firstRun = True):
 	targetDirectoryPath = getAbsoluteFilePath(targetDirectoryPath)
@@ -23,7 +20,3 @@ def setTargetDirectoryPath(targetDirectoryPath, firstRun = True):
 		optionPath = setTargetDirectoryPath(optionPath, False)
 	output('Selected directory: ' + optionPath)
 	return optionPath
-
-
-def getAbsoluteFilePath(filePath):
-	return os.path.abspath(filePath)
