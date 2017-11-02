@@ -1,16 +1,16 @@
-from Imports.Modules.displayAchievements import *
-from Imports.Modules.displayCertifications import *
-from Imports.Modules.displayIntroduction import *
-from Imports.Modules.displayOfficial import *
-from Imports.Modules.manageEmails import *
-from Imports.Modules.processAchievements import *
-from Imports.Modules.processOfficials import *
-from Imports.Modules.processDisciplineRequirements import *
-from Imports.Modules.setTargetDirectoryPath import *
-from Imports.Modules.quit import *
-from Imports.Modules.solicitAction import *
+from .displayAchievements import *
+from .displayCertifications import *
+from .displayIntroduction import *
+from .displayOfficial import *
+from .manageEmails import *
+from .processAchievements import *
+from .processOfficials import *
+from .processDisciplineRequirements import *
+from .setTargetDirectoryPath import *
+from .quit import *
+from .solicitAction import *
 
-def main():
+def certManager():
 	displayIntroduction()
 	targetDirectoryPath = setTargetDirectoryPath('DataFiles')
 	pdr = processDisciplineRequirements(targetDirectoryPath)
@@ -37,5 +37,3 @@ def main():
 			displayOptions = quit()
 		else:
 			rejectOption(selection)
-			
-main()
