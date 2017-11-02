@@ -3,11 +3,12 @@ from ..Utilities.dataTypeRules import *
 from ..Utilities.output import *
 
 class Data:
-	def __init__(self, data, dataType):
+	def __init__(self, data, dataType, sourceFileName):
 		self.data = data
 		self.dataType = dataType
 		self.colMax = self.data.ncols
 		self.rowMax = self.data.nrows
+		self.sourceFile = sourceFileName
 
 
 	def setUp(self):
@@ -180,7 +181,7 @@ class Data:
 			for dataArgIndex in range(startCol):
 				dataArgs.append(self.get(dataArgIndex,col))
 				
-			colObjects.append(colHeaderType[self.dataType](dataArgs, givenArgs))
+			colObjects.append(colHeaderType[self.dataType](self.sourceFile, dataArgs, givenArgs))
 
 		return colObjects
 
@@ -195,7 +196,7 @@ class Data:
 			for dataArgIndex in range(self.colMax):
 				dataArgs.append(self.get(row,dataArgIndex))
 
-			rowObject = rowHeaderType[self.dataType](dataArgs, givenArgs)
+			rowObject = rowHeaderType[self.dataType](self.sourceFile, dataArgs, givenArgs)
 			if rowObject.getValidity():
 				rowObjects.append(rowObject)
 

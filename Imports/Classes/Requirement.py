@@ -3,7 +3,7 @@ from ..Utilities.dataTypeRules import *
 from ..Utilities.output import *
 
 class Requirement:
-	def __init__(self, dataArgs, givenArgs = []):
+	def __init__(self, sourceFile, dataArgs, givenArgs = []):
 		self.valid = True
 		self.name = pare(dataArgs[0], [' course'])
 

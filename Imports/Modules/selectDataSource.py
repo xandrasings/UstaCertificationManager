@@ -114,10 +114,15 @@ def getPathIndex(validOptions):
 
 	return fileIndex
 
+
 def extendPath(filePath, extension):
 	if extension != 'current directory':
 		filePath = os.path.join(filePath, extension)
 	return filePath
+
+
+def getFileName(filePath):
+	return os.path.basename(filePath)
 
 
 def getFilePaths(optionPath):
@@ -141,7 +146,7 @@ def getDataFiles(dataType, dataFilePaths):
 	for dataFilePath in dataFilePaths:
 		dataFile = openWorkbook(dataFilePath)
 		dataSheetIndex = selectDataSheetIndex(dataFile)
-		data.append(Data(dataFile.sheet_by_index(dataSheetIndex), dataType))
+		data.append(Data(dataFile.sheet_by_index(dataSheetIndex), dataType, getFileName(dataFilePath)))
 
 	return data
 

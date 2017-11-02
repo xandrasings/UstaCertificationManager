@@ -35,5 +35,8 @@ def manageCertifications():
 			manageEmails(officials, disciplines, requirements, achievements, certifications)
 		elif (selection == 'Q'):
 			displayOptions = quit()
+		elif (selection == 'S'):
+			for achievement in achievements:
+				achievement.output()
 		else:
 			rejectOption(selection)

@@ -2,7 +2,7 @@ from ..Utilities.dataTypeRules import *
 from ..Utilities.output import *
 
 class Official:
-	def __init__(self, dataArgs, givenArgs = []):
+	def __init__(self, sourceFile, dataArgs, givenArgs = []):
 		self.valid = True
 		self.firstName = dataArgs[0]
 		self.preferredName = dataArgs[1]

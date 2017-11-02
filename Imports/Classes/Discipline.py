@@ -2,7 +2,7 @@ from ..Utilities.dataTypeRules import *
 from ..Utilities.output import *
 
 class Discipline:
-	def __init__(self, dataArgs, givenArgs = []):
+	def __init__(self, sourceFile, dataArgs, givenArgs = []):
 		self.valid = True
 		self.name = dataArgs[0]
 		dataArgs = dataArgs[1:]

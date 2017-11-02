@@ -5,13 +5,9 @@ from ..Utilities.dataTypeRules import *
 from ..Utilities.output import *
 
 class Achievement:
-	def __init__(self, dataArgs, givenArgs = []):
+	def __init__(self, sourceFile, dataArgs, givenArgs = []):
 		self.official = None
 		self.requirement = None
-
-		if getFullName(dataArgs[1], dataArgs[0]) == "RICHARD ARIANS":
-			print('Dick did:')
-			print(dataArgs[2])
 
 		for official in givenArgs[0]:
 			if official.matches(getFullName(dataArgs[1], dataArgs[0])):
@@ -20,12 +16,11 @@ class Achievement:
 
 		for requirement in givenArgs[1]:
 			if requirement.matches(pare(dataArgs[2], [' course', '.','_OLD'])):
-				if getFullName(dataArgs[1], dataArgs[0]) == "RICHARD ARIANS":
-					print('requirement match!')
 				self.requirement = requirement
 				break
 
 		self.completedDate = dataArgs[4]
+		self.sourceFile = sourceFile
 		self.valid = (
 			isinstance(self.official, Official) and
 			isinstance(self.requirement, Requirement) and
@@ -46,8 +41,10 @@ class Achievement:
 
 
 	def output(self):
-		self.official.output()
-		self.requirement.output()
+		output(self.official.getName())
+		output(self.requirement.getName())
+		output(self.completedDate)
+		output(self.sourceFile)
 
 def getFullName(firstName, lastName):
 	return firstName + ' ' + lastName;
