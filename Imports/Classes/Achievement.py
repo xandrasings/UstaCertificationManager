@@ -28,6 +28,19 @@ class Achievement:
 		)
 
 
+	def __eq__(self, other):
+		return (
+			isinstance(other, Achievement) and
+			self.official.getName() == other.official.getName() and
+			self.requirement.getName() == other.requirement.getName() and
+			self.completedDate == other.completedDate
+		)
+
+
+	def __hash__(self):
+		return hash(self.official.getName())
+
+
 	def getOfficial(self):
 		return self.official
 
