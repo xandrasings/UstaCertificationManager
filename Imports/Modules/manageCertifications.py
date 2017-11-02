@@ -10,7 +10,7 @@ from .setTargetDirectoryPath import *
 from .quit import *
 from .solicitAction import *
 
-def certManager():
+def manageCertifications():
 	displayIntroduction()
 	targetDirectoryPath = setTargetDirectoryPath('DataFiles')
 	pdr = processDisciplineRequirements(targetDirectoryPath)

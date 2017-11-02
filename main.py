@@ -1,6 +1,6 @@
-from Imports.Modules.certManager import *
+from Imports.Modules.manageCertifications import *
 
 def main():
-	certManager()
+	manageCertifications()
 			
 main()
