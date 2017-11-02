@@ -6,15 +6,17 @@ from Imports.Modules.manageEmails import *
 from Imports.Modules.processAchievements import *
 from Imports.Modules.processOfficials import *
 from Imports.Modules.processDisciplineRequirements import *
+from Imports.Modules.setTargetDirectoryPath import *
 from Imports.Modules.quit import *
 from Imports.Modules.solicitAction import *
 
 def main():
 	displayIntroduction()
-	pdr = processDisciplineRequirements()
+	targetDirectoryPath = setTargetDirectoryPath('DataFiles')
+	pdr = processDisciplineRequirements(targetDirectoryPath)
 	disciplines = pdr[0]
 	requirements = pdr[1]
-	officials = processOfficials(disciplines)
+	officials = processOfficials(targetDirectoryPath, disciplines)
 	achievements = []
 	certifications = []
 
@@ -22,7 +24,7 @@ def main():
 	while (displayOptions == True):
 		selection = solicitCertManagerAction()
 		if (selection == 'E'):
-			achievements.extend(processAchievements(officials, requirements));
+			achievements.extend(processAchievements(targetDirectoryPath, officials, requirements));
 		elif (selection == 'C'):
 			displayCertifications(certifications);
 		elif (selection == 'A'):

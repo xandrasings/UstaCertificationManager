@@ -8,61 +8,63 @@ import os
 from os import listdir
 from xlrd import *
 
-def selectDataSource(dataType):
-	dataFilePaths = selectDataFiles(dataType) # I'm a list now
+def selectDataSource(dataType, targetDirectoryPath):
+	dataFilePaths = selectDataFiles(dataType, targetDirectoryPath)
 	data = getDataFiles(dataType, dataFilePaths)
 	
 	return data
 
 
-def selectDataFiles(dataType):
-	targetDirectory = 'Resources'
-	dataFilePath = getAbsoluteFilePath(targetDirectory)
-	validOptions = getValidFileOptions(dataType, dataFilePath)
-	optionIndex = solicitFileOptionIndex(dataType, targetDirectory, validOptions)
-	optionPath = extendPath(dataFilePath, validOptions[optionIndex])
+def selectDataFiles(dataType, targetDirectoryPath):
+	output('Seeking file holding ' + dataType + ' data in ' + targetDirectoryPath)
+	validOptions = getValidPathOptions(dataType, targetDirectoryPath)
+	outputPrompt('Which file or directory would you like to use for ' + dataType + ' data?')
+	optionIndex = solicitPathOptionIndex(validOptions)
+	optionPath = extendPath(targetDirectoryPath, validOptions[optionIndex])
 	dataFilePaths = getFilePaths(optionPath)
 
 	return dataFilePaths
 
 
-def getAbsoluteFilePath(filePath):
-	return os.path.abspath(filePath)
-
-
-def getValidFileOptions(dataType, filePath):
-	output('Seeking excel file holding ' + dataType + ' data in ' + filePath)
+def getValidPathOptions(dataType, filePath):
 	pathContent = listdir(filePath)
-	validOptions = filterFileOptions(dataType, pathContent)
+	validOptions = filterPathOptions(dataType, pathContent)
 
 	if len(validOptions) == 0:
 		emptyValidOptionAction = showEmptyValidOptionActions(filePath)
-		validOptions = getValidFileOptions(dataType, filePath)
+		validOptions = getValidPathOptions(dataType, filePath)
 
 	return validOptions
 
 
-def filterFileOptions(dataType, pathContent):
+def filterPathOptions(dataType, pathContent):
 	validOptions = []
 
+	if acceptsSelf[dataType]:
+		validOptions.append('current directory')
+
 	for item in list(pathContent):
-		if (
-			(
-				(
-					item.endswith('.xlsx') or
-					item.endswith('.xls')
-				) and
-				(	
-					not item.startswith('~')
-				)
-			) or
-			(
-				('.' not in item) if acceptsDirectory[dataType] else False
-			)
-		):
+		if ((acceptsDirectory[dataType] and isValidDirectory(item)) or
+		(acceptsExcelFile[dataType] and isValidExcelFile(item))):
 			validOptions.append(item)
 
 	return validOptions
+
+
+def isValidDirectory(item):
+	return '.' not in item and item != 'backupData'
+
+
+def isValidExcelFile(item):
+	status = (
+		(
+			item.endswith('.xlsx') or
+			item.endswith('.xls')
+		) and (	
+			not item.startswith('~')
+		)
+	)
+	return status
 
 
 def showEmptyValidOptionActions(filePath):
@@ -80,14 +82,13 @@ def showEmptyValidOptionActions(filePath):
 			rejectOption(selection)
 
 
-def solicitFileOptionIndex(dataType, targetDirectory, validOptions):
-	printFileOptions(dataType, validOptions)
-	optionIndex = getFileIndex(validOptions)
+def solicitPathOptionIndex(validOptions):
+	printPathOptions(validOptions)
+	optionIndex = getPathIndex(validOptions)
 	return optionIndex
 
 
-def printFileOptions(dataType, pathContent):
-	outputPrompt('Which file or directory would you like to use for ' + dataType + ' data?')
+def printPathOptions(pathContent):
 	i = 1
 	for item in list(pathContent):
 		outputOption('- (' + str(i) + ') ' + item)
@@ -95,7 +96,7 @@ def printFileOptions(dataType, pathContent):
 	outputOption('- (Q)uit')
 
 
-def getFileIndex(validOptions):
+def getPathIndex(validOptions):
 	fileIndex = -1
 	maxInput = len(validOptions)
 
@@ -114,7 +115,9 @@ def getFileIndex(validOptions):
 	return fileIndex
 
 def extendPath(filePath, extension):
-	return os.path.join(filePath, extension)
+	if extension != 'current directory':
+		filePath = os.path.join(filePath, extension)
+	return filePath
 
 
 def getFilePaths(optionPath):
@@ -126,7 +129,7 @@ def getFilePaths(optionPath):
 		):
 		filePaths.append(optionPath)
 	else:
-		validFileOptions = getValidFileOptions('excel', optionPath)
+		validFileOptions = getValidPathOptions('excelFile', optionPath)
 		for validFile in validFileOptions:
 			filePaths.append(extendPath(optionPath, validFile))
 

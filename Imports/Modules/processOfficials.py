@@ -3,9 +3,9 @@ from .selectDataSource import *
 from ..Utilities.input import *
 from ..Utilities.output import *
 
-def processOfficials(disciplines):
+def processOfficials(targetDirectoryPath, disciplines):
 	dataType = 'officials'
-	data = selectDataSource(dataType)[0]
+	data = selectDataSource(dataType, targetDirectoryPath)[0]
 	data.setUp()
 
 	disciplines = checkMainColHeaders(disciplines, data.getMainColHeaders())

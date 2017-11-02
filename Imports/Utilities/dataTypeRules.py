@@ -3,11 +3,28 @@ from ..Classes.Requirement import *
 from ..Classes.Discipline import *
 from ..Classes.Official import *
 
-acceptsDirectory = {
-	'achievements' : True,
-	'excel' : False,
+acceptsSelf = {
+	'achievements' : False,
+	'directory' : True,
+	'excelFile' : False,
 	'officials' : False,
 	'requirements' : False
+}
+
+acceptsDirectory = {
+	'achievements' : True,
+	'directory' : True,
+	'excelFile' : False,
+	'officials' : False,
+	'requirements' : False
+}
+
+acceptsExcelFile = {
+	'achievements' : True,
+	'directory' : False,
+	'excelFile' : True,
+	'officials' : True,
+	'requirements' : True
 }
 
 colHeaderType = {
