@@ -1,4 +1,5 @@
 from ..Classes.Achievement import *
+from ..Classes.CourseAchievement import *
 from ..Classes.Requirement import *
 from ..Classes.Discipline import *
 from ..Classes.Official import *
