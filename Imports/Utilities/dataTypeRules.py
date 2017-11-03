@@ -9,7 +9,8 @@ acceptsSelf = {
 	'directory' : True,
 	'excelFile' : False,
 	'officials' : False,
-	'requirements' : False
+	'requirements' : False,
+	'saved achievements' : False
 }
 
 acceptsDirectory = {
@@ -17,7 +18,8 @@ acceptsDirectory = {
 	'directory' : True,
 	'excelFile' : False,
 	'officials' : False,
-	'requirements' : False
+	'requirements' : False,
+	'saved achievements' : False
 }
 
 acceptsExcelFile = {
@@ -25,7 +27,17 @@ acceptsExcelFile = {
 	'directory' : False,
 	'excelFile' : True,
 	'officials' : True,
-	'requirements' : True
+	'requirements' : True,
+	'saved achievements' : False
+}
+
+acceptsCsvFile = {
+	'achievements' : False,
+	'directory' : False,
+	'excelFile' : False,
+	'officials' : False,
+	'requirements' : False,
+	'saved achievements' : True
 }
 
 colHeaderType = {

@@ -1,11 +1,11 @@
 from .quit import *
-from .selectDataSource import *
+from .selectData import *
 from ..Utilities.input import *
 from ..Utilities.output import *
 
 def processOfficials(targetDirectoryPath, disciplines):
 	dataType = 'officials'
-	data = selectDataSource(dataType, targetDirectoryPath)[0]
+	data = selectExcelData(dataType, targetDirectoryPath)[0]
 	data.setUp()
 
 	disciplines = checkMainColHeaders(disciplines, data.getMainColHeaders())

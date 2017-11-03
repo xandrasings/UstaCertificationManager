@@ -1,5 +1,5 @@
-from .selectDataSource import *
 from .quit import *
+from .selectData import *
 from ..Classes.Data import *
 from ..Utilities.input import *
 from ..Utilities.output import *
@@ -22,5 +22,5 @@ def setTargetDirectoryPath(targetDirectoryPath, firstRun = True):
 	if firstRun:
 		output('Selected directory: ' + optionPath)
 		outputCloseModule()
-	
+
 	return optionPath

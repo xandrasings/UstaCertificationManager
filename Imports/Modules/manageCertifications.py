@@ -2,6 +2,7 @@ from .displayAchievements import *
 from .displayCertifications import *
 from .displayIntroduction import *
 from .displayOfficial import *
+from .loadSavedAchievements import *
 from .manageEmails import *
 from .processAchievements import *
 from .processOfficials import *
@@ -26,18 +27,22 @@ def manageCertifications():
 	while (displayOptions == True):
 		selection = solicitCertManagerAction()
 		outputLine()
-		if (selection == 'E'):
-			achievements = achievements | processAchievements(targetDirectoryPath, officials, requirements);
+		if (selection == 'P'):
+			achievements = achievements | loadSavedAchievements()
+		elif (selection == 'L'):
+			achievements = achievements | processAchievements(targetDirectoryPath, officials, requirements)
+		elif (selection == 'M'):
+			pass
+		elif (selection == 'S'):
+			saveAchievements(achievements)
 		elif (selection == 'C'):
 			displayCertifications(certifications);
 		elif (selection == 'A'):
 			displayAchievements(requirements, officials, achievements);
 		elif (selection == 'O'):
 			displayOfficial(officials, disciplines, requirements, achievements, certifications);
-		elif (selection == 'M'):
+		elif (selection == 'E'):
 			manageEmails(officials, disciplines, requirements, achievements, certifications)
-		elif (selection == 'S'):
-			saveAchievements(achievements)
 		elif (selection == 'Q'):
 			displayOptions = quit()
 		else:
