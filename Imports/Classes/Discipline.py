@@ -5,7 +5,7 @@ class Discipline:
 	def __init__(self, sourceFile, dataArgs, givenArgs = []):
 		self.valid = True
 		self.name = dataArgs[0]
-		dataArgs = dataArgs[1:]
+		dataArgs.pop(0)
 		self.requirements = []
 
 		for index in range(len(dataArgs)):
