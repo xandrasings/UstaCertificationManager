@@ -144,7 +144,7 @@ def getFilePaths(dataType, optionPath):
 	if '.' in optionPath:
 		filePaths.append(optionPath)
 	else:
-		validFileOptions = getValidPathOptions(dataType, optionPath) # revisit me because directory fluff
+		validFileOptions = getValidPathOptions(dataType, optionPath) # TODO revisit me because directory fluff
 		for validFile in validFileOptions:
 			filePaths.append(extendPath(optionPath, validFile))
 

@@ -37,7 +37,7 @@ class Official:
 		return self.disciplines
 
 
-	def getValidity(self):
+	def isValid(self):
 		return self.valid
 
 

@@ -4,7 +4,64 @@ from ..Utilities.dataTypeRules import *
 from ..Utilities.output import *
 
 class Achievement:
-	pass
+	def __init__():
+		pass
+
+		
+	def __eq__(self, other):
+		return (
+			isinstance(other, Achievement) and
+			self.official.getName() == other.official.getName() and
+			self.requirement.getName() == other.requirement.getName() and
+			self.completedDate == other.completedDate
+		)
+
+
+	def __hash__(self):
+		return hash(self.official.getName())
+
+
+	def getOfficial(self):
+		return self.official
+
+
+	def getOfficialName(self):
+		return self.official.getName()
+
+
+	def getOfficialFirstName(self):
+		return self.official.getFirstName()
+
+
+	def getOfficialLastName(self):
+		return self.official.getLastName()
+
+
+	def getRequirement(self):
+		return self.requirement
+
+
+	def getRequirementName(self):
+		return self.requirement.getName()
+
+
+	def getCompletedDate(self):
+		return self.completedDate
+
+
+	def getSourceFile(self):
+		return self.sourceFile
+
+
+	def isValid(self):
+		return self.valid
+
+
+	def output(self):
+		output(self.official.getName())
+		output(self.requirement.getName())
+		output(self.completedDate)
+		output(self.sourceFile)
 
 
 def getFullName(firstName, lastName):

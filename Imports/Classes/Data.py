@@ -197,7 +197,7 @@ class Data:
 				dataArgs.append(self.get(row,dataArgIndex))
 
 			rowObject = rowHeaderType[self.dataType](self.sourceFile, dataArgs, givenArgs)
-			if rowObject.getValidity():
+			if rowObject.isValid():
 				rowObjects.append(rowObject)
 
 		return rowObjects

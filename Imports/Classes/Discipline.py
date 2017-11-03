@@ -21,7 +21,7 @@ class Discipline:
 		return self.requirements
 
 
-	def getValidity(self):
+	def isValid(self):
 		return self.valid
 
 

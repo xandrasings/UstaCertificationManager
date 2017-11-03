@@ -12,7 +12,7 @@ class Requirement:
 		return self.name
 
 
-	def getValidity(self):
+	def isValid(self):
 		return self.valid
 
 

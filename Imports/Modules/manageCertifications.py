@@ -28,7 +28,7 @@ def manageCertifications():
 		selection = solicitCertManagerAction()
 		outputLine()
 		if (selection == 'P'):
-			achievements = achievements | loadSavedAchievements()
+			achievements = achievements | loadSavedAchievements(officials, requirements)
 		elif (selection == 'L'):
 			achievements = achievements | processAchievements(targetDirectoryPath, officials, requirements)
 		elif (selection == 'M'):

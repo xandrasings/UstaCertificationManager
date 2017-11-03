@@ -1,10 +1,11 @@
 from .selectData import *
+from ..Classes.DataAchievement import *
 from ..Utilities.input import *
 from ..Utilities.output import *
 
 import csv
 
-def loadSavedAchievements():
+def loadSavedAchievements(officials, requirements):
 	targetDirectoryPath = extendPath(getAbsoluteFilePath('DataFiles'), 'backupData')
 	dataType = 'saved achievements'
 
@@ -13,9 +14,9 @@ def loadSavedAchievements():
 	achievements = set()
 	achievementReader = csv.reader(open(backupFile, newline=''))
 	for row in achievementReader:
-		print(', '.join(row))
-
-		# achievements = achievements | set(data.convertRows([officials, requirements]))
+		achievement = DataAchievement(row, [officials, requirements])
+		if achievement.isValid():
+			achievements.add(achievement)
 
 	outputCloseModule(dataType)
 	return achievements
