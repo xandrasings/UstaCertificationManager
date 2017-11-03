@@ -5,3 +5,4 @@ def manageEmails(officials, disciplines, requirements, achievements, certificati
 	output('sendEmails')
 
 	promptContinue()
+	outputCloseModule()

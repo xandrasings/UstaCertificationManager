@@ -18,5 +18,9 @@ def setTargetDirectoryPath(targetDirectoryPath, firstRun = True):
 
 	if optionPath != targetDirectoryPath:
 		optionPath = setTargetDirectoryPath(optionPath, False)
-	output('Selected directory: ' + optionPath)
+
+	if firstRun:
+		output('Selected directory: ' + optionPath)
+		outputCloseModule()
+	
 	return optionPath

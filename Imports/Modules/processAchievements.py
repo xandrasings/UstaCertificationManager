@@ -10,5 +10,5 @@ def processAchievements(targetDirectoryPath, officials, requirements):
 
 		achievements = achievements | set(data.convertRows([officials, requirements]))
 
-	outputCloseProcessingModule(dataType)
+	outputCloseModule(dataType)
 	return achievements

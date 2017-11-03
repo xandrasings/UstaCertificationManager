@@ -21,9 +21,10 @@ def outputOption(text):
 	rightIndex = text.index(')') + 1
 	output(text[0:leftIndex] + colorPrompt(text[leftIndex:rightIndex]) + text[rightIndex:])
 
-def outputCloseProcessingModule(dataType):
-	output('finished processing ' + dataType +' data')
-	outputLine()
+def outputCloseModule(dataType = None):
+	if dataType is not None:
+		output('finished processing ' + dataType +' data')
+	outputLineHeavy()
 
 def outputCloseApplication():
 	outputUserNotice('Exiting Certification Manager.')

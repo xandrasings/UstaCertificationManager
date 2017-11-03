@@ -28,7 +28,7 @@ def promptYN(text = ''):
 
 def promptContinue():
 	input(colorPrompt('Press enter to continue. > '))
-	outputLineHeavy()
+	outputCloseModule()
 
 
 def rejectOption(selection):

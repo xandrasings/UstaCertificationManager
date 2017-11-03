@@ -12,12 +12,12 @@ import os
 def selectDataSource(dataType, targetDirectoryPath):
 	dataFilePaths = selectDataFiles(dataType, targetDirectoryPath)
 	data = getDataFiles(dataType, dataFilePaths)
-	
+
 	return data
 
 
 def selectDataFiles(dataType, targetDirectoryPath):
-	output('Seeking file holding ' + dataType + ' data in ' + targetDirectoryPath)
+	outputUserNotice('Navigate to ' + dataType + ' data in ' + targetDirectoryPath)
 	validOptions = getValidPathOptions(dataType, targetDirectoryPath)
 	outputPrompt('Which file or directory would you like to use for ' + dataType + ' data?')
 	optionIndex = solicitPathOptionIndex(validOptions)

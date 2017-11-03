@@ -10,5 +10,5 @@ def processDisciplineRequirements(targetDirectoryPath):
 	requirements = data.convertCols()
 	disciplines = data.convertRows([requirements])
 
-	outputCloseProcessingModule(dataType)
+	outputCloseModule(dataType)
 	return [disciplines, requirements]

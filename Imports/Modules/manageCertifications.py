@@ -6,10 +6,11 @@ from .manageEmails import *
 from .processAchievements import *
 from .processOfficials import *
 from .processDisciplineRequirements import *
+from .quit import *
 from .saveAchievements import *
 from .setTargetDirectoryPath import *
-from .quit import *
 from .solicitAction import *
+from ..Utilities.output import *
 
 def manageCertifications():
 	displayIntroduction()
@@ -24,6 +25,7 @@ def manageCertifications():
 	displayOptions = True;
 	while (displayOptions == True):
 		selection = solicitCertManagerAction()
+		outputLine()
 		if (selection == 'E'):
 			achievements = achievements | processAchievements(targetDirectoryPath, officials, requirements);
 		elif (selection == 'C'):

@@ -5,3 +5,4 @@ def displayCertifications(certifications):
 	output('displayCertifications')
 
 	promptContinue()
+	outputCloseModule()

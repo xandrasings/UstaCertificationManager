@@ -11,7 +11,7 @@ def processOfficials(targetDirectoryPath, disciplines):
 	disciplines = checkMainColHeaders(disciplines, data.getMainColHeaders())
 	officials = data.convertRows([disciplines])
 
-	outputCloseProcessingModule(dataType)
+	outputCloseModule(dataType)
 	return officials
 
 def checkMainColHeaders(disciplines, mainColHeaders):

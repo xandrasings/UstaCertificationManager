@@ -78,6 +78,3 @@ class CourseAchievement(Achievement):
 		output(self.requirement.getName())
 		output(self.completedDate)
 		output(self.sourceFile)
-
-def getFullName(firstName, lastName):
-	return firstName + ' ' + lastName;

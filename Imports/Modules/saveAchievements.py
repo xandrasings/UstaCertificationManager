@@ -1,4 +1,5 @@
 from ..Modules.selectDataSource import *
+from ..Utilities.output import *
 
 from datetime import datetime
 
@@ -12,6 +13,9 @@ def saveAchievements(achievements):
 		achievementWriter = csv.writer(backup, delimiter=',')
 		for achievement in achievements:
 			achievementWriter.writerow(generateRow(achievement))
+
+	outputUserNotice('Current state of achievements is backed up to file ' + backupFilePath)
+	outputCloseModule()
 
 
 def selectBackupFilePath():

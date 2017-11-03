@@ -15,7 +15,6 @@ def displayAchievements(requirements, officials, achievements):
 		data.append(newRow)
 
 	displayTable(colHeaders, rowHeaders, data)
-	outputLineHeavy()
 	promptContinue()
 
 def getItemNames(items):
