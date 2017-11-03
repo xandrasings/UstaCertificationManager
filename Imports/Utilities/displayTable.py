@@ -67,21 +67,37 @@ def arrayenCellContent(colWidth, cellContent):
 	wordArray = cellContent.split()
 
 	row = ''
-	for word in wordArray:
-		if fits(row, colWidth, word):
-			row = (word if rowIsEmpty(row) else row + ' ' + word)
+	while(len(wordArray) > 0):
+		if fits(row, colWidth, wordArray[0]):
+			row = row + ' ' + wordArray[0]
+			wordArray.pop(0)
 		else:
+			if rowIsEmpty(row):
+				row = getWordPrefix(wordArray[0], colWidth)
+				wordArray[0] = getWordSuffix(wordArray[0], colWidth)
 			arrayenedCellContent.append(row)
-			row = word
-	arrayenedCellContent.append(row)
+			row = ''
+
+	if len(row) > 0:
+		arrayenedCellContent.append(row)
 
 	return arrayenedCellContent
+
 
 def fits(row, max, word):
 	return len(row) + len(word) + (0 if rowIsEmpty(row) else 1) <= max
 
+
 def rowIsEmpty(row):
 	return len(row) == 0
+
+
+def getWordPrefix(word, colWidth):
+	return word[0:colWidth-1] + '-'
+
+
+def getWordSuffix(word, colWidth):
+	return word[colWidth-1:]
 
 
 def lengthenRowContent(rowContent):
