@@ -2,7 +2,7 @@ from .displayAchievements import *
 from .displayCertifications import *
 from .displayIntroduction import *
 from .displayOfficial import *
-from .loadSavedAchievements import *
+from .handleSavedAchievements import *
 from .manageEmails import *
 from .processAchievements import *
 from .processOfficials import *
@@ -20,16 +20,14 @@ def manageCertifications():
 	disciplines = pdr[0]
 	requirements = pdr[1]
 	officials = processOfficials(targetDirectoryPath, disciplines)
-	achievements = set()
+	achievements = handleSavedAchievements(officials, requirements)
 	certifications = []
 
 	displayOptions = True;
 	while (displayOptions == True):
 		selection = solicitCertManagerAction()
 		outputLine()
-		if (selection == 'P'):
-			achievements = achievements | loadSavedAchievements(officials, requirements)
-		elif (selection == 'L'):
+		if (selection == 'L'):
 			achievements = achievements | processAchievements(targetDirectoryPath, officials, requirements)
 		elif (selection == 'M'):
 			pass

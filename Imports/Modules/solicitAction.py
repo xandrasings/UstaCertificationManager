@@ -3,7 +3,6 @@ from ..Utilities.output import *
 
 def solicitCertManagerAction():
 	outputPrompt('What would you like to do?')
-	outputOption(' - load (P)revious state of achievements')
 	outputOption(' - (L)oad new achievement data files')
 	outputOption(' - (M)odify current state of achievements')
 	outputOption(' - (S)ave current state of achievements')

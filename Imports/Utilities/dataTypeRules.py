@@ -4,6 +4,24 @@ from ..Classes.Requirement import *
 from ..Classes.Discipline import *
 from ..Classes.Official import *
 
+displayNavigationPrompt = {
+	'achievements' : True,
+	'directory' : True,
+	'excelFile' : True,
+	'officials' : True,
+	'requirements' : True,
+	'saved achievements' : False
+}
+
+defaultsToSoleOption = {
+	'achievements' : False,
+	'directory' : False,
+	'excelFile' : False,
+	'officials' : False,
+	'requirements' : False,
+	'saved achievements' : True
+}
+
 acceptsSelf = {
 	'achievements' : False,
 	'directory' : True,

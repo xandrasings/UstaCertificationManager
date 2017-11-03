@@ -11,26 +11,31 @@ import os
 
 def selectExcelData(dataType, targetDirectoryPath):
 	dataFilePaths = selectDataFiles(dataType, targetDirectoryPath)
-	data = getDataFiles(dataType, dataFilePaths)
+	data = getExcelDataFiles(dataType, dataFilePaths)
 
 	return data
 
 
-def selectDataFiles(dataType, targetDirectoryPath, displayUserPrompt = True):
-	if displayUserPrompt:
-		outputUserNotice('Navigate to ' + dataType + ' data in ' + targetDirectoryPath)
-	validOptions = getValidPathOptions(dataType, targetDirectoryPath)
-	outputPrompt('Which file or directory would you like to use for ' + dataType + ' data?')
-	optionIndex = solicitPathOptionIndex(validOptions)
-	optionPath = extendPath(targetDirectoryPath, validOptions[optionIndex])
+def selectDataFiles(dataType, targetDirectoryPath, validOptions = []):
+	displayAppropriateNavigationPrompt(dataType, targetDirectoryPath)
+	if len(validOptions) == 0:
+		validOptions = getValidPathOptions(dataType, targetDirectoryPath)
+	
+	optionPath = extendPath(targetDirectoryPath, getOptionName(dataType, validOptions))
 	dataFilePaths = getFilePaths(dataType, optionPath)
 
 	return dataFilePaths
 
 
+def displayAppropriateNavigationPrompt(dataType, targetDirectoryPath):
+	if displayNavigationPrompt[dataType]:
+		outputUserNotice('Navigate to ' + dataType + ' data in ' + targetDirectoryPath)
+
+
 def getValidPathOptions(dataType, filePath):
 	pathContent = listdir(filePath)
 	validOptions = filterPathOptions(dataType, pathContent)
+	validOptions = sortPathOptions(dataType, validOptions)
 
 	if len(validOptions) == 0:
 		emptyValidOptionAction = showEmptyValidOptionActions(filePath)
@@ -53,6 +58,11 @@ def filterPathOptions(dataType, pathContent):
 		):
 			validOptions.append(item)
 
+	return validOptions
+
+
+def sortPathOptions(dataType, validOptions):
+	# handle sort!
 	return validOptions
 
 
@@ -89,6 +99,16 @@ def showEmptyValidOptionActions(filePath):
 			quit()
 		elif selection != 'T':
 			rejectOption(selection)
+
+def getOptionName(dataType, validOptions):
+	optionName = ''
+	if len(validOptions) == 1 and defaultsToSoleOption[dataType]:
+		optionName = validOptions[0]
+	else:
+		outputPrompt('Which file or directory would you like to use for ' + dataType + ' data?')
+		optionIndex = solicitPathOptionIndex(validOptions)
+		optionName = validOptions[optionIndex]
+	return optionName
 
 
 def solicitPathOptionIndex(validOptions):
@@ -151,7 +171,7 @@ def getFilePaths(dataType, optionPath):
 	return filePaths
 
 
-def getDataFiles(dataType, dataFilePaths):
+def getExcelDataFiles(dataType, dataFilePaths):
 	data = []
 	for dataFilePath in dataFilePaths:
 		dataFile = openWorkbook(dataFilePath)

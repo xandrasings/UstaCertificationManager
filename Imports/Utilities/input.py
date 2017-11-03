@@ -14,16 +14,15 @@ def prompt(text = '', default = ''):
 
 
 def promptYN(text = ''):
-	selection = ''
-	while selection == '':
+	selection = None
+	while True:
+		if selection is not None:
+			outputUserNotice(selection + ' is not a valid response. Please enter \'Y\' or \'N\'')
 		selection = prompt(text + ' (Y/N)')
 		if selection == 'Y':
 			return True
 		elif selection in ['N', 'Q']:
 			return False
-		else:
-			selection = ''
-
 
 
 def promptContinue():
