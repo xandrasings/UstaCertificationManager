@@ -1,6 +1,11 @@
 from .color import *
 from .logo import *
 
+import os
+
+def clearTerminal():
+	os.system('cls' if os.name == 'nt' else 'clear')
+
 def output(text, colorOption = 'none'):
 	if colorOption == 'none':
 		print(text)
