@@ -5,6 +5,10 @@ from ..Utilities.dataTypeRules import *
 from ..Utilities.output import *
 
 class Achievement:
+	pass
+
+
+class CourseAchievement(Achievement):
 	def __init__(self, sourceFile, dataArgs, givenArgs = []):
 		self.official = None
 		self.requirement = None
@@ -45,8 +49,32 @@ class Achievement:
 		return self.official
 
 
+	def getOfficialName(self):
+		return self.official.getName()
+
+
+	def getOfficialFirstName(self):
+		return self.official.getFirstName()
+
+
+	def getOfficialLastName(self):
+		return self.official.getLastName()
+
+
 	def getRequirement(self):
 		return self.requirement
+
+
+	def getRequirementName(self):
+		return self.requirement.getName()
+
+
+	def getCompletedDate(self):
+		return self.completedDate
+
+
+	def getSourceFile(self):
+		return self.sourceFile
 
 
 	def getValidity(self):

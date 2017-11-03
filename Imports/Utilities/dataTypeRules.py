@@ -33,7 +33,7 @@ colHeaderType = {
 }
 
 rowHeaderType = {
-	'achievements' : Achievement,
+	'achievements' : CourseAchievement,
 	'officials' : Official,
 	'requirements' : Discipline
 }

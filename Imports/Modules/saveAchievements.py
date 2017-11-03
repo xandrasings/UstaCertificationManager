@@ -10,8 +10,8 @@ def saveAchievements(achievements):
 
 	with open(backupFilePath, 'w', newline='') as backup:
 		achievementWriter = csv.writer(backup, delimiter=',')
-		achievementWriter.writerow([1,2,3,4,'5'])
-		achievementWriter.writerow([1,2,3,4,'stringy, string, with, comments, in, it'])
+		for achievement in achievements:
+			achievementWriter.writerow(generateRow(achievement))
 
 
 def selectBackupFilePath():
@@ -24,8 +24,10 @@ def selectBackupFilePath():
 
 def selectBackupFileName(backupFilePath):
 	dateString = getDateString()
-	backupFileName = generateBackupFileName(dateString)
 	pathContent = listdir(backupFilePath)
+	
+	backupFileName = tryBackupFileName(dateString, 0, pathContent)
+
 	return backupFileName
 
 
@@ -33,5 +35,36 @@ def getDateString():
 	return str(datetime.now().date())
 
 
-def generateBackupFileName(dateString, suffix = ''):
+def tryBackupFileName(dateString, index, pathContent):
+	backupFileName = generateBackupFileName(dateString, index)
+	if backupFileName in pathContent:
+		backupFileName = tryBackupFileName(dateString, index + 1, pathContent)
+
+	return backupFileName
+
+
+def generateBackupFileName(dateString, index):
+	suffix = generateSuffix(index)
 	return 'achievementsBackUp_' + dateString + suffix + '.csv'
+
+
+def generateSuffix(index):
+	suffix = ''
+	
+	if index > 0:
+		suffix = str(index)
+		if index < 10:
+			suffix = '0' + suffix
+		suffix = '_' + suffix	
+
+	return suffix
+
+
+def generateRow(achievement):
+	row = []
+	row.append(achievement.getOfficialFirstName())
+	row.append(achievement.getOfficialLastName())
+	row.append(achievement.getRequirementName())
+	row.append(achievement.getCompletedDate())
+	row.append(achievement.getSourceFile())
+	return row
