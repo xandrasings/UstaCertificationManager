@@ -1,3 +1,5 @@
+import sys
+
 from .output import *
 
 def prompt(text = '', default = ''):
@@ -21,8 +23,11 @@ def promptYN(text = ''):
 		selection = prompt(text + ' (Y/N)')
 		if selection == 'Y':
 			return True
-		elif selection in ['N', 'Q']:
+		elif selection == 'N':
 			return False
+		elif selection == 'Q':
+			outputCloseApplication()
+			sys.exit()
 
 
 def promptContinue():

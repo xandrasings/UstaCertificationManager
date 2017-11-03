@@ -62,8 +62,7 @@ def filterPathOptions(dataType, pathContent):
 
 
 def sortPathOptions(dataType, validOptions):
-	# handle sort!
-	return validOptions
+	return sortType[dataType](validOptions)
 
 
 def isValidDirectory(item):

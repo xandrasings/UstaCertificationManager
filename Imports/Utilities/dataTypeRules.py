@@ -1,3 +1,4 @@
+from .fileSort import *
 from ..Classes.Achievement import *
 from ..Classes.CourseAchievement import *
 from ..Classes.Requirement import *
@@ -56,6 +57,16 @@ acceptsCsvFile = {
 	'officials' : False,
 	'requirements' : False,
 	'saved achievements' : True
+}
+
+
+sortType = {
+	'achievements' : noSort,
+	'directory' : noSort,
+	'excelFile' : noSort,
+	'officials' : noSort,
+	'requirements' : noSort,
+	'saved achievements' : reverseAlphaSort
 }
 
 colHeaderType = {
