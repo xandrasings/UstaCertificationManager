@@ -3,8 +3,6 @@ from ..Utilities.input import *
 from ..Utilities.output import *
 
 def modifyAchievements(achievements):
-
-
 	displayOptions = True;
 	while (displayOptions):
 		selection = solicitModificationType()
@@ -22,6 +20,7 @@ def modifyAchievements(achievements):
 		else:
 			rejectOption(selection)
 
+	outputCloseModule()
 	return achievements
 
 

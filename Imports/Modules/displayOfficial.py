@@ -5,4 +5,3 @@ def displayOfficial(officials, disciplines, requirements, achievements, certific
 	output('displayOfficial')
 
 	promptContinue()
-	outputCloseModule()
