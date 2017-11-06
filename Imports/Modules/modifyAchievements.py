@@ -1,8 +1,27 @@
+from .quit import *
 from ..Utilities.input import *
 from ..Utilities.output import *
 
 def modifyAchievements(achievements):
-	solicitModificationType()
+
+
+	displayOptions = True;
+	while (displayOptions):
+		selection = solicitModificationType()
+		if (selection == 'A'):
+			output('add')
+			displayOptions = offerNewModification()
+		elif (selection == 'M'):
+			output('modify')
+			displayOptions = offerNewModification()
+		elif (selection == 'R'):
+			output('remove')
+			displayOptions = offerNewModification()
+		elif (selection == 'Q'):
+			quit()
+		else:
+			rejectOption(selection)
+
 	return achievements
 
 
@@ -13,3 +32,6 @@ def solicitModificationType():
 	outputOption(' - (R)emove an existing reservation')
 	outputOption(' - (Q)uit')
 	return prompt()
+
+def offerNewModification():
+	return promptYN('Would you like to make another modification?')

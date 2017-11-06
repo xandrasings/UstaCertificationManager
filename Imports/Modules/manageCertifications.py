@@ -24,8 +24,7 @@ def manageCertifications():
 	achievements = handleSavedAchievements(officials, requirements)
 	certifications = []
 
-	displayOptions = True;
-	while (displayOptions == True):
+	while (True):
 		selection = solicitAction()
 		outputLine()
 		if (selection == 'L'):
@@ -43,6 +42,6 @@ def manageCertifications():
 		elif (selection == 'E'):
 			manageEmails(officials, disciplines, requirements, achievements, certifications)
 		elif (selection == 'Q'):
-			displayOptions = quit()
+			quit()
 		else:
 			rejectOption(selection)
