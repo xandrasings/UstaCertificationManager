@@ -11,7 +11,6 @@ from .processDisciplineRequirements import *
 from .quit import *
 from .saveAchievements import *
 from .setTargetDirectoryPath import *
-from .solicitAction import *
 from ..Utilities.output import *
 
 def manageCertifications():
@@ -45,3 +44,16 @@ def manageCertifications():
 			quit()
 		else:
 			rejectOption(selection)
+
+
+def solicitAction():
+	outputPrompt('What would you like to do?')
+	outputOption(' - (L)oad new achievement data files')
+	outputOption(' - (M)odify current state of achievements')
+	outputOption(' - (S)ave current state of achievements')
+	outputOption(' - Display (C)ertification table')
+	outputOption(' - Display (A)chievement table')
+	outputOption(' - Display (O)fficial details')
+	outputOption(' - Send (E)mails')
+	outputOption(' - (Q)uit')
+	return prompt()

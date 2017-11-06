@@ -22,6 +22,7 @@ def handleSavedAchievements(officials, requirements):
 	else:
 		output('No previously saved achievements data available to load.')
 
+	outputCloseModule(dataType)
 	return achievements
 
 
@@ -36,5 +37,4 @@ def loadSavedAchievements(officials, requirements, dataType, targetDirectoryPath
 		if achievement.isValid():
 			achievements.add(achievement)
 
-	outputCloseModule(dataType)
 	return achievements
