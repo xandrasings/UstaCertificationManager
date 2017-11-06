@@ -4,6 +4,7 @@ from .displayIntroduction import *
 from .displayOfficial import *
 from .handleSavedAchievements import *
 from .manageEmails import *
+from .modifyAchievements import *
 from .processAchievements import *
 from .processOfficials import *
 from .processDisciplineRequirements import *
@@ -30,15 +31,15 @@ def manageCertifications():
 		if (selection == 'L'):
 			achievements = achievements | processAchievements(targetDirectoryPath, officials, requirements)
 		elif (selection == 'M'):
-			pass
+			achievements = modifyAchievements(achievements)
 		elif (selection == 'S'):
 			saveAchievements(achievements)
 		elif (selection == 'C'):
-			displayCertifications(certifications);
+			displayCertifications(certifications)
 		elif (selection == 'A'):
-			displayAchievements(requirements, officials, achievements);
+			displayAchievements(requirements, officials, achievements)
 		elif (selection == 'O'):
-			displayOfficial(officials, disciplines, requirements, achievements, certifications);
+			displayOfficial(officials, disciplines, requirements, achievements, certifications)
 		elif (selection == 'E'):
 			manageEmails(officials, disciplines, requirements, achievements, certifications)
 		elif (selection == 'Q'):

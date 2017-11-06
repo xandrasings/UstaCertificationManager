@@ -11,7 +11,7 @@ class CourseAchievement(Achievement):
 				break
 
 		for requirement in givenArgs[1]:
-			if requirement.matches(pare(dataArgs[2], [' course', '.','_OLD'])):
+			if requirement.matches(pare(dataArgs[2], [' course', '.','_OLD','_UNLOCKED'])):
 				self.requirement = requirement
 				break
 
