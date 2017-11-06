@@ -1,7 +1,7 @@
 from ..Utilities.input import *
 from ..Utilities.output import *
 
-def solicitCertManagerAction():
+def solicitAction():
 	outputPrompt('What would you like to do?')
 	outputOption(' - (L)oad new achievement data files')
 	outputOption(' - (M)odify current state of achievements')

@@ -26,7 +26,7 @@ def manageCertifications():
 
 	displayOptions = True;
 	while (displayOptions == True):
-		selection = solicitCertManagerAction()
+		selection = solicitAction()
 		outputLine()
 		if (selection == 'L'):
 			achievements = achievements | processAchievements(targetDirectoryPath, officials, requirements)
