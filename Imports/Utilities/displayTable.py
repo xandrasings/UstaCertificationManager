@@ -1,6 +1,5 @@
 from .output import *
 from .color import *
-from .session import *
 
 def displayTable(colHeaders, rowHeaders, data):
 	initialColWidth = establishInitialColWidth(rowHeaders)

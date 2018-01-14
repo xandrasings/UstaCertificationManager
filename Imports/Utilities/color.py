@@ -1,12 +1,14 @@
+from colorama import Fore, Style
+
 colorOptions = {
-	'red' : '\033[95m',
-	'blue' : '\033[94m',
-	'green' : '\033[92m',
-	'cyan' : '\033[96m',
-	'yellow' : '\033[93m',
-	'magenta' : '\033[95m',
-	'black' : '\033[90m',
-	'closer' : '\033[0m'
+	'red' : Fore.RED + Style.BRIGHT,
+	'blue' : Fore.BLUE + Style.BRIGHT,
+	'green' : Fore.GREEN + Style.BRIGHT,
+	'cyan' : Fore.CYAN + Style.BRIGHT,
+	'yellow' : '\033[93m' + Style.BRIGHT,
+	'magenta' : Fore.MAGENTA,
+	'black' : Fore.BLACK,
+	'closer' : Style.RESET_ALL
 }
 
 def color(text, color):
