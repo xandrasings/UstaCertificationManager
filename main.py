@@ -1,5 +1,5 @@
 from Imports.Modules.manageCertifications import *
-from Imports.Modules.initialize import *
+from Imports.Utilities.session import *
 
 def main():
 	initialize()
