@@ -1,5 +1,6 @@
 from .output import *
 from .color import *
+from .session import *
 
 def displayTable(colHeaders, rowHeaders, data):
 	initialColWidth = establishInitialColWidth(rowHeaders)
@@ -19,7 +20,7 @@ def establishInitialColWidth(rowHeaders):
 
 
 def establishColWidth(initialColWidth, colHeaders):
-	return ((180 - initialColWidth) // len(colHeaders)) - 1
+	return ((getTerminalWidth() - initialColWidth) // len(colHeaders)) - 1
 
 
 def combineRowContent(rowContent, firstRowContent):

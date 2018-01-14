@@ -1,5 +1,6 @@
 from .color import *
 from .logo import *
+from .session import *
 
 import os
 
@@ -34,17 +35,28 @@ def outputCloseModule(dataType = None):
 def outputCloseApplication():
 	outputUserNotice('Exiting Certification Manager.')
 	outputLineHeavy()
-	outputLogo('tennisBall', 8, 'yellow')
+	outputLogo('tennisBall', True, 'yellow')
 
 def outputFatal(message):
 	output(colorFatal(message))
 
-def outputLine():
-	output('------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------')
+def outputLine(basis = '-', colorOption = 'black'):
+	reps = getTerminalWidth() // len(basis)
+	outputString = ''
+	while (reps > 0):
+		outputString = outputString + basis
+		reps -= 1
+	output(outputString, colorOption)
 
 def outputLineHeavy():
-	output('====================================================================================================================================================================================')
+	outputLine('=')
 
-def outputLogo(logo, reps = 1, colorOption = 'black'):
-	logo = processLogo(logo, reps)
-	output(color(logo,colorOption))
+def outputLogo(logo, repeated = False, colorOption = 'black'):
+	logo = processLogo(logo)
+	for line in logo:
+		if repeated:
+			outputLine(line + '  ', colorOption)
+		else:
+			output(line, colorOption)
+
+
