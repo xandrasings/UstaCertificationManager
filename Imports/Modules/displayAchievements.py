@@ -7,14 +7,20 @@ def displayAchievements(requirements, officials, achievements):
 	rowHeaders = getItemNames(officials)
 	data = []
 
+	tableCode = [
+		['C',	'completed',		'green'],
+		['N',	'not completed',	'black'],
+	]
+	meaningCode = {tableCode[1]: tableCode[0] for tableCode in tableCodes}
+	colorCode = {tableCode[0]: tableCode[2] for tableCode in tableCodes}
+
 	for rowHeader in rowHeaders:
 		newRow = []
 		for colHeader in colHeaders:
-			newCell = 'C'
-			newRow.append(getTableValue(achievements, rowHeader, colHeader))
+			newRow.append(getTableValue(achievements, rowHeader, colHeader, meaningCode))
 		data.append(newRow)
 
-	displayTable(colHeaders, rowHeaders, data)
+	displayTable(colHeaders, rowHeaders, data, colorCode)
 	promptContinue()
 
 def getItemNames(items):
@@ -24,10 +30,10 @@ def getItemNames(items):
 
 	return itemNames
 
-def getTableValue(achievements, rowHeader, colHeader):
-	tableValue = 'N'
+def getTableValue(achievements, rowHeader, colHeader, meaningCode):
+	tableValue = meaningCode['not completed']
 	for achievement in achievements:
 		if achievement.getOfficial().matches(rowHeader) and achievement.getRequirement().matches(colHeader):
-			tableValue = 'C'
+			tableValue = meaningCode['completed']
 			break
 	return tableValue

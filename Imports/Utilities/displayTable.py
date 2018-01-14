@@ -1,12 +1,12 @@
 from .output import *
 from .color import *
 
-def displayTable(colHeaders, rowHeaders, data):
+def displayTable(colHeaders, rowHeaders, data, colorRules = {}):
 	initialColWidth = establishInitialColWidth(rowHeaders)
 	colWidth = establishColWidth(initialColWidth, colHeaders)
 
 	displayRow(initialColWidth, colWidth, colHeaders)
-	displayRows(initialColWidth, colWidth, data, rowHeaders)
+	displayRows(initialColWidth, colWidth, data, rowHeaders, colorRules)
 
 
 def establishInitialColWidth(rowHeaders):
@@ -29,21 +29,22 @@ def combineRowContent(rowContent, firstRowContent):
 	return fullRowContent
 
 
-def displayRows(initialColWidth, colWidth, rowsContent, rowHeaders):
+def displayRows(initialColWidth, colWidth, rowsContent, rowHeaders, colorRules):
 	for i in range(min(len(rowsContent), len(rowHeaders))):
-		displayRow(initialColWidth, colWidth, rowsContent[i], rowHeaders[i])
+		displayRow(initialColWidth, colWidth, rowsContent[i], rowHeaders[i], colorRules)
 
 
-def displayRow(initialColWidth, colWidth, rowContent, firstRowContent = ''): # array of strings
+def displayRow(initialColWidth, colWidth, rowContent, firstRowContent = '', colorRules = {}):
 	rowContent = combineRowContent(rowContent, firstRowContent)
-	rowContent = formatRowContents(initialColWidth, colWidth, rowContent) # array of arrays
+	rowContent = formatRowContents(initialColWidth, colWidth, rowContent, colorRules)
 
 	outputRow(rowContent)
 	outputLine()
 
 
-def formatRowContents(initialColWidth, colWidth, rowContent): # array of strings
-	rowContent = arrayenRowContent(initialColWidth, colWidth, rowContent) # array of array of strings
+def formatRowContents(initialColWidth, colWidth, rowContent, colorRules):
+	rowContent = applyColorRules(rowContent, colorRules)
+	rowContent = arrayenRowContent(initialColWidth, colWidth, rowContent)
 	rowContent = lengthenRowContent(rowContent)
 	rowContent = buffenRowContent(initialColWidth, colWidth, rowContent)
 	rowContent = stringenRowContent(rowContent)
@@ -51,12 +52,21 @@ def formatRowContents(initialColWidth, colWidth, rowContent): # array of strings
 	return rowContent
 
 
-def arrayenRowContent(initialColWidth, colWidth, rowContent): # array of strings
-	rowContentArray = [] # array 
+def applyColorRules(rowContent, colorRules):
+	rowContentRevised = []
+
+	for cellContent in rowContent:
+		rowContentRevised.append([cellContent, (colorRules[cellContent] if cellContent in colorRules else 'black')])
+
+	return rowContentRevised
+
+
+def arrayenRowContent(initialColWidth, colWidth, rowContent):
+	rowContentArray = []
 
 	chosenWidth = initialColWidth
 	for cellContent in rowContent:
-		rowContentArray.append(arrayenCellContent(chosenWidth, cellContent))
+		rowContentArray.append([arrayenCellContent(chosenWidth, cellContent[0]), cellContent[1]])
 		chosenWidth = colWidth
 
 	return rowContentArray
@@ -68,11 +78,12 @@ def arrayenCellContent(colWidth, cellContent):
 
 	row = ''
 	while(len(wordArray) > 0):
-		if fits(row, colWidth, wordArray[0]):
-			row = row + ' ' + wordArray[0]
+		rowEmpty = checkIfRowIsEmpty(row)
+		if fits(row, colWidth, wordArray[0], rowEmpty):
+			row = row + ('' if rowEmpty else ' ') + wordArray[0]
 			wordArray.pop(0)
 		else:
-			if rowIsEmpty(row):
+			if rowEmpty:
 				row = getWordPrefix(wordArray[0], colWidth)
 				wordArray[0] = getWordSuffix(wordArray[0], colWidth)
 			arrayenedCellContent.append(row)
@@ -84,11 +95,11 @@ def arrayenCellContent(colWidth, cellContent):
 	return arrayenedCellContent
 
 
-def fits(row, max, word):
-	return len(row) + len(word) + (0 if rowIsEmpty(row) else 1) <= max
+def fits(row, max, word, emptyRow):
+	return len(row) + len(word) + (0 if emptyRow else 1) <= max
 
 
-def rowIsEmpty(row):
+def checkIfRowIsEmpty(row):
 	return len(row) == 0
 
 
@@ -106,7 +117,7 @@ def lengthenRowContent(rowContent):
 	rowContentArray = []
 
 	for cellContent in rowContent:
-		rowContentArray.append(lengthenCellContent(cellDepth, cellContent))
+		rowContentArray.append([lengthenCellContent(cellDepth, cellContent[0]),cellContent[1]])
 
 	return rowContentArray
 
@@ -114,7 +125,7 @@ def lengthenRowContent(rowContent):
 def getCellDepth(rowContent):
 	cellDepth = 0
 	for cellContent in rowContent:
-		cellDepth = max(cellDepth, len(cellContent))
+		cellDepth = max(cellDepth, len(cellContent[0]))
 	return cellDepth
 
 
@@ -130,7 +141,7 @@ def buffenRowContent(initialColWidth, colWidth, rowContent):
 
 	chosenWidth = initialColWidth
 	for cellContent in rowContent:
-		rowContentArray.append(buffenCellContent(chosenWidth, cellContent))
+		rowContentArray.append([buffenCellContent(chosenWidth, cellContent[0]), cellContent[1]])
 		chosenWidth = colWidth
 
 	return rowContentArray
@@ -167,7 +178,7 @@ def stringenRowContent(rowContent):
 	for i in range(getCellDepth(rowContent)):
 		subRow = ''
 		for cellContent in rowContent:
-			subRow = subRow + cellContent[i] + '|'
+			subRow = subRow + color(cellContent[0][i], cellContent[1]) + '|'
 		rowContentArray.append(subRow)
 
 	return rowContentArray
