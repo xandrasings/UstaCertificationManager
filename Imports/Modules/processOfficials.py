@@ -1,7 +1,7 @@
 from .selectData import *
 from ..Utilities.input import *
 from ..Utilities.output import *
-from ..Utilities.session import *
+from ..Utilities.sys import *
 
 def processOfficials(targetDirectoryPath, disciplines):
 	dataType = 'officials'

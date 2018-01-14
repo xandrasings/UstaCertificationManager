@@ -11,7 +11,7 @@ from .processDisciplineRequirements import *
 from .saveAchievements import *
 from .setTargetDirectoryPath import *
 from ..Utilities.output import *
-from ..Utilities.session import *
+from ..Utilities.sys import *
 
 def manageCertifications():
 	displayIntroduction()
