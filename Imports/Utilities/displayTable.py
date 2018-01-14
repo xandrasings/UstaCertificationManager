@@ -1,12 +1,12 @@
 from .output import *
 from .color import *
 
-def displayTable(colHeaders, rowHeaders, data, colorRules = {}):
+def displayTable(colHeaders, rowHeaders, data, colorCode = {}):
 	initialColWidth = establishInitialColWidth(rowHeaders)
 	colWidth = establishColWidth(initialColWidth, colHeaders)
 
 	displayRow(initialColWidth, colWidth, colHeaders)
-	displayRows(initialColWidth, colWidth, data, rowHeaders, colorRules)
+	displayRows(initialColWidth, colWidth, data, rowHeaders, colorCode)
 
 
 def establishInitialColWidth(rowHeaders):
@@ -29,21 +29,21 @@ def combineRowContent(rowContent, firstRowContent):
 	return fullRowContent
 
 
-def displayRows(initialColWidth, colWidth, rowsContent, rowHeaders, colorRules):
+def displayRows(initialColWidth, colWidth, rowsContent, rowHeaders, colorCode):
 	for i in range(min(len(rowsContent), len(rowHeaders))):
-		displayRow(initialColWidth, colWidth, rowsContent[i], rowHeaders[i], colorRules)
+		displayRow(initialColWidth, colWidth, rowsContent[i], rowHeaders[i], colorCode)
 
 
-def displayRow(initialColWidth, colWidth, rowContent, firstRowContent = '', colorRules = {}):
+def displayRow(initialColWidth, colWidth, rowContent, firstRowContent = '', colorCode = {}):
 	rowContent = combineRowContent(rowContent, firstRowContent)
-	rowContent = formatRowContents(initialColWidth, colWidth, rowContent, colorRules)
+	rowContent = formatRowContents(initialColWidth, colWidth, rowContent, colorCode)
 
 	outputRow(rowContent)
 	outputLine()
 
 
-def formatRowContents(initialColWidth, colWidth, rowContent, colorRules):
-	rowContent = applyColorRules(rowContent, colorRules)
+def formatRowContents(initialColWidth, colWidth, rowContent, colorCode):
+	rowContent = applycolorCode(rowContent, colorCode)
 	rowContent = arrayenRowContent(initialColWidth, colWidth, rowContent)
 	rowContent = lengthenRowContent(rowContent)
 	rowContent = buffenRowContent(initialColWidth, colWidth, rowContent)
@@ -52,11 +52,11 @@ def formatRowContents(initialColWidth, colWidth, rowContent, colorRules):
 	return rowContent
 
 
-def applyColorRules(rowContent, colorRules):
+def applycolorCode(rowContent, colorCode):
 	rowContentRevised = []
 
 	for cellContent in rowContent:
-		rowContentRevised.append([cellContent, (colorRules[cellContent] if cellContent in colorRules else 'black')])
+		rowContentRevised.append([cellContent, (colorCode[cellContent] if cellContent in colorCode else 'black')])
 
 	return rowContentRevised
 
