@@ -1,6 +1,6 @@
-from .quit import *
 from ..Utilities.input import *
 from ..Utilities.output import *
+from ..Utilities.session import *
 
 def modifyAchievements(achievements):
 	displayOptions = True;

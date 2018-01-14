@@ -8,10 +8,10 @@ from .modifyAchievements import *
 from .processAchievements import *
 from .processOfficials import *
 from .processDisciplineRequirements import *
-from .quit import *
 from .saveAchievements import *
 from .setTargetDirectoryPath import *
 from ..Utilities.output import *
+from ..Utilities.session import *
 
 def manageCertifications():
 	displayIntroduction()

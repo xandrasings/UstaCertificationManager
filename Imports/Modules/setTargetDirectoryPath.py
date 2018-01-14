@@ -1,9 +1,9 @@
-from .quit import *
 from .selectData import *
 from ..Classes.Data import *
 from ..Utilities.input import *
 from ..Utilities.output import *
 from ..Utilities.dataTypeRules import *
+from ..Utilities.session import *
 
 def setTargetDirectoryPath(targetDirectoryPath, firstRun = True):
 	targetDirectoryPath = getAbsoluteFilePath(targetDirectoryPath)

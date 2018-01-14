@@ -1,8 +1,8 @@
-from .quit import *
 from ..Classes.Data import *
 from ..Utilities.input import *
 from ..Utilities.output import *
 from ..Utilities.dataTypeRules import *
+from ..Utilities.session import *
 
 from os import listdir
 from xlrd import *

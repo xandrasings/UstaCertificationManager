@@ -1,4 +1,4 @@
-from ...Modules.quit import *
+from ...Utilities.session import *
 from ...Utilities.output import *
 from ...Utilities.output import *
 
