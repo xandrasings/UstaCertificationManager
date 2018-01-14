@@ -1,12 +1,15 @@
 from .output import *
 from .color import *
 
-def displayTable(colHeaders, rowHeaders, data, colorCode = {}):
+def displayTable(colHeaders, rowHeaders, data, tableCode = []):
+	colorCode = {tableCodeDetail[0]: tableCodeDetail[2] for tableCodeDetail in tableCode}
 	initialColWidth = establishInitialColWidth(rowHeaders)
 	colWidth = establishColWidth(initialColWidth, colHeaders)
 
+	displayTableKey(tableCode)
 	displayRow(initialColWidth, colWidth, colHeaders)
 	displayRows(initialColWidth, colWidth, data, rowHeaders, colorCode)
+	displayTableKey(tableCode)
 
 
 def establishInitialColWidth(rowHeaders):
@@ -22,11 +25,14 @@ def establishColWidth(initialColWidth, colHeaders):
 	return ((getTerminalWidth() - initialColWidth) // len(colHeaders)) - 1
 
 
-def combineRowContent(rowContent, firstRowContent):
-	fullRowContent = [firstRowContent]
-	fullRowContent.extend(rowContent)
-
-	return fullRowContent
+def displayTableKey(tableCode):
+	if len(tableCode) > 0:
+		adjustment = max(getCellDepth(tableCode), 4)
+		outputBlank()
+		output('CODE'.ljust(adjustment) + ' MEANING')
+		for tableCodeDetail in tableCode:
+			output(color(tableCodeDetail[0].ljust(adjustment), tableCodeDetail[2]) + ' ' + tableCodeDetail[1])
+		outputBlank()
 
 
 def displayRows(initialColWidth, colWidth, rowsContent, rowHeaders, colorCode):
@@ -40,6 +46,13 @@ def displayRow(initialColWidth, colWidth, rowContent, firstRowContent = '', colo
 
 	outputRow(rowContent)
 	outputLine()
+
+
+def combineRowContent(rowContent, firstRowContent):
+	fullRowContent = [firstRowContent]
+	fullRowContent.extend(rowContent)
+
+	return fullRowContent
 
 
 def formatRowContents(initialColWidth, colWidth, rowContent, colorCode):

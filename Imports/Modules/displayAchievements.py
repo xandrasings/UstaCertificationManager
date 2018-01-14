@@ -11,8 +11,7 @@ def displayAchievements(requirements, officials, achievements):
 		['C',	'completed',		'green'],
 		['N',	'not completed',	'black'],
 	]
-	meaningCode = {tableCode[1]: tableCode[0] for tableCode in tableCodes}
-	colorCode = {tableCode[0]: tableCode[2] for tableCode in tableCodes}
+	meaningCode = {tableCodeItem[1]: tableCodeItem[0] for tableCodeItem in tableCode}
 
 	for rowHeader in rowHeaders:
 		newRow = []
@@ -20,7 +19,7 @@ def displayAchievements(requirements, officials, achievements):
 			newRow.append(getTableValue(achievements, rowHeader, colHeader, meaningCode))
 		data.append(newRow)
 
-	displayTable(colHeaders, rowHeaders, data, colorCode)
+	displayTable(colHeaders, rowHeaders, data, tableCode)
 	promptContinue()
 
 def getItemNames(items):

@@ -13,6 +13,9 @@ def output(text, colorOption = 'none'):
 	else:
 		print(color(text, colorOption))
 
+def outputBlank():
+	print()
+
 def outputUserNotice(text):
 	output(colorUserNotice(text))
 
