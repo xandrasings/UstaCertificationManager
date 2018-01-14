@@ -1,5 +1,5 @@
 from ...Utilities.sys import *
-from ...Utilities.output import *
+from ...Utilities.input import *
 from ...Utilities.output import *
 
 

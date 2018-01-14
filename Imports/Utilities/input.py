@@ -38,3 +38,9 @@ def promptContinue():
 def rejectOption(selection):
 	outputUserNotice('\'' + selection + '\' is not a viable option.')
 	outputLine()
+
+def solicitAction(userPrompt, options):
+	outputPrompt(userPrompt)
+	for option in options:
+		outputOption(' - ' + option)
+	return prompt()

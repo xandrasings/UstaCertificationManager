@@ -23,8 +23,10 @@ def manageCertifications():
 	achievements = handleSavedAchievements(officials, requirements)
 	certifications = []
 
+	actions = ['(L)oad new achievement data files', '(M)odify current state of achievements', '(S)ave current state of achievements', 'Display (C)ertification table', 'Display (A)chievement table', 'Display (O)fficial details', 'Send (E)mails', '(Q)uit']
+
 	while (True):
-		selection = solicitAction()
+		selection = solicitAction('What would you like to do?', actions)
 		outputLine()
 		if (selection == 'L'):
 			achievements = achievements | processAchievements(targetDirectoryPath, officials, requirements)
@@ -44,16 +46,3 @@ def manageCertifications():
 			quit()
 		else:
 			rejectOption(selection)
-
-
-def solicitAction():
-	outputPrompt('What would you like to do?')
-	outputOption(' - (L)oad new achievement data files')
-	outputOption(' - (M)odify current state of achievements')
-	outputOption(' - (S)ave current state of achievements')
-	outputOption(' - Display (C)ertification table')
-	outputOption(' - Display (A)chievement table')
-	outputOption(' - Display (O)fficial details')
-	outputOption(' - Send (E)mails')
-	outputOption(' - (Q)uit')
-	return prompt()
