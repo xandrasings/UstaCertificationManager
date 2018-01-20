@@ -4,11 +4,13 @@ from ..Utilities.input import *
 from ..Utilities.output import *
 
 import csv
+import os
 
 
 def handleSavedAchievements(officials, requirements):
 	dataType = 'saved achievements'
 	targetDirectoryPath = extendPath(getAbsoluteFilePath('DataFiles'), 'backupData')
+	ensureBackupDirectoryExists(targetDirectoryPath)
 	achievements = set()
 
 	backupOptions = getValidPathOptions(dataType, targetDirectoryPath)
@@ -24,6 +26,12 @@ def handleSavedAchievements(officials, requirements):
 
 	outputCloseModule(dataType)
 	return achievements
+
+
+def ensureBackupDirectoryExists(targetDirectoryPath):
+	if not os.path.isdir(targetDirectoryPath):
+		os.makedirs(targetDirectoryPath)
+		output('Backup data directory was not found. Regenerating directory.')
 
 
 def loadSavedAchievements(officials, requirements, dataType, targetDirectoryPath, backupOptions):
