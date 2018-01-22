@@ -1,5 +1,5 @@
 from .selectData import *
-from ..Classes.DataAchievement import *
+from ..Classes.AchievementData import *
 from ..Utilities.input import *
 from ..Utilities.output import *
 
@@ -41,7 +41,7 @@ def loadSavedAchievements(officials, requirements, dataType, targetDirectoryPath
 	achievements = set()
 	achievementReader = csv.reader(open(backupFile, newline=''))
 	for row in achievementReader:
-		achievement = DataAchievement(row, [officials, requirements])
+		achievement = AchievementData(row, [officials, requirements])
 		if achievement.isValid():
 			achievements.add(achievement)
 
