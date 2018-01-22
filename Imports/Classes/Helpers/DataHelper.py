@@ -26,7 +26,7 @@ def validateColRange(expectedHeaderCols, colMax):
 	return result
 
 
-def validateExpectedLeadingCols(expected, actual):
+def validateExpectedLeadingCols(expected, actual, output = True):
 	result = True
 	index = 0
 	indexLimit = len(expected)
@@ -37,8 +37,8 @@ def validateExpectedLeadingCols(expected, actual):
 			break
 		index = index + 1
 
-	if not result:
-		result = userCheck(result, 'Column ' + str(index + 1) + ' is expected to be \'' + expected[index].strip().upper() + '\' but is actually \'' + actual[index] + '\'')
+	if not result and output:
+		result = outputUserNotice(result, 'Column ' + str(index + 1) + ' is expected to be \'' + expected[index].strip().upper() + '\' but is actually \'' + actual[index] + '\'')
 	return result
 
 

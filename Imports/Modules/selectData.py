@@ -32,14 +32,15 @@ def displayAppropriateNavigationPrompt(dataType, targetDirectoryPath):
 		outputUserNotice('Navigate to ' + dataType + ' data in ' + targetDirectoryPath)
 
 
-def getValidPathOptions(dataType, filePath):
+def getValidPathOptions(dataType, filePath, breakOnEmpty = True):
 	pathContent = listdir(filePath)
 	validOptions = filterPathOptions(dataType, pathContent)
 	validOptions = sortPathOptions(dataType, validOptions)
 
 	if len(validOptions) == 0:
-		emptyValidOptionAction = showEmptyValidOptionActions(filePath)
-		validOptions = getValidPathOptions(dataType, filePath)
+		if breakOnEmpty:
+			emptyValidOptionAction = showEmptyValidOptionActions(filePath)
+			validOptions = getValidPathOptions(dataType, filePath)
 
 	return validOptions
 
@@ -92,6 +93,7 @@ def showEmptyValidOptionActions(filePath):
 	while selection != 'T':
 		outputPrompt('What would you like to do?')
 		outputOption(' - (T)ry this directory again')
+		outputOption(' - (C)ontinue anyway')
 		outputOption(' - (Q)uit')
 		selection = prompt()
 		if selection == 'Q':

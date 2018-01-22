@@ -75,19 +75,29 @@ colHeaderType = {
 }
 
 rowHeaderType = {
-	'achievements' : CourseAchievement,
+	'course achievements type 1' : CourseAchievement,
+	'course achievements type 2' : CourseAchievement,
 	'officials' : Official,
 	'requirements' : Discipline
 }
 
 expectedLeadingCols = {
-	'achievements' : ['Last Name', 'First Name', 'Item Name', 'Item Started Date', 'Item Completed Date'],
+	'course achievements type 1' : ['Last Name', 'First Name', 'Item Name', 'Item Started Date', 'Item Completed Date', 'City', 'State/Province'],
+	'course achievements type 2' : ['Last Name', 'First Name', 'Item Name', 'Item Started Date', 'Item Completed Date', 'Item Status', 'City', 'State/Province'],
 	'requirements' : ['Discipline'],
 	'officials' : ['First Name', 'Preferred Name', 'Last Name', 'Email']
 }
 
+typeParents = {
+	'course achievements type 1' : 'achievements',
+	'course achievements type 2' : 'achievements',
+	'requirements' : 'requirements',
+	'officials' : 'officials'
+}
+
 expectedLeadingRows = {
-	'achievements' : [],
+	'course achievements type 1' : [],
+	'course achievements type 2' : [],
 	'requirements' : ['Discipline'],
 	'officials' : ['First Name']
 }
@@ -105,61 +115,71 @@ doPareRowMax = {
 }
 
 doValidateRanges = {
-	'achievements' : True,
+	'course achievements type 1' : True,
+	'course achievements type 2' : True,
 	'requirements' : True,
 	'officials' : True
 }
 
 doValidateColHeaders = {
-	'achievements' : True,
+	'course achievements type 1' : True,
+	'course achievements type 2' : True,
 	'requirements' : True,
 	'officials' : True
 }
 
 doValidateExpectedLeadingCols = {
-	'achievements' : True,
+	'course achievements type 1' : True,
+	'course achievements type 2' : True,
 	'requirements' : True,
 	'officials' : True
 }
 
 doValidateColHeaderFormat = {
-	'achievements' : True,
+	'course achievements type 1' : True,
+	'course achievements type 2' : True,
 	'requirements' : True,
 	'officials' : True
 }
 
 doValidateRowHeaders = {
-	'achievements' : True,
+	'course achievements type 1' : True,
+	'course achievements type 2' : True,
 	'requirements' : True,
 	'officials' : True
 }
 
 doValidateExpectedLeadingRows = {
-	'achievements' : True,
+	'course achievements type 1' : True,
+	'course achievements type 2' : True,
 	'requirements' : True,
 	'officials' : True
 }
 
 doValidateRowHeaderFormat = {
-	'achievements' : True,
+	'course achievements type 1' : True,
+	'course achievements type 2' : True,
 	'requirements' : True,
 	'officials' : True
 }
 
 doValidateData = {
-	'achievements' : True,
+	'course achievements type 1' : True,
+	'course achievements type 2' : True,
 	'requirements' : True,
 	'officials' : True
 }
 
 doValidateBinaryData = {
-	'achievements' : False,
+	'course achievements type 1' : False,
+	'course achievements type 2' : False,
 	'requirements' : True,
 	'officials' : True
 }
 
 doValidateAchievementData = {
-	'achievements' : True,
+	'course achievements type 1' : True,
+	'course achievements type 2' : True,
 	'requirements' : False,
 	'officials' : False
 }

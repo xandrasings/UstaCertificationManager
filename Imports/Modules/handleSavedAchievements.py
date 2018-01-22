@@ -13,7 +13,7 @@ def handleSavedAchievements(officials, requirements):
 	ensureBackupDirectoryExists(targetDirectoryPath)
 	achievements = set()
 
-	backupOptions = getValidPathOptions(dataType, targetDirectoryPath)
+	backupOptions = getValidPathOptions(dataType, targetDirectoryPath, False)
 
 	if len(backupOptions) > 0:
 		if promptYN('Would you like to use most recently saved achievements data from ' + backupOptions[0] + '?'):

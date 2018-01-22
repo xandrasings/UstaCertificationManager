@@ -16,7 +16,8 @@ class Data:
 			self.pareColMax()
 		if doPareRowMax[self.dataType]:
 			self.pareRowMax()
-		self.validate()
+
+		return self.inferDataType(self.dataType) and self.validate()
 
 
 	def get(self, row, col):
@@ -81,6 +82,18 @@ class Data:
 			rowHeaders.append(self.get(row,0))
 
 		return rowHeaders
+
+	def inferDataType(self, dataType):
+		actual = self.getFullColHeaders()
+
+		for key in expectedLeadingCols:
+			expected = expectedLeadingCols[key] 
+			if validateExpectedLeadingCols(expected, actual, False):
+				if typeParents[key] == dataType:
+					self.dataType = key
+					return True
+		outputUserNotice('Could not infer file data type from headers.')
+		return False
 
 
 	def validate(self):
