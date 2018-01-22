@@ -1,6 +1,7 @@
 from .fileSort import *
 from ..Classes.Achievement import *
-from ..Classes.CourseAchievement import *
+from ..Classes.AchievementCourseType1 import *
+from ..Classes.AchievementCourseType2 import *
 from ..Classes.Requirement import *
 from ..Classes.Discipline import *
 from ..Classes.Official import *
@@ -75,8 +76,8 @@ colHeaderType = {
 }
 
 rowHeaderType = {
-	'course achievements type 1' : CourseAchievement,
-	'course achievements type 2' : CourseAchievement,
+	'course achievements type 1' : AchievementCourseType1,
+	'course achievements type 2' : AchievementCourseType2,
 	'officials' : Official,
 	'requirements' : Discipline
 }
@@ -177,7 +178,7 @@ doValidateBinaryData = {
 	'officials' : True
 }
 
-doValidateAchievementData = {
+doValidateAchievementBackUp = {
 	'course achievements type 1' : True,
 	'course achievements type 2' : True,
 	'requirements' : False,

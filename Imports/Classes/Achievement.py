@@ -13,7 +13,10 @@ class Achievement:
 			isinstance(other, Achievement) and
 			self.official.getName() == other.official.getName() and
 			self.requirement.getName() == other.requirement.getName() and
-			self.completedDate == other.completedDate
+			self.completedDate == other.completedDate and
+			self.city == other.city and
+			self.state == other.state and
+			self.sourceFile == other.sourceFile
 		)
 
 
@@ -49,6 +52,14 @@ class Achievement:
 		return self.completedDate
 
 
+	def getCity(self):
+		return self.city
+
+
+	def getState(self):
+		return self.state
+
+
 	def getSourceFile(self):
 		return self.sourceFile
 
@@ -61,6 +72,8 @@ class Achievement:
 		output(self.official.getName())
 		output(self.requirement.getName())
 		output(self.completedDate)
+		output(self.city)
+		output(self.state)
 		output(self.sourceFile)
 
 

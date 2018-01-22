@@ -24,7 +24,6 @@ def manageCertifications():
 	certifications = []
 
 	actions = ['(L)oad new achievement data files', '(M)odify current state of achievements', '(S)ave current state of achievements', 'Display (C)ertification table', 'Display (A)chievement table', 'Display (O)fficial details', 'Send (E)mails', '(Q)uit']
-
 	while (True):
 		selection = solicitAction('What would you like to do?', actions)
 		outputLine()

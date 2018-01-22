@@ -147,7 +147,7 @@ class Data:
 		if doValidateData[self.dataType]:
 			result = (
 				self.validateBinaryData() if doValidateBinaryData[self.dataType] else True and
-				self.validateAchievementData() if doValidateAchievementData[self.dataType] else True
+				self.validateAchievementBackUp() if doValidateAchievementBackUp[self.dataType] else True
 			)
 
 		return result
@@ -177,7 +177,7 @@ class Data:
 		return result
 
 
-	def validateAchievementData(self):
+	def validateAchievementBackUp(self):
 		result = True
 		# TODO write meeee
 

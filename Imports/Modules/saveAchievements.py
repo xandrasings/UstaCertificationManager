@@ -6,7 +6,6 @@ from datetime import datetime
 import csv
 
 def saveAchievements(achievements):
-	output('save achievements')
 	backupFilePath = selectBackupFilePath()
 
 	with open(backupFilePath, 'w', newline='') as backup:
@@ -70,5 +69,7 @@ def generateRow(achievement):
 	row.append(achievement.getOfficialLastName())
 	row.append(achievement.getRequirementName())
 	row.append(achievement.getCompletedDate())
+	row.append(achievement.getCity())
+	row.append(achievement.getState())
 	row.append(achievement.getSourceFile())
 	return row
