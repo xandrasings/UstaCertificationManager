@@ -25,8 +25,12 @@ class Official:
 		return self.lastName
 
 
-	def getPreferredName(self):
-		return (self.firstName if len(self.preferredName) == 0 else self.preferredName) + ' ' + self.lastName
+	def getPreferredFirstName(self):
+		return (self.firstName if len(self.preferredName) == 0 else self.preferredName)
+
+
+	def getPreferredFullName(self):
+		return self.getPreferredFirstName() + ' ' + self.lastName
 
 
 	def getName(self):
@@ -42,7 +46,7 @@ class Official:
 
 
 	def matches(self, name):
-		return name == self.getName()
+		return name == self.getName() or name == self.getPreferredFullName()
 
 
 	def output(self):

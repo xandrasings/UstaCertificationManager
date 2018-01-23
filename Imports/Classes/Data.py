@@ -85,7 +85,6 @@ class Data:
 
 	def inferDataType(self, dataType):
 		actual = self.getFullColHeaders()
-
 		for key in expectedLeadingCols:
 			expected = expectedLeadingCols[key] 
 			if validateExpectedLeadingCols(expected, actual, False):
@@ -147,7 +146,7 @@ class Data:
 		if doValidateData[self.dataType]:
 			result = (
 				self.validateBinaryData() if doValidateBinaryData[self.dataType] else True and
-				self.validateAchievementBackUp() if doValidateAchievementBackUp[self.dataType] else True
+				self.validateAchievementData() if doValidateAchievementData[self.dataType] else True
 			)
 
 		return result
@@ -177,7 +176,7 @@ class Data:
 		return result
 
 
-	def validateAchievementBackUp(self):
+	def validateAchievementData(self):
 		result = True
 		# TODO write meeee
 

@@ -1,5 +1,6 @@
 from .Official import *
 from .Requirement import *
+from .Helpers.AchievementHelper import *
 from ..Utilities.dataTypeRules import *
 from ..Utilities.output import *
 
@@ -75,7 +76,3 @@ class Achievement:
 		output(self.city)
 		output(self.state)
 		output(self.sourceFile)
-
-
-def getFullName(firstName, lastName):
-	return firstName + ' ' + lastName;
